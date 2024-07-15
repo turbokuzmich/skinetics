@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
 import CssBaseline from "@mui/material/CssBaseline";
+import AppAppBar from "./components/appBar";
+import Footer from "./components/footer";
+import theme from "./theme";
+import { ThemeProvider } from "@mui/material/styles";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "SeS",
+  title: "Dr. Health",
 };
 
 export default function RootLayout({
@@ -17,8 +21,12 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <AppRouterCacheProvider>
-          <CssBaseline />
-          {children}
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <AppAppBar />
+            {children}
+            <Footer />
+          </ThemeProvider>
         </AppRouterCacheProvider>
       </body>
     </html>
