@@ -18,7 +18,6 @@ export default function LandingPage() {
       <Highlights />
       <Divider />
       <Faq />
-      <Divider />
     </>
   );
 }

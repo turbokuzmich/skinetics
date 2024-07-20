@@ -28,6 +28,14 @@ export enum IngredientName {
   blackPepper = "black_pepper",
   plantain = "plantain",
   calendula = "calendula",
+  celandine = "celandine",
+  melissa = "melissa",
+  chamomile = "chamomile",
+  hyaluronicAcid = "hyaluronic_acid",
+  allantoine = "allantoine",
+  sitosterol = "sitosterol",
+  brocccoli = "brocccoli",
+  nettle = "nettle",
 }
 
 export type TextTooltip = {
@@ -44,4 +52,10 @@ export type Ingredient = {
   name: string;
   aliases?: string | string[];
   description: IngredientDescriptionLine | IngredientDescriptionLine[];
+};
+
+export type NaviItem = {
+  to: string;
+  title: string;
+  subitems?: NaviItem[];
 };

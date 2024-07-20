@@ -7,41 +7,12 @@ import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import A from "@mui/material/Link";
-import Typography from "@mui/material/Typography";
 import MenuItem from "@mui/material/MenuItem";
 import Drawer from "@mui/material/Drawer";
 import MenuIcon from "@mui/icons-material/Menu";
 import Link from "next/link";
-import { items } from "@/constants";
-
-type NaviItem = {
-  to: string;
-  title: string;
-  subitems?: NaviItem[];
-};
-
-const navigation: NaviItem[] = [
-  {
-    to: "/about",
-    title: "О нас",
-  },
-  {
-    to: "/catalog",
-    title: "Каталог",
-    subitems: items.map((item) => ({
-      to: `/catalog/${item.id}`,
-      title: item.title,
-    })),
-  },
-  {
-    to: "/ingredients",
-    title: "Ингредиенты",
-  },
-  {
-    to: "/contacts",
-    title: "Контакты",
-  },
-];
+import Logo from "./logo";
+import { navigation } from "@/constants";
 
 function AppAppBar() {
   const [open, setOpen] = React.useState(false);
@@ -100,14 +71,15 @@ function AppAppBar() {
           >
             <Box
               sx={{
+                gap: 2,
                 flexGrow: 1,
                 display: "flex",
                 alignItems: "center",
-                ml: "-18px",
-                px: 0,
               }}
             >
-              <Link href="/">Obanze</Link>
+              <A href="/" component={Link} sx={{ width: 120, pb: "4px" }}>
+                <Logo />
+              </A>
               <Box sx={{ display: { xs: "none", md: "flex" } }}>
                 {navigation.map((navi) => (
                   <MenuItem key={navi.to} sx={{ py: "6px", px: "12px" }}>
