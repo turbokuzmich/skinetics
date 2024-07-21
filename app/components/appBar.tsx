@@ -1,6 +1,6 @@
 "use client";
 
-import * as React from "react";
+import { useState } from "react";
 import Box from "@mui/material/Box";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
@@ -15,24 +15,24 @@ import Logo from "./logo";
 import { navigation } from "@/constants";
 
 function AppAppBar() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
   };
 
   const scrollToSection = (sectionId: string) => {
-    const sectionElement = document.getElementById(sectionId);
-    const offset = 128;
-    if (sectionElement) {
-      const targetScroll = sectionElement.offsetTop - offset;
-      sectionElement.scrollIntoView({ behavior: "smooth" });
-      window.scrollTo({
-        top: targetScroll,
-        behavior: "smooth",
-      });
-      setOpen(false);
-    }
+    // const sectionElement = document.getElementById(sectionId);
+    // const offset = 128;
+    // if (sectionElement) {
+    //   const targetScroll = sectionElement.offsetTop - offset;
+    //   sectionElement.scrollIntoView({ behavior: "smooth" });
+    //   window.scrollTo({
+    //     top: targetScroll,
+    //     behavior: "smooth",
+    //   });
+    //   setOpen(false);
+    // }
   };
 
   return (
@@ -115,11 +115,19 @@ function AppAppBar() {
                     flexGrow: 1,
                   }}
                 >
-                  <MenuItem>Features</MenuItem>
-                  <MenuItem>Testimonials</MenuItem>
-                  <MenuItem>Highlights</MenuItem>
-                  <MenuItem>Pricing</MenuItem>
-                  <MenuItem>FAQ</MenuItem>
+                  {navigation.map((navi) => (
+                    <MenuItem key={navi.to} onClick={toggleDrawer(false)}>
+                      <A
+                        variant="body2"
+                        color="text.primary"
+                        href={navi.to}
+                        underline="always"
+                        component={Link}
+                      >
+                        {navi.title}
+                      </A>
+                    </MenuItem>
+                  ))}
                 </Box>
               </Drawer>
             </Box>

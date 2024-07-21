@@ -12,12 +12,12 @@ export default function LandingPage() {
     <>
       <Carousel />
       <Catalog />
-      <Divider />
+      {/* <Divider />
       <Testimonials />
       <Divider />
       <Highlights />
       <Divider />
-      <Faq />
+      <Faq /> */}
     </>
   );
 }

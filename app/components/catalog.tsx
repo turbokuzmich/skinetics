@@ -32,11 +32,11 @@ export default function Catalog() {
         }}
       >
         <Typography
-          variant="h5"
+          variant="h6"
           color="text.secondary"
           paddingBottom={3}
           fontWeight={400}
-          lineHeight="1.8rem"
+          lineHeight="2rem"
         >
           Бренд косметики для здоровья кожи и волос Dr.Health — современное и
           высокотехнологичное производство косметических продуктов премиального
@@ -68,7 +68,7 @@ export default function Catalog() {
               />
               <CardHeader
                 title={item.title}
-                titleTypographyProps={{ variant: "h5", gutterBottom: true }}
+                titleTypographyProps={{ variant: "h6", lineHeight: "1.7rem", gutterBottom: true }}
                 subheader={item.subheader}
               />
               <CardContent sx={{ paddingBlock: 0 }}>{item.effect}</CardContent>

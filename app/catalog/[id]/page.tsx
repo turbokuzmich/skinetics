@@ -16,12 +16,12 @@ export default function CatalogItem({
   const item = items.find((item) => item.id === id);
 
   if (!item) {
-    redirect(`/catalog/${items[0].id}`);
+    redirect("/catalog/");
   }
 
   return (
     <>
-      <Container sx={{ pt: 12, pb: 3 }}>
+      <Container sx={{ pt: 12, pb: { xs: 8, sm: 16 } }}>
         <Stack
           gap={2}
           direction={{

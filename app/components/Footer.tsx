@@ -14,26 +14,31 @@ import { navigation } from "@/constants";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { doctorFormSchema, type DoctorForm } from "@/lib/dto/doctorForm";
 import { useForm } from "react-hook-form";
-import { useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function Footer() {
   return (
-    <Container sx={{ flexShrink: 0, flexGrow: 0, py: 8 }}>
+    <Container sx={{ flexShrink: 0, flexGrow: 0, py: { xs: 8, sm: 16 } }}>
       <Grid
         container
         alignItems={{
           md: "center",
         }}
-        spacing={2}
+        spacing={{ xs: 8, md: 2 }}
       >
         <Grid xs={12} md={8}>
-          <Typography variant="h4" gutterBottom>
+          <Typography variant="h5" gutterBottom>
             Записаться к трихологу
           </Typography>
           <DoctorForm />
         </Grid>
         <Grid xs={12} md={4}>
-          <Stack gap={2} alignItems="flex-start" useFlexGap>
+          <Stack
+            gap={2}
+            alignItems={{ xs: "center", md: "flex-start" }}
+            useFlexGap
+          >
             <Box width={120}>
               <Logo />
             </Box>
@@ -62,17 +67,44 @@ const defaultFormValues: DoctorForm = {
 };
 
 function DoctorForm() {
+  const router = useRouter();
+  const params = useSearchParams();
+
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
   const { formState, register, handleSubmit } = useForm<DoctorForm>({
     defaultValues: defaultFormValues,
     resolver: zodResolver(doctorFormSchema),
   });
 
-  const onSubmit = useCallback((values: DoctorForm) => {
-    console.log(values);
-  }, []);
+  const onSubmit = useCallback(
+    async (values: DoctorForm) => {
+      await fetch("/api/doctor", {
+        body: JSON.stringify(values),
+        headers: {
+          "content-type": "application/json",
+        },
+        method: "PUT",
+      });
 
-  return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+      setIsSubmitted(true);
+    },
+    [setIsSubmitted]
+  );
+
+  useEffect(() => {
+    if (params.has("appointment")) {
+      router.replace("/", { scroll: false });
+      document
+        .getElementById("appointment-form")
+        ?.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [router]);
+
+  return isSubmitted ? (
+    <Typography>Мы свяжемся с вами в ближайшее время</Typography>
+  ) : (
+    <form onSubmit={handleSubmit(onSubmit)} id="appointment-form">
       <Stack spacing={2} useFlexGap>
         <TextField
           variant="outlined"
@@ -95,6 +127,7 @@ function DoctorForm() {
           variant="outlined"
           color="primary"
           size="large"
+          disabled={formState.isSubmitting}
           sx={{ width: "100%", maxWidth: "450px" }}
         >
           Записаться

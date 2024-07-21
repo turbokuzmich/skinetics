@@ -19,6 +19,7 @@
     "color": "^4.2.3",
     "lodash": "^4.17.21",
     "next": "14.2.4",
+    "nodemailer": "^6.9.14",
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.52.0",
@@ -31,6 +32,7 @@
     "@types/color": "^3.0.6",
     "@types/lodash": "^4.17.6",
     "@types/node": "^20",
+    "@types/nodemailer": "^6.4.15",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "typescript": "^5"
