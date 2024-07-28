@@ -38,3 +38,6 @@ next-env.d.ts
 
 # videos
 /public/video
+
+# editor
+.vscode
