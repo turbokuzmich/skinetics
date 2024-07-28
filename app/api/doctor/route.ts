@@ -32,7 +32,7 @@ export async function PUT(request: NextRequest) {
   }
 
   await getTransport().sendMail({
-    to: "kurteev.d@yandex.ru",
+    to: "info@deluxspa.ru",
     html: `<pre>${JSON.stringify(parsed.data, null, 2)}</pre>`,
     subject: "Запись к трихологу",
     from: process.env.EMAIL_SENDER,
