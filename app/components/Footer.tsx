@@ -16,6 +16,7 @@ import { doctorFormSchema, type DoctorForm } from "@/lib/dto/doctorForm";
 import { useForm } from "react-hook-form";
 import { useCallback, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
 export default function Footer() {
   return (
@@ -31,7 +32,9 @@ export default function Footer() {
           <Typography variant="h5" gutterBottom>
             Записаться к трихологу
           </Typography>
-          <DoctorForm />
+          <Suspense>
+            <DoctorForm />
+          </Suspense>
         </Grid>
         <Grid xs={12} md={4}>
           <Stack
