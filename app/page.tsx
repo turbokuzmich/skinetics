@@ -1,9 +1,9 @@
 "use client";
 
 import Divider from "@mui/material/Divider";
-import Highlights from "./components/highlights";
-import Testimonials from "./components/testimonials";
-import Faq from "./components/faq";
+import Highlights from "./components/advantages";
+import Testimonials from "./components/reports";
+import Faq from "./components/frequentlyAskedQuestions";
 import Catalog from "./components/catalog";
 import Carousel from "./components/carousel";
 
