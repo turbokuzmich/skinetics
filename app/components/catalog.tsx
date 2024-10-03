@@ -2,7 +2,6 @@ import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
-import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import CardActions from "@mui/material/CardActions";
 import Button from "@mui/material/Button";
@@ -68,10 +67,13 @@ export default function Catalog() {
               />
               <CardHeader
                 title={item.title}
-                titleTypographyProps={{ variant: "h6", lineHeight: "1.7rem", gutterBottom: true }}
+                titleTypographyProps={{
+                  variant: "h6",
+                  lineHeight: "1.7rem",
+                  gutterBottom: true,
+                }}
                 subheader={item.subheader}
               />
-              <CardContent sx={{ paddingBlock: 0 }}>{item.effect}</CardContent>
               <CardActions sx={{ p: 2 }}>
                 <Link href={`/catalog/${item.id}`} passHref>
                   <Button variant="outlined" color="primary">

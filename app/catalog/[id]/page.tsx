@@ -57,6 +57,11 @@ export default function CatalogItem({
             </Typography>
             <Typography variant="subtitle2">Объем</Typography>
             <Typography paragraph>{item.volume}</Typography>
+            {item.description.map((description) => (
+              <Typography key={description} paragraph>
+                {description}
+              </Typography>
+            ))}
             <Typography variant="subtitle2">Действие</Typography>
             <Typography paragraph>{item.effect}</Typography>
             <Typography variant="subtitle2">Состав</Typography>
@@ -69,11 +74,6 @@ export default function CatalogItem({
                 <Typography paragraph>{item.warning}</Typography>
               </>
             ) : null}
-            {item.description.map((description) => (
-              <Typography key={description} paragraph>
-                {description}
-              </Typography>
-            ))}
             <Button
               size="large"
               href={item.links.wildberries}
