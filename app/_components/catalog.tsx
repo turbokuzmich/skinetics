@@ -82,12 +82,44 @@ export default function Catalog() {
                 subheader={item.subheader}
                 sx={{ flexGrow: 1, alignItems: "flex-start" }}
               />
-              <CardActions sx={{ p: 2, flexShrink: 0, flexGrow: 0 }}>
+              <CardActions
+                sx={{
+                  p: 2,
+                  flexShrink: 0,
+                  flexGrow: 0,
+                  justifyContent: "space-between",
+                }}
+              >
                 <Link href={`/catalog/${item.id}`} passHref>
-                  <Button variant="outlined" color="primary">
+                  <Button variant="outlined" color="primary" size="large">
                     Подробнее
                   </Button>
                 </Link>
+                <Button
+                  size="large"
+                  href={item.links.wildberries}
+                  target="blank"
+                  rel="noopener"
+                  sx={{
+                    color: "white",
+                    paddingInline: 3,
+                    textTransform: "uppercase",
+                    backgroundColor: "transparent",
+                    backgroundImage:
+                      "linear-gradient(0.819turn,rgba(99,16,127,1) 0%,rgba(176,18,159,1) 100%)",
+                    "&:hover": {
+                      backgroundColor: "transparent",
+                    },
+                    "&:active": {
+                      backgroundColor: "transparent",
+                    },
+                    "&:focus": {
+                      backgroundColor: "transparent",
+                    },
+                  }}
+                >
+                  Купить на WB
+                </Button>
               </CardActions>
             </Card>
           </Grid>

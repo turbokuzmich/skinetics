@@ -1,5 +1,3 @@
-"use client";
-
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
@@ -48,11 +46,11 @@ export default function Highlights() {
   return (
     <Box
       id="highlights"
-      sx={(theme) => ({
+      sx={{
         pt: { xs: 4, sm: 12 },
         pb: { xs: 8, sm: 16 },
-        bgcolor: theme.palette.grey[100],
-      })}
+        bgcolor: "grey.100",
+      }}
     >
       <Container
         sx={{
