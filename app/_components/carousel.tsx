@@ -1,10 +1,10 @@
+"use client";
+
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import ArrowBack from "@mui/icons-material/ArrowBackIos";
 import ArrowForward from "@mui/icons-material/ArrowForwardIos";
 import CircularProgress from "@mui/material/CircularProgress";
-import A from "@mui/material/Link";
-import Link from "next/link";
 import Player from "react-player/file";
 import Color from "color";
 import { Carousel } from "react-responsive-carousel";
@@ -202,27 +202,26 @@ export default function MainCarousel() {
             emulateTouch
           >
             {videoData.map(({ index }, idx) => (
-              <Link key={index} href="/" passHref>
-                <A
-                  sx={{
-                    display: "block",
-                    width: "100%",
-                    height: playerSize.height,
-                    overflow: "hidden",
-                  }}
-                >
-                  <Player
-                    onEnded={onEnded}
-                    onReady={idx === 0 ? onPlayerReady : undefined}
-                    playing={idx === slideIndex}
-                    url={`/video/${index}.mp4`}
-                    width={playerSize.width}
-                    height={playerSize.height}
-                    wrapper={wrappers[idx]}
-                    muted
-                  />
-                </A>
-              </Link>
+              <Box
+                key={index}
+                sx={{
+                  display: "block",
+                  width: "100%",
+                  height: playerSize.height,
+                  overflow: "hidden",
+                }}
+              >
+                <Player
+                  onEnded={onEnded}
+                  onReady={idx === 0 ? onPlayerReady : undefined}
+                  playing={idx === slideIndex}
+                  url={`/video/${index}.mp4`}
+                  width={playerSize.width}
+                  height={playerSize.height}
+                  wrapper={wrappers[idx]}
+                  muted
+                />
+              </Box>
             ))}
           </Carousel>
         </Box>

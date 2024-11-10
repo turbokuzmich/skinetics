@@ -60,10 +60,17 @@ export default function Catalog() {
             key={item.id}
             sx={{ display: "flex" }}
           >
-            <Card sx={{ width: "100%" }}>
+            <Card
+              sx={{ width: "100%", display: "flex", flexDirection: "column" }}
+            >
               <CardMedia
                 image={item.image}
-                sx={{ height: 250, backgroundSize: "contain" }}
+                sx={{
+                  height: 250,
+                  backgroundSize: "contain",
+                  flexShrink: 0,
+                  flexGrow: 0,
+                }}
               />
               <CardHeader
                 title={item.title}
@@ -73,8 +80,9 @@ export default function Catalog() {
                   gutterBottom: true,
                 }}
                 subheader={item.subheader}
+                sx={{ flexGrow: 1, alignItems: "flex-start" }}
               />
-              <CardActions sx={{ p: 2 }}>
+              <CardActions sx={{ p: 2, flexShrink: 0, flexGrow: 0 }}>
                 <Link href={`/catalog/${item.id}`} passHref>
                   <Button variant="outlined" color="primary">
                     Подробнее

@@ -8,6 +8,7 @@ export default function About() {
     <Container
       sx={{
         pt: 12,
+        pb: { xs: 8, sm: 16 },
       }}
     >
       <Box

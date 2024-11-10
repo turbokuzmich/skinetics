@@ -34,7 +34,7 @@ export default function CatalogItem({
             flexShrink={0}
             flexGrow={0}
             sx={{
-              backgroundImage: `url(/items/${item.id}.png)`,
+              backgroundImage: `url(${item.image})`,
               backgroundSize: "contain",
               backgroundPosition: "center",
               backgroundRepeat: "no-repeat",

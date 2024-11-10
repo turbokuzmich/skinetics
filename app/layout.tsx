@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import CssBaseline from "@mui/material/CssBaseline";
-import AppAppBar from "./components/appBar";
+import AppAppBar from "./_components/appBar";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
-import Footer from "./components/foot";
+import Footer from "./_components/foot";
 import Divider from "@mui/material/Divider";
 import theme from "./theme";
 import { ThemeProvider } from "@mui/material/styles";
