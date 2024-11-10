@@ -10,6 +10,8 @@ import { useForm } from "react-hook-form";
 import { useCallback, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
+type ReachGoalFn = (id: number, method: string, param: string) => void;
+
 const defaultFormValues: DoctorForm = {
   name: "",
   phone: "",
@@ -35,6 +37,10 @@ export default function DoctorForm() {
         },
         method: "PUT",
       });
+
+      if ("ym" in window) {
+        (window.ym as ReachGoalFn)(98874723, "reachGoal", "form");
+      }
 
       setIsSubmitted(true);
     },

@@ -8,6 +8,7 @@ import A from "@mui/material/Link";
 import Logo from "./logo";
 import { navigation } from "@/constants";
 import DoctorForm from "./form";
+import { Suspense } from "react";
 
 export default function Footer() {
   return (
@@ -23,7 +24,9 @@ export default function Footer() {
           <Typography variant="h5" gutterBottom>
             Записаться к трихологу
           </Typography>
-          <DoctorForm />
+          <Suspense>
+            <DoctorForm />
+          </Suspense>
         </Grid>
         <Grid xs={12} md={4}>
           <Stack
