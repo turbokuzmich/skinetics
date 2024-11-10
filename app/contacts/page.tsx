@@ -3,10 +3,12 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import PhoneIcon from "@mui/icons-material/Phone";
+import Metrika from "../_components/metrika";
 
 export default function Contacts() {
   return (
     <Box paddingTop={16} paddingBottom={{ xs: 8, sm: 16 }}>
+      <Metrika />
       <Container sx={{ display: "flex", justifyContent: "center" }}>
         <Typography
           variant="h5"

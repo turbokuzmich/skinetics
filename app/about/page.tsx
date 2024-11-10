@@ -2,6 +2,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
+import Metrika from "../_components/metrika";
 
 export default function About() {
   return (
@@ -11,6 +12,7 @@ export default function About() {
         pb: { xs: 8, sm: 16 },
       }}
     >
+      <Metrika />
       <Box
         sx={{
           maxWidth: 800,

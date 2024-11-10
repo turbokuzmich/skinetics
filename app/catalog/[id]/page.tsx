@@ -7,6 +7,7 @@ import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import Metrika from "@/app/_components/metrika";
 
 export default function CatalogItem({
   params: { id },
@@ -21,6 +22,7 @@ export default function CatalogItem({
 
   return (
     <>
+      <Metrika />
       <Container sx={{ pt: 12, pb: { xs: 8, sm: 16 } }}>
         <Stack
           gap={2}
