@@ -8,6 +8,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Link from "next/link";
+import WbButton from "./wbButton";
 import { items } from "@/constants";
 
 export default function Catalog() {
@@ -95,31 +96,10 @@ export default function Catalog() {
                     Подробнее
                   </Button>
                 </Link>
-                <Button
-                  size="large"
-                  href={item.links.wildberries}
-                  target="blank"
-                  rel="noopener"
-                  sx={{
-                    color: "white",
-                    paddingInline: 3,
-                    textTransform: "uppercase",
-                    backgroundColor: "transparent",
-                    backgroundImage:
-                      "linear-gradient(0.819turn,rgba(99,16,127,1) 0%,rgba(176,18,159,1) 100%)",
-                    "&:hover": {
-                      backgroundColor: "transparent",
-                    },
-                    "&:active": {
-                      backgroundColor: "transparent",
-                    },
-                    "&:focus": {
-                      backgroundColor: "transparent",
-                    },
-                  }}
-                >
-                  Купить на WB
-                </Button>
+                <WbButton
+                  link={item.links.wildberries}
+                  buttonText="Купить на WB"
+                />
               </CardActions>
             </Card>
           </Grid>

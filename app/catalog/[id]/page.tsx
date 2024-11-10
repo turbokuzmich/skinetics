@@ -6,8 +6,8 @@ import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
 import Metrika from "@/app/_components/metrika";
+import WbButton from "@/app/_components/wbButton";
 
 export default function CatalogItem({
   params: { id },
@@ -76,31 +76,7 @@ export default function CatalogItem({
                 <Typography paragraph>{item.warning}</Typography>
               </>
             ) : null}
-            <Button
-              size="large"
-              href={item.links.wildberries}
-              target="blank"
-              rel="noopener"
-              sx={{
-                color: "white",
-                textTransform: "uppercase",
-                backgroundColor: "transparent",
-                paddingInline: 3,
-                backgroundImage:
-                  "linear-gradient(0.819turn,rgba(99,16,127,1) 0%,rgba(176,18,159,1) 100%)",
-                "&:hover": {
-                  backgroundColor: "transparent",
-                },
-                "&:active": {
-                  backgroundColor: "transparent",
-                },
-                "&:focus": {
-                  backgroundColor: "transparent",
-                },
-              }}
-            >
-              Купить на wildberries
-            </Button>
+            <WbButton link={item.links.wildberries} />
           </Box>
         </Stack>
       </Container>
