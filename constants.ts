@@ -4,11 +4,13 @@ import {
   Ingredient,
   IngredientName,
   NaviItem,
+  ItemCategory,
 } from "./types";
 
 export const items: Item[] = [
   {
     id: "red_pepper",
+    type: ItemCategory.serum,
     title: "Красный перец и витамины B3, B6",
     subheader: "Сыворотка для роста волос и против выпадения",
     brief: [
@@ -37,9 +39,19 @@ export const items: Item[] = [
       [Marketplace.wildberries]:
         "https://wildberries.ru/catalog/234497518/detail.aspx?utm_campaign=73308-id-site&utm_medium=free&utm_source=site",
     },
+    metadata: {
+      title:
+        "Купить сыворотку с красным перцем в Москве, заказать средство для роста волос с витаминами B3, B6",
+      description:
+        "Сыворотка Dr. Health с красным перцем и витаминами в Москве. Заказать средства для укрепления и ухода за волосами и кожей головы с доставкой. Консультация трихолога.",
+      other: {
+        header: "Сыворотка Dr. Health с красным перцем ",
+      },
+    },
   },
   {
     id: "copper_tripeptide",
+    type: ItemCategory.serum,
     title: "Трипептид меди",
     subheader: "Сыворотка-бустер для роста волос и против выпадения",
     brief: [
@@ -65,9 +77,19 @@ export const items: Item[] = [
       [Marketplace.wildberries]:
         "https://wildberries.ru/catalog/236527411/detail.aspx?utm_campaign=73308-id-site&utm_medium=free&utm_source=site",
     },
+    metadata: {
+      title:
+        "Купить сыворотку трипептид меди в Москве, заказать средство-бустер для роста волос и против выпадения",
+      description:
+        "Сыворотка Dr. Health трипептид меди в Москве. Заказать средства для укрепления и ухода за волосами и кожей головы с доставкой. Консультация трихолога.",
+      other: {
+        header: "Сыворотка Dr. Health трипептид меди",
+      },
+    },
   },
   {
     id: "climbazole",
+    type: ItemCategory.serum,
     title: "Климбазол, пироктон оламин и сера",
     subheader: "Сыворотка против перхоти",
     brief: [
@@ -95,6 +117,15 @@ export const items: Item[] = [
     links: {
       [Marketplace.wildberries]:
         "https://wildberries.ru/catalog/236310045/detail.aspx?utm_campaign=73308-id-site&utm_medium=free&utm_source=site",
+    },
+    metadata: {
+      title:
+        "Купить сыворотку климбазол, пироктон оламин и сера в Москве, заказать сыворотку против перхоти",
+      description:
+        "Сыворотка Dr. Health климбазол, пироктон оламин и сера в Москве. Заказать средства для укрепления и ухода за волосами и кожей головы с доставкой. Консультация трихолога.",
+      other: {
+        header: "Сыворотка Dr. Health климбазол, пироктон оламин и сера",
+      },
     },
   },
 ];
@@ -231,9 +262,17 @@ export const navigation: NaviItem[] = [
     to: "/about",
     title: "О нас",
   },
+  // {
+  //   to: "/catalog",
+  //   title: "Каталог",
+  //   subitems: items.map((item) => ({
+  //     to: `/catalog/${item.id}`,
+  //     title: item.title,
+  //   })),
+  // },
   {
-    to: "/catalog",
-    title: "Каталог",
+    to: "/serum",
+    title: "Сыворотки",
     subitems: items.map((item) => ({
       to: `/catalog/${item.id}`,
       title: item.title,

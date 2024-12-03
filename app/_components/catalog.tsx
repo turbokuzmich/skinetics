@@ -11,7 +11,10 @@ import Link from "next/link";
 import WbButton from "./wbButton";
 import { items } from "@/constants";
 
-export default function Catalog() {
+export default function Catalog({
+  header = "Косметика для волос Dr. Health",
+  omitDescription,
+}: Readonly<{ header?: string; omitDescription?: boolean }>) {
   return (
     <Container
       id="catalog"
@@ -31,19 +34,21 @@ export default function Catalog() {
           textAlign: { sm: "left", md: "center" },
         }}
       >
-        <Typography
-          variant="h6"
-          color="text.secondary"
-          paddingBottom={3}
-          fontWeight={400}
-          lineHeight="2rem"
-        >
-          Бренд косметики для здоровья кожи и волос Dr.Health — современное и
-          высокотехнологичное производство косметических продуктов премиального
-          уровня по демократичной стоимости
-        </Typography>
-        <Typography component="h2" variant="h4" color="text.primary">
-          Наша продукция
+        {omitDescription ? null : (
+          <Typography
+            variant="h6"
+            color="text.secondary"
+            paddingBottom={3}
+            fontWeight={400}
+            lineHeight="2rem"
+          >
+            Бренд косметики для здоровья кожи и волос Dr.Health — современное и
+            высокотехнологичное производство косметических продуктов
+            премиального уровня по демократичной стоимости
+          </Typography>
+        )}
+        <Typography component="h1" variant="h4" color="text.primary">
+          {header}
         </Typography>
         {/* <Typography variant="body1" color="text.secondary">
           See what our customers love about our products. Discover how we excel

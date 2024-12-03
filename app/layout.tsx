@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import CssBaseline from "@mui/material/CssBaseline";
-import AppAppBar from "./_components/appBar";
+import Navigation from "./_components/appBar";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Footer from "./_components/foot";
@@ -47,7 +47,7 @@ export default function RootLayout({
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
             <CssBaseline />
-            <AppAppBar />
+            <Navigation />
             <Stack
               sx={{
                 minHeight: "100vh",

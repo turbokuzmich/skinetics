@@ -8,12 +8,19 @@ import Divider from "@mui/material/Divider";
 import Typography from "@mui/material/Typography";
 import Metrika from "@/app/_components/metrika";
 import WbButton from "@/app/_components/wbButton";
+import { type Metadata } from "next";
 
-export default function CatalogItem({
-  params: { id },
-}: Readonly<{
+type Props = Readonly<{
   params: { id: Item["id"] };
-}>) {
+}>;
+
+export function generateMetadata({ params: { id } }: Props): Metadata {
+  const item = items.find((item) => item.id === id);
+
+  return item?.metadata ?? {};
+}
+
+export default function CatalogItem({ params: { id } }: Props) {
   const item = items.find((item) => item.id === id);
 
   if (!item) {
@@ -51,11 +58,14 @@ export default function CatalogItem({
             }}
           />
           <Box>
-            <Typography variant="body1" color="text.secondary">
+            {/* <Typography variant="body1" color="text.secondary">
               {item.subheader}
             </Typography>
             <Typography variant="h5" paragraph>
               {item.title}
+            </Typography> */}
+            <Typography variant="h5" component="h1" paragraph>
+              {item.metadata.other?.header ?? item.title}
             </Typography>
             <Typography variant="subtitle2">Объем</Typography>
             <Typography paragraph>{item.volume}</Typography>

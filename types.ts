@@ -1,9 +1,17 @@
+import { type Metadata } from "next";
+
 export enum Marketplace {
   wildberries = "wildberries",
 }
 
+export enum ItemCategory {
+  oil = "oil",
+  serum = "serum",
+}
+
 export type Item = {
   id: string;
+  type: ItemCategory;
   title: string;
   subheader: string;
   brief: string[];
@@ -16,6 +24,7 @@ export type Item = {
   country: string;
   warning?: string;
   links: Record<Marketplace, string>;
+  metadata: Metadata;
 };
 
 export enum IngredientName {

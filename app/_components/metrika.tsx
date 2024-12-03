@@ -9,8 +9,6 @@ export default function Metrika() {
   const pathname = usePathname();
 
   useEffect(() => {
-    console.log("metrika", pathname);
-
     if ("ym" in window) {
       (window.ym as MetrikaFn)(
         98874723,
