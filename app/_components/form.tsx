@@ -9,8 +9,7 @@ import { doctorFormSchema, type DoctorForm } from "@/lib/dto/doctorForm";
 import { useForm } from "react-hook-form";
 import { useCallback, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-
-type ReachGoalFn = (id: number, method: string, param: string) => void;
+import { reachGoalForm } from "@/lib/metrika";
 
 const defaultFormValues: DoctorForm = {
   name: "",
@@ -38,10 +37,7 @@ export default function DoctorForm() {
         method: "PUT",
       });
 
-      if ("ym" in window) {
-        (window.ym as ReachGoalFn)(98874723, "reachGoal", "form");
-      }
-
+      reachGoalForm();
       setIsSubmitted(true);
     },
     [setIsSubmitted]

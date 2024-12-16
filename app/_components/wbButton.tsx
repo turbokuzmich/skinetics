@@ -2,17 +2,14 @@
 
 import Button from "@mui/material/Button";
 import { useCallback } from "react";
-
-type ReachGoalFn = (id: number, method: string, param: string) => void;
+import { reachGoalGoWb } from "@/lib/metrika";
 
 export default function WbButton({
   link,
   buttonText = "Купить на wildberries",
 }: Readonly<{ link: string; buttonText?: string }>) {
   const onClick = useCallback(() => {
-    if ("ym" in window) {
-      (window.ym as ReachGoalFn)(98874723, "reachGoal", "go_wb");
-    }
+    reachGoalGoWb();
   }, []);
 
   return (
