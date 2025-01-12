@@ -34,7 +34,7 @@ export default function Footer() {
             alignItems={{ xs: "center", md: "flex-start" }}
             useFlexGap
           >
-            <Box width={120}>
+            <Box width={150}>
               <Logo />
             </Box>
             {navigation.map((navi) => (

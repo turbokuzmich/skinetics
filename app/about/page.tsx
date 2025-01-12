@@ -3,6 +3,12 @@ import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Metrika from "../_components/metrika";
+import { type Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "О нас",
+  description: "О бренде SkineticsLab",
+};
 
 export default function About() {
   return (
@@ -18,7 +24,7 @@ export default function About() {
           maxWidth: 800,
         }}
       >
-        <Typography variant="h2" paragraph>
+        <Typography variant="h2" component="h1" paragraph>
           О нас
         </Typography>
         <Typography paragraph>

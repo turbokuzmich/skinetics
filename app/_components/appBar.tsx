@@ -7,7 +7,6 @@ import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import A from "@mui/material/Link";
-import MenuItem from "@mui/material/MenuItem";
 import Drawer from "@mui/material/Drawer";
 import MenuIcon from "@mui/icons-material/Menu";
 import Link from "next/link";
@@ -77,22 +76,22 @@ function AppAppBar() {
                 alignItems: "center",
               }}
             >
-              <A href="/" component={Link} sx={{ width: 120, pb: "4px" }}>
+              <A href="/" component={Link} sx={{ width: 150 }}>
                 <Logo />
               </A>
               <Box sx={{ display: { xs: "none", md: "flex" } }}>
                 {navigation.map((navi) => (
-                  <MenuItem key={navi.to} sx={{ py: "6px", px: "12px" }}>
-                    <A
-                      variant="body2"
-                      color="text.primary"
-                      href={navi.to}
-                      underline="always"
-                      component={Link}
-                    >
-                      {navi.title}
-                    </A>
-                  </MenuItem>
+                  <A
+                    key={navi.to}
+                    variant="body2"
+                    color="text.primary"
+                    href={navi.to}
+                    underline="always"
+                    component={Link}
+                    sx={{ py: "6px", px: "12px" }}
+                  >
+                    {navi.title}
+                  </A>
                 ))}
               </Box>
             </Box>
@@ -116,17 +115,17 @@ function AppAppBar() {
                   }}
                 >
                   {navigation.map((navi) => (
-                    <MenuItem key={navi.to} onClick={toggleDrawer(false)}>
-                      <A
-                        variant="body2"
-                        color="text.primary"
-                        href={navi.to}
-                        underline="always"
-                        component={Link}
-                      >
-                        {navi.title}
-                      </A>
-                    </MenuItem>
+                    <A
+                      key={navi.to}
+                      onClick={toggleDrawer(false)}
+                      variant="body2"
+                      color="text.primary"
+                      href={navi.to}
+                      underline="always"
+                      component={Link}
+                    >
+                      {navi.title}
+                    </A>
                   ))}
                 </Box>
               </Drawer>

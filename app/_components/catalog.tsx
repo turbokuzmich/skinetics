@@ -96,7 +96,7 @@ export default function Catalog({
                   justifyContent: "space-between",
                 }}
               >
-                <Link href={`/catalog/${item.id}`} passHref>
+                <Link href={`/catalog/${item.id}`}>
                   <Button variant="outlined" color="primary" size="large">
                     Подробнее
                   </Button>

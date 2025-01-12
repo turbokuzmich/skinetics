@@ -4,15 +4,25 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import PhoneIcon from "@mui/icons-material/Phone";
 import Metrika from "../_components/metrika";
+import { type Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Контакты",
+  description: "Контакты SkineticsLab",
+};
 
 export default function Contacts() {
   return (
     <Box paddingTop={16} paddingBottom={{ xs: 8, sm: 16 }}>
       <Metrika />
-      <Container sx={{ display: "flex", justifyContent: "center" }}>
+      <Container>
+        <Typography variant="h2" component="h1" paddingLeft={6} gutterBottom>
+          Контакты
+        </Typography>
         <Typography
           variant="h5"
           lineHeight="3rem"
+          component="div"
           sx={{
             position: "relative",
             pl: 6,

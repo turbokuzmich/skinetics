@@ -7,7 +7,7 @@ import Stack from "@mui/material/Stack";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { doctorFormSchema, type DoctorForm } from "@/lib/dto/doctorForm";
 import { useForm } from "react-hook-form";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { reachGoalForm } from "@/lib/metrika";
 
@@ -22,7 +22,7 @@ export default function DoctorForm() {
 
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const { formState, register, handleSubmit } = useForm<DoctorForm>({
+  const { formState, setFocus, register, handleSubmit } = useForm<DoctorForm>({
     defaultValues: defaultFormValues,
     resolver: zodResolver(doctorFormSchema),
   });
@@ -46,11 +46,16 @@ export default function DoctorForm() {
   useEffect(() => {
     if (params.has("appointment")) {
       router.replace("/", { scroll: false });
+
       document
         .getElementById("appointment-form")
         ?.scrollIntoView({ behavior: "smooth" });
+
+        setTimeout(() => {
+          setFocus('name')
+        }, 500)
     }
-  }, [router]);
+  }, [router, setFocus]);
 
   return isSubmitted ? (
     <Typography>Мы свяжемся с вами в ближайшее время</Typography>
