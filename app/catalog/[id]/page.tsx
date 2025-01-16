@@ -1,3 +1,4 @@
+import type { FC } from "react";
 import type { Item } from "@/types";
 import { items } from "@/constants";
 import { redirect } from "next/navigation";
@@ -9,6 +10,9 @@ import Typography from "@mui/material/Typography";
 import Metrika from "@/app/_components/metrika";
 import WbButton from "@/app/_components/wbButton";
 import { type Metadata } from "next";
+import RedPepper from "./_descriptions/red_pepper";
+import CopperTripeptide from "./_descriptions/copper_tripeptide";
+import Climbazole from "./_descriptions/climbazole";
 
 type Props = Readonly<{
   params: { id: Item["id"] };
@@ -20,12 +24,24 @@ export function generateMetadata({ params: { id } }: Props): Metadata {
   return item?.metadata ?? {};
 }
 
+function Null() {
+  return null;
+}
+
+const descriptions: Record<string, FC> = {
+  red_pepper: RedPepper,
+  copper_tripeptide: CopperTripeptide,
+  climbazole: Climbazole,
+};
+
 export default function CatalogItem({ params: { id } }: Props) {
   const item = items.find((item) => item.id === id);
 
   if (!item) {
     redirect("/catalog/");
   }
+
+  const Description: FC = descriptions[item.id] ?? Null;
 
   return (
     <>
@@ -69,24 +85,35 @@ export default function CatalogItem({ params: { id } }: Props) {
             </Typography>
             <Typography variant="subtitle2">Объем</Typography>
             <Typography paragraph>{item.volume}</Typography>
-            {item.description.map((description) => (
+            <Box marginBottom={2}>
+              <WbButton link={item.links.wildberries} />
+            </Box>
+            <Description />
+            {/* {item.description.map((description) => (
               <Typography key={description} paragraph>
                 {description}
               </Typography>
-            ))}
-            <Typography variant="subtitle2">Действие</Typography>
+            ))} */}
+            <Typography variant="h6" component="div">
+              Действие
+            </Typography>
             <Typography paragraph>{item.effect}</Typography>
-            <Typography variant="subtitle2">Состав</Typography>
+            <Typography variant="h6" component="div">
+              Состав
+            </Typography>
             <Typography paragraph>{item.composition}</Typography>
-            <Typography variant="subtitle2">Применение</Typography>
+            <Typography variant="h6" component="div">
+              Применение
+            </Typography>
             <Typography paragraph>{item.usage}</Typography>
             {item.warning ? (
               <>
-                <Typography variant="subtitle2">Противопоказания</Typography>
+                <Typography variant="h6" component="div">
+                  Противопоказания
+                </Typography>
                 <Typography paragraph>{item.warning}</Typography>
               </>
             ) : null}
-            <WbButton link={item.links.wildberries} />
           </Box>
         </Stack>
       </Container>
