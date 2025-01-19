@@ -37,7 +37,7 @@ export const items: Item[] = [
     country: "Россия",
     links: {
       [Marketplace.wildberries]:
-        "https://wildberries.ru/catalog/234497518/detail.aspx?utm_campaign=73308-id-site&utm_medium=free&utm_source=site",
+        "https://wildberries.ru/catalog/234497518/detail.aspx",
     },
     metadata: {
       title:
@@ -75,7 +75,7 @@ export const items: Item[] = [
     country: "Россия",
     links: {
       [Marketplace.wildberries]:
-        "https://wildberries.ru/catalog/236527411/detail.aspx?utm_campaign=73308-id-site&utm_medium=free&utm_source=site",
+        "https://wildberries.ru/catalog/236527411/detail.aspx",
     },
     metadata: {
       title:
@@ -116,7 +116,7 @@ export const items: Item[] = [
     country: "Россия",
     links: {
       [Marketplace.wildberries]:
-        "https://wildberries.ru/catalog/236310045/detail.aspx?utm_campaign=73308-id-site&utm_medium=free&utm_source=site",
+        "https://wildberries.ru/catalog/236310045/detail.aspx",
     },
     metadata: {
       title:

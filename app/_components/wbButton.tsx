@@ -1,13 +1,26 @@
 "use client";
 
 import Button from "@mui/material/Button";
-import { useCallback } from "react";
+import { useCallback, useContext, useMemo } from "react";
 import { reachGoalGoWb } from "@/lib/metrika";
+import { UTMContext } from "./utm";
 
 export default function WbButton({
   link,
   buttonText = "Купить на wildberries",
 }: Readonly<{ link: string; buttonText?: string }>) {
+  const { wildberries } = useContext(UTMContext);
+
+  const url = useMemo(() => {
+    const url = new URL(link);
+
+    for (const [key, value] of Object.entries(wildberries)) {
+      url.searchParams.set(key, value);
+    }
+
+    return url.toString();
+  }, [link, wildberries]);
+
   const onClick = useCallback(() => {
     reachGoalGoWb();
   }, []);
@@ -16,7 +29,7 @@ export default function WbButton({
     <Button
       onClick={onClick}
       size="large"
-      href={link}
+      href={url}
       target="blank"
       rel="noopener"
       sx={{

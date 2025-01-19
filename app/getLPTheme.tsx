@@ -196,11 +196,11 @@ const getDesignTokens = (mode: PaletteMode) => ({
     },
     body1: {
       fontWeight: 400,
-      fontSize: 15,
+      fontSize: 16,
     },
     body2: {
       fontWeight: 400,
-      fontSize: 14,
+      fontSize: 15,
     },
     caption: {
       fontWeight: 400,

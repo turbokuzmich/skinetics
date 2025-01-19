@@ -1,5 +1,5 @@
 import Container from "@mui/material/Container";
-import Grid from "@mui/material/Grid";
+import Grid from "@mui/material/Grid2";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
@@ -59,10 +59,7 @@ export default function Catalog({
       <Grid container spacing={2}>
         {items.map((item) => (
           <Grid
-            item
-            xs={12}
-            sm={6}
-            md={4}
+            size={{ xs: 12, sm: 6, md: 4 }}
             key={item.id}
             sx={{ display: "flex" }}
           >

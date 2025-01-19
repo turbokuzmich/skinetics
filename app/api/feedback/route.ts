@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { doctorFormSchema, type DoctorForm } from "@/lib/dto/doctorForm";
+import { feedbackFormSchema } from "@/lib/dto/feedbackForm";
 import nodemailer, { type Transporter } from "nodemailer";
 
 export const dynamic = "force-dynamic";
@@ -25,7 +25,7 @@ const getTransport = (function () {
 })();
 
 export async function PUT(request: NextRequest) {
-  const parsed = doctorFormSchema.safeParse(await request.json());
+  const parsed = feedbackFormSchema.safeParse(await request.json());
 
   if (parsed.error) {
     return NextResponse.json({ success: false }, { status: 400 });
@@ -34,7 +34,7 @@ export async function PUT(request: NextRequest) {
   await getTransport().sendMail({
     to: "info@skinetics.ru",
     html: `<pre>${JSON.stringify(parsed.data, null, 2)}</pre>`,
-    subject: "Запись к трихологу",
+    subject: "Обратная связь на сайте",
     from: process.env.EMAIL_SENDER,
   });
 

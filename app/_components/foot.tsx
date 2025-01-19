@@ -2,7 +2,7 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Link from "next/link";
 import Stack from "@mui/material/Stack";
-import Grid from "@mui/material/Unstable_Grid2";
+import Grid from "@mui/material/Grid2";
 import Typography from "@mui/material/Typography";
 import A from "@mui/material/Link";
 import Logo from "./logo";
@@ -20,7 +20,7 @@ export default function Footer() {
         }}
         spacing={{ xs: 8, md: 2 }}
       >
-        <Grid xs={12} md={8}>
+        <Grid size={{ xs: 12, md: 8 }}>
           <Typography variant="h5" gutterBottom>
             Записаться к трихологу
           </Typography>
@@ -28,7 +28,7 @@ export default function Footer() {
             <DoctorForm />
           </Suspense>
         </Grid>
-        <Grid xs={12} md={4}>
+        <Grid size={{ xs: 12, md: 4 }}>
           <Stack
             gap={2}
             alignItems={{ xs: "center", md: "flex-start" }}
