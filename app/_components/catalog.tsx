@@ -42,9 +42,9 @@ export default function Catalog({
             fontWeight={400}
             lineHeight="2rem"
           >
-            Бренд косметики для здоровья кожи и волос Dr.Health — современное и
-            высокотехнологичное производство косметических продуктов
-            премиального уровня по демократичной стоимости
+            Dr. Health — бренд косметики для ухода за кожей головы и волосами.
+            В каталоге указаны состав, способ применения и ссылка на покупку на
+            Wildberries.
           </Typography>
         )}
         <Typography component="h1" variant="h4" color="text.primary">

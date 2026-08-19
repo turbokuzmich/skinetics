@@ -110,7 +110,7 @@ export default function CatalogItem({ params: { id } }: Props) {
               </Typography>
             ))} */}
             <Typography variant="h6" component="div">
-              Действие
+              Назначение
             </Typography>
             <Typography paragraph>{item.effect}</Typography>
             <Typography variant="h6" component="div">
@@ -124,7 +124,7 @@ export default function CatalogItem({ params: { id } }: Props) {
             {item.warning ? (
               <>
                 <Typography variant="h6" component="div">
-                  Противопоказания
+                  Меры предосторожности
                 </Typography>
                 <Typography paragraph>{item.warning}</Typography>
               </>
