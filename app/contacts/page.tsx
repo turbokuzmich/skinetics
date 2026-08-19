@@ -13,6 +13,9 @@ import FeedbackForm from "./_components/form";
 export const metadata: Metadata = {
   title: "Контакты",
   description: "Контакты SkineticsLab",
+  alternates: {
+    canonical: "/contacts",
+  },
 };
 
 export default function Contacts() {

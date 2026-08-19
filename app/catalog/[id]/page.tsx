@@ -1,7 +1,7 @@
 import type { FC } from "react";
 import type { Item } from "@/types";
 import { items } from "@/constants";
-import { redirect } from "next/navigation";
+import { notFound } from "next/navigation";
 import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
@@ -21,8 +21,23 @@ type Props = Readonly<{
 export function generateMetadata({ params: { id } }: Props): Metadata {
   const item = items.find((item) => item.id === id);
 
-  return item?.metadata ?? {};
+  if (!item) {
+    return {};
+  }
+
+  return {
+    ...item.metadata,
+    alternates: {
+      canonical: `/catalog/${item.id}`,
+    },
+  };
 }
+
+export function generateStaticParams() {
+  return items.map(({ id }) => ({ id }));
+}
+
+export const dynamicParams = false;
 
 function Null() {
   return null;
@@ -38,7 +53,7 @@ export default function CatalogItem({ params: { id } }: Props) {
   const item = items.find((item) => item.id === id);
 
   if (!item) {
-    redirect("/catalog/");
+    notFound();
   }
 
   const Description: FC = descriptions[item.id] ?? Null;

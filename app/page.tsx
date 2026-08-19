@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   title: "Профессиональная уходовая косметика для волос Dr. Health",
   description:
     "Косметика для волос Dr. Health в Москве. Заказать средства для укрепления и ухода за волосами и кожей головы с доставкой. Консультация трихолога.",
+  alternates: {
+    canonical: "/",
+  },
 };
 
 export default function LandingPage() {

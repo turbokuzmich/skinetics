@@ -1,5 +1,3 @@
-import { RedirectType, redirect } from "next/navigation";
-import { items } from "@/constants";
 import Catalog from "../_components/catalog";
 import Box from "@mui/material/Box";
 import Metrika from "../_components/metrika";
@@ -10,6 +8,9 @@ export const metadata: Metadata = {
     "Купить сыворотку для волос в Москве, средство для роста и укрепления волос",
   description:
     "Сыворотки Dr. Health для укрепления и ухода за волосами и кожей головы в Москве. Заказать средства для восстановления волос с доставкой. Консультация трихолога.",
+  alternates: {
+    canonical: "/serum",
+  },
 };
 
 export default function SerumPage() {

@@ -16,6 +16,7 @@ import { Suspense } from "react";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://skinetics.ru"),
   title: "SkineticsLab",
   other: {
     "google-site-verification": "0RAz7vJ8nacRfJbT0QEZrDjYD1lKQnKbG69AQCJChQw",

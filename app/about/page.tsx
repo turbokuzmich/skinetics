@@ -14,6 +14,9 @@ import { type Metadata } from "next";
 export const metadata: Metadata = {
   title: "О нас",
   description: "О бренде SkineticsLab",
+  alternates: {
+    canonical: "/about",
+  },
 };
 
 export default function About() {
