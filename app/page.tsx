@@ -9,9 +9,9 @@ import Metrika from "./_components/metrika";
 import { type Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Профессиональная уходовая косметика для волос Dr. Health",
+  title: "Косметика для кожи головы и волос Dr. Health | Skinetics",
   description:
-    "Косметика для волос Dr. Health в Москве. Заказать средства для укрепления и ухода за волосами и кожей головы с доставкой. Консультация трихолога.",
+    "Косметика Dr. Health для ухода за волосами и кожей головы. Каталог сывороток, состав, способ применения и покупка на Wildberries.",
   alternates: {
     canonical: "/",
   },

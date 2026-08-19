@@ -4,10 +4,9 @@ import Metrika from "../_components/metrika";
 import { type Metadata } from "next";
 
 export const metadata: Metadata = {
-  title:
-    "Купить сыворотку для волос в Москве, средство для роста и укрепления волос",
+  title: "Сыворотки для волос и кожи головы Dr. Health | Каталог",
   description:
-    "Сыворотки Dr. Health для укрепления и ухода за волосами и кожей головы в Москве. Заказать средства для восстановления волос с доставкой. Консультация трихолога.",
+    "Сыворотки Dr. Health для ухода за волосами и кожей головы. Узнайте состав и способ применения, затем перейдите к покупке на Wildberries.",
   alternates: {
     canonical: "/serum",
   },

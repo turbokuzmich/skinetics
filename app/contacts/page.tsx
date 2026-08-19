@@ -11,8 +11,9 @@ import { type Metadata } from "next";
 import FeedbackForm from "./_components/form";
 
 export const metadata: Metadata = {
-  title: "Контакты",
-  description: "Контакты SkineticsLab",
+  title: "Контакты Dr. Health | Skinetics",
+  description:
+    "Контакты бренда Dr. Health: телефоны и электронная почта для связи. Смотрите косметику бренда и переходите к покупке на Wildberries.",
   alternates: {
     canonical: "/contacts",
   },

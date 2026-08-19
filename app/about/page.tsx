@@ -12,8 +12,9 @@ import TableRow from "@mui/material/TableRow";
 import { type Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "О нас",
-  description: "О бренде SkineticsLab",
+  title: "О бренде косметики Dr. Health | Skinetics",
+  description:
+    "Информация о бренде Dr. Health: производство косметики для ухода за кожей головы и волосами, реквизиты и ссылка на Wildberries.",
   alternates: {
     canonical: "/about",
   },
