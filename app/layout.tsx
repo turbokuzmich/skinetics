@@ -10,8 +10,6 @@ import { ThemeProvider } from "@mui/material/styles";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import Script from "next/script";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import UTMProvider from "./_components/utm";
-import { Suspense } from "react";
 
 import "./globals.css";
 
@@ -73,9 +71,7 @@ _tmr.push({id: "3589962", type: "pageView", start: (new Date()).getTime()});
                   flexShrink: 1,
                 }}
               >
-                <Suspense>
-                  <UTMProvider>{children}</UTMProvider>
-                </Suspense>
+                {children}
               </Box>
               <Divider />
               <Footer />

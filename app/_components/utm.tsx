@@ -1,13 +1,6 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
-import {
-  createContext,
-  useEffect,
-  useRef,
-  useState,
-  type ReactNode,
-} from "react";
+import { useEffect, useState } from "react";
 import { Marketplace } from "@/types";
 import { z } from "zod";
 
@@ -23,10 +16,6 @@ type UTM = {
   [key in UTMTag]?: string;
 };
 
-type UTMS = {
-  [marketPlace in Marketplace]: UTM;
-};
-
 const utmSchema = z.object({
   utm_source: z.string(),
   utm_medium: z.string(),
@@ -39,44 +28,28 @@ const campaignPrefix: Record<Marketplace, string> = {
   [Marketplace.wildberries]: "73308-id",
 };
 
-const defaultUTM: UTMS = {
-  [Marketplace.wildberries]: {
-    [UTMTag.campaign]: `${campaignPrefix[Marketplace.wildberries]}-site`,
-    [UTMTag.medium]: "free",
-    [UTMTag.source]: "site",
-  },
+const defaultWildberriesUtm: UTM = {
+  [UTMTag.campaign]: `${campaignPrefix[Marketplace.wildberries]}-site`,
+  [UTMTag.medium]: "free",
+  [UTMTag.source]: "site",
 };
 
-export const UTMContext = createContext<UTMS>(defaultUTM);
-
-export default function UTMProvider({ children }: { children: ReactNode }) {
-  const utmSet = useRef(false);
-
-  const searchParams = useSearchParams();
-
-  const [utm, setUtm] = useState<UTMS>(defaultUTM);
+export function useWildberriesUtm() {
+  const [utm, setUtm] = useState<UTM>(defaultWildberriesUtm);
 
   useEffect(() => {
-    if (!utmSet.current) {
-      const searchParamsObject = Array.from(searchParams.entries()).reduce(
-        (result, [key, value]) => ({ ...result, [key]: value }),
-        {}
-      );
+    const searchParamsObject = Object.fromEntries(
+      new URLSearchParams(window.location.search)
+    );
+    const utmResult = utmSchema.safeParse(searchParamsObject);
 
-      const utmResult = utmSchema.safeParse(searchParamsObject);
-
-      if (utmResult.success) {
-        setUtm({
-          [Marketplace.wildberries]: {
-            ...utmResult.data,
-            [UTMTag.campaign]: `${campaignPrefix.wildberries}-site-${utmResult.data.utm_campaign}`,
-          },
-        });
-      }
-
-      utmSet.current = true;
+    if (utmResult.success) {
+      setUtm({
+        ...utmResult.data,
+        [UTMTag.campaign]: `${campaignPrefix.wildberries}-site-${utmResult.data.utm_campaign}`,
+      });
     }
-  }, [searchParams, utmSet, setUtm]);
+  }, []);
 
-  return <UTMContext.Provider value={utm}>{children}</UTMContext.Provider>;
+  return utm;
 }
