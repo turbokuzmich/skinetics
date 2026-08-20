@@ -11,6 +11,13 @@ This is a Next.js 14 App Router site for Dr. Health/Skinetics. Routes and page l
 - `npm run lint` runs Next.js linting; use it before submitting changes.
 - `npm run build` creates the production build and catches type, route, and rendering failures.
 - `npm run start` serves a completed production build locally.
+- `./build.sh` creates `skinetics-release.tar.gz`, the production artifact for the Ubuntu VM. It requires Docker Desktop and uses Buildx to install and build dependencies inside a `linux/amd64`, Node 24 container. Do not deploy a `.next` directory built directly on macOS.
+
+## Production Build and Deployment
+
+`next.config.mjs` uses standalone output. `Dockerfile.build` produces the minimal runtime artifact, and `.dockerignore` must continue to exclude Mac `node_modules`, `.next`, generated release files, and `.env*` files from the build context. The build script clears only the local `release/` directory and prior `skinetics-release.tar.gz`, verifies `server.js`, `.next`, `node_modules`, and `public`, then creates the archive.
+
+The Ubuntu VM runs Node.js 24 on `linux/amd64`; keep the Docker base image on the same Node major version. Upload and extract only `skinetics-release.tar.gz`, then launch the standalone server with `node server.js` behind the reverse proxy. Supply `EMAIL_USER`, `EMAIL_PASS`, and `EMAIL_SENDER` on the VM at runtime—never bake secrets into the Docker image or release archive.
 
 ## Coding Style & Naming Conventions
 

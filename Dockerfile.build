@@ -1,0 +1,15 @@
+FROM node:24-bookworm-slim AS build
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+RUN npm ci
+
+COPY . .
+RUN npm run build \
+  && cp -r public .next/standalone/public \
+  && mkdir -p .next/standalone/.next \
+  && cp -r .next/static .next/standalone/.next/static
+
+FROM scratch AS artifact
+COPY --from=build /app/.next/standalone /

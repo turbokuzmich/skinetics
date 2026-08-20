@@ -1,0 +1,10 @@
+.git
+node_modules
+.next
+release
+skinetics-release.tar.gz
+.env*
+docs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
