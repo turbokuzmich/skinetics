@@ -96,7 +96,7 @@ export default function CatalogItem({ params: { id } }: Props) {
               {item.title}
             </Typography> */}
             <Typography variant="h5" component="h1" paragraph>
-              {item.metadata.other?.header ?? item.title}
+              {item.title}
             </Typography>
             <Typography variant="subtitle2">Объем</Typography>
             <Typography paragraph>{item.volume}</Typography>
@@ -104,31 +104,10 @@ export default function CatalogItem({ params: { id } }: Props) {
               <WbButton link={item.links.wildberries} />
             </Box>
             <Description />
-            {/* {item.description.map((description) => (
-              <Typography key={description} paragraph>
-                {description}
-              </Typography>
-            ))} */}
             <Typography variant="h6" component="div">
-              Назначение
-            </Typography>
-            <Typography paragraph>{item.effect}</Typography>
-            <Typography variant="h6" component="div">
-              Состав
+              Полный состав
             </Typography>
             <Typography paragraph>{item.composition}</Typography>
-            <Typography variant="h6" component="div">
-              Применение
-            </Typography>
-            <Typography paragraph>{item.usage}</Typography>
-            {item.warning ? (
-              <>
-                <Typography variant="h6" component="div">
-                  Меры предосторожности
-                </Typography>
-                <Typography paragraph>{item.warning}</Typography>
-              </>
-            ) : null}
           </Box>
         </Stack>
       </Container>

@@ -14,15 +14,9 @@ export type Item = {
   type: ItemCategory;
   title: string;
   subheader: string;
-  brief: string[];
-  description: string[];
   image: string;
-  usage: string;
   composition: string;
-  effect: string;
   volume: string;
-  country: string;
-  warning?: string;
   links: Record<Marketplace, string>;
   metadata: Metadata;
 };
