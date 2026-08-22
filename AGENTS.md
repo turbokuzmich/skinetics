@@ -2,27 +2,29 @@
 
 ## Business and Brand Context
 
-Skinetics.ru is the Russian-language brand and product site for **Dr. Health**, a cosmetics brand operated by the Russian legal entity ООО «Демидов Люкс СПА». Keep the entities distinct in copy and code: **Skinetics** is the site/domain, **Dr. Health** is the customer-facing brand, and **ООО «Демидов Люкс СПА»** is the company named in the legal details. The company presents itself as a member of the Moscow Innovation Cluster, an entry in the Moscow Exporter catalog, and a participant in the «Сделано в Москве» city-brand program.
+Skinetics.ru is the Russian-language umbrella catalog and product site for cosmetics operated by the Russian legal entity ООО «Демидов Люкс СПА». Keep the entities distinct in copy and code: **Skinetics** is the umbrella/site identity and is not a product brand; **Dr. Health**, **SkineticsLab**, and **Neon Beard** are the three customer-facing product brands; and **ООО «Демидов Люкс СПА»** is the company named in the legal details. Every catalog product belongs to exactly one customer-facing brand. The company presents itself as a member of the Moscow Innovation Cluster, an entry in the Moscow Exporter catalog, and a participant in the «Сделано в Москве» city-brand program.
 
-The company makes cosmetics for scalp and hair care. The current public catalog is focused on 100 ml leave-in serums:
+The initial refactoring scope contains five cosmetics. The current public site exposes three 100 ml leave-in Dr. Health serums:
 
 - a hair-loss and hair-growth care serum spray with red pepper and niacinamide;
 - a hair-loss and hair-growth care serum with copper tripeptide GHK-Cu;
 - a scalp serum for dandruff- and seborrhea-prone skin with climbazole and piroctone olamine.
 
-Treat the products as cosmetics and scalp/hair-care products, not medicines. Product copy should describe cosmetic use, ingredients, application, precautions, and realistic expectations. Do not introduce unsupported medical, therapeutic, absolute-safety, or guaranteed-effect claims. When claims, declarations, or labeling matter, the manufacturer documents, packaging, and current marketplace card are the authority.
+The planned catalog also includes two face creams: **SkineticsLab ReneWal**, 50 ml, and **Neon Beard Ultra Lift**, 100 ml. ReneWal is a product name, not a brand. Treat the accepted records in `docs/refactoring/shared/product-source-of-truth.md` as the refactoring source of truth; do not publish either cream until authoritative application and precaution wording is available.
+
+Treat the products as cosmetics and scalp, hair, or facial-care products, not medicines. Product copy should describe cosmetic use, ingredients, application, precautions, and realistic expectations. Do not introduce unsupported medical, therapeutic, absolute-safety, or guaranteed-effect claims. When claims, declarations, or labeling matter, the manufacturer documents, packaging, and current marketplace card are the authority.
 
 ## Site Role, Market, and Customer Journey
 
-The site is not a direct-checkout online store. It is an expert product catalog and acquisition site for Russian-speaking customers: it explains products and active ingredients, helps visitors choose a suitable cosmetic, and sends purchase-ready users to Dr. Health product or brand pages on **Wildberries**. Do not imply that checkout, payment, delivery, or order management happens on Skinetics unless that business model is explicitly changed.
+The site is not a direct-checkout online store. It is an expert multi-brand product catalog and acquisition site for Russian-speaking customers: it explains products and active ingredients, helps visitors choose a suitable cosmetic, and sends purchase-ready users to an available product page on **Wildberries** or **Ozon**. Do not imply that checkout, payment, delivery, or order management happens on Skinetics unless that business model is explicitly changed.
 
 The primary conversion path is:
 
 ```text
-search or direct visit -> Skinetics product/catalog content -> "Купить на Wildberries" -> Wildberries
+search or direct visit -> Skinetics product/catalog content -> marketplace action -> Wildberries or Ozon
 ```
 
-The main content relationship is `scalp or hair concern -> active ingredient -> Dr. Health product -> Wildberries`. Current concerns include hair shedding/growth care and dandruff/seborrhea-prone scalp care; featured actives include red pepper, niacinamide, copper tripeptide GHK-Cu, climbazole, and piroctone olamine.
+The main content relationship is `customer concern -> active ingredient -> product brand and product -> available marketplace`. Current concerns include hair shedding/growth care, dandruff/seborrhea-prone scalp care, and facial care; featured actives include red pepper, niacinamide, copper tripeptide GHK-Cu, climbazole, piroctone olamine, and peptides.
 
 Skinetics also supports lead generation. A site-wide form collects requests for a trichologist appointment, and the contacts page collects general feedback. The corresponding API routes validate submissions with Zod and send them to `info@skinetics.ru` through the configured mail transport. Yandex Metrica and Mail.ru goals track form submissions and Wildberries outbound clicks; Google Analytics is also installed.
 
@@ -35,7 +37,7 @@ Skinetics also supports lead generation. A site-wide form collects requests for 
 - `/contacts` publishes Russian phone contacts and `info@skinetics.ru`, and contains the feedback form.
 - `/ingredients` is currently a placeholder excluded from indexing and is not linked from the main navigation.
 
-`constants.ts` is the source of truth for the live product IDs, names, compositions, volumes, product metadata, images, Wildberries URLs, ingredient data, and navigation entries. Long-form product copy lives beside the dynamic product route in `app/catalog/[id]/_descriptions/`. Keep those sources aligned when the assortment or positioning changes.
+`constants.ts` is the source of truth for the currently implemented product IDs, names, compositions, volumes, product metadata, images, Wildberries URLs, ingredient data, and navigation entries. Long-form product copy lives beside the dynamic product route in `app/catalog/[id]/_descriptions/`. During the refactor, keep those implementation sources aligned with the accepted records in `docs/refactoring/shared/` and the decisions in `docs/refactoring/decisions/`.
 
 ## Current SEO Implementation
 
@@ -45,7 +47,7 @@ Indexable pages render a descriptive `h1` and supporting Russian text. Product p
 
 ## Project Structure & Module Organization
 
-This is a Next.js 14 App Router site for Dr. Health/Skinetics. Routes and page layouts live in `app/`: page-specific components may sit beside their route (for example, `app/contacts/_components/`), while reusable UI belongs in `app/_components/`. API handlers are in `app/api/<name>/route.ts`. Put shared validation schemas and form DTOs in `lib/dto/`, analytics helpers in `lib/`, and cross-page constants/types in `constants.ts` and `types.ts`. Static images, SEO files, and web-manifest assets belong in `public/`. See `docs/skinetics-seo-context.md` before making SEO-content changes.
+This is a Next.js 14 App Router site for the Skinetics multi-brand catalog. Routes and page layouts live in `app/`: page-specific components may sit beside their route (for example, `app/contacts/_components/`), while reusable UI belongs in `app/_components/`. API handlers are in `app/api/<name>/route.ts`. Put shared validation schemas and form DTOs in `lib/dto/`, analytics helpers in `lib/`, and cross-page constants/types in `constants.ts` and `types.ts`. Static images, SEO files, and web-manifest assets belong in `public/`. See `docs/skinetics-seo-context.md` before making SEO-content changes.
 
 ## Build, Test, and Development Commands
 
