@@ -91,7 +91,9 @@ export default function CatalogItem({ params: { id } }: Props) {
             <Typography variant="h5" component="h1" paragraph>
               {product.title}
             </Typography>
-            <Typography variant="subtitle2">Объем</Typography>
+            <Typography variant="subtitle2">
+              {product.categoryId === "face-cream" ? "Масса" : "Объем"}
+            </Typography>
             <Typography paragraph>{product.volume}</Typography>
             <Box marginBottom={2}>
               <MarketplaceActions
