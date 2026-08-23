@@ -2,6 +2,7 @@ import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid2";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
+import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import CardActions from "@mui/material/CardActions";
 import Button from "@mui/material/Button";
@@ -13,14 +14,17 @@ import {
   getPublishedProducts,
   getPublishedProductsByCategory,
 } from "@/lib/catalog";
+import { brands } from "@/constants";
 import type { ProductCategoryId } from "@/types";
 
 export default function Catalog({
-  header = "Косметика для волос Dr. Health",
+  header = "Косметика для лица, волос и кожи головы",
+  description = "Skinetics объединяет средства Dr. Health, SkineticsLab и Neon Beard. Изучите назначение, состав и способ применения, затем выберите доступный маркетплейс.",
   omitDescription,
   categoryId,
 }: Readonly<{
   header?: string;
+  description?: string;
   omitDescription?: boolean;
   categoryId?: ProductCategoryId;
 }>) {
@@ -47,22 +51,21 @@ export default function Catalog({
           textAlign: { sm: "left", md: "center" },
         }}
       >
-        {omitDescription ? null : (
-          <Typography
-            variant="h6"
-            color="text.secondary"
-            paddingBottom={3}
-            fontWeight={400}
-            lineHeight="2rem"
-          >
-            Dr. Health — бренд косметики для ухода за кожей головы и волосами.
-            В каталоге указаны состав, способ применения и ссылка на покупку на
-            Wildberries.
-          </Typography>
-        )}
         <Typography component="h1" variant="h4" color="text.primary">
           {header}
         </Typography>
+        {omitDescription ? null : (
+          <Typography
+            component="p"
+            variant="h6"
+            color="text.secondary"
+            paddingTop={2}
+            fontWeight={400}
+            lineHeight="2rem"
+          >
+            {description}
+          </Typography>
+        )}
         {/* <Typography variant="body1" color="text.secondary">
           See what our customers love about our products. Discover how we excel
           in efficiency, durability, and satisfaction. Join us for quality,
@@ -72,7 +75,11 @@ export default function Catalog({
       <Grid container spacing={2}>
         {products.map((product) => (
           <Grid
-            size={{ xs: 12, sm: 6, md: 4 }}
+            size={{
+              xs: 12,
+              sm: 6,
+              md: categoryId === "face-cream" ? 6 : 4,
+            }}
             key={product.id}
             sx={{ display: "flex" }}
           >
@@ -92,29 +99,41 @@ export default function Catalog({
               />
               <CardHeader
                 title={product.title}
+                subheader={`${brands[product.brandId].name} · ${product.volume}`}
                 titleTypographyProps={{
                   variant: "h6",
                   lineHeight: "1.7rem",
                   gutterBottom: true,
                 }}
-                subheader={product.summary}
-                sx={{ flexGrow: 1, alignItems: "flex-start" }}
+                sx={{ alignItems: "flex-start" }}
               />
+              <CardContent sx={{ flexGrow: 1, pt: 0 }}>
+                <Typography color="text.secondary">
+                  {product.summary}
+                </Typography>
+              </CardContent>
               <CardActions
+                disableSpacing
                 sx={{
                   p: 2,
                   flexShrink: 0,
                   flexGrow: 0,
-                  justifyContent: "space-between",
+                  alignItems: "stretch",
+                  flexDirection: "column",
                   gap: 1,
-                  flexWrap: "wrap",
                 }}
               >
-                <Link href={`/catalog/${product.slug}`}>
-                  <Button variant="outlined" color="primary" size="large">
-                    Подробнее
-                  </Button>
-                </Link>
+                <Button
+                  component={Link}
+                  href={`/catalog/${product.slug}`}
+                  aria-label={`Подробнее о ${product.title}`}
+                  variant="outlined"
+                  color="primary"
+                  size="large"
+                  sx={{ alignSelf: "flex-start" }}
+                >
+                  Подробнее
+                </Button>
                 <MarketplaceActions
                   product={product}
                   placement="catalog-card"

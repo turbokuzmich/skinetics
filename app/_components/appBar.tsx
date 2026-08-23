@@ -8,6 +8,7 @@ import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import A from "@mui/material/Link";
 import Drawer from "@mui/material/Drawer";
+import Stack from "@mui/material/Stack";
 import MenuIcon from "@mui/icons-material/Menu";
 import Link from "next/link";
 import Logo from "./logo";
@@ -107,6 +108,8 @@ function AppAppBar() {
               </Button>
               <Drawer anchor="right" open={open} onClose={toggleDrawer(false)}>
                 <Box
+                  component="nav"
+                  aria-label="Мобильная навигация"
                   sx={{
                     minWidth: "60dvw",
                     p: 2,
@@ -114,19 +117,28 @@ function AppAppBar() {
                     flexGrow: 1,
                   }}
                 >
-                  {navigation.map((navi) => (
-                    <A
-                      key={navi.to}
-                      onClick={toggleDrawer(false)}
-                      variant="body2"
-                      color="text.primary"
-                      href={navi.to}
-                      underline="always"
-                      component={Link}
-                    >
-                      {navi.title}
-                    </A>
-                  ))}
+                  <Stack spacing={1}>
+                    {navigation.map((navi) => (
+                      <A
+                        key={navi.to}
+                        onClick={toggleDrawer(false)}
+                        variant="body1"
+                        color="text.primary"
+                        href={navi.to}
+                        underline="always"
+                        component={Link}
+                        sx={{
+                          display: "flex",
+                          alignItems: "center",
+                          minHeight: 48,
+                          px: 2,
+                          py: 1,
+                        }}
+                      >
+                        {navi.title}
+                      </A>
+                    ))}
+                  </Stack>
                 </Box>
               </Drawer>
             </Box>

@@ -479,6 +479,10 @@ export const navigation: NaviItem[] = [
     title: "О нас",
   },
   {
+    to: "/catalog",
+    title: "Каталог",
+  },
+  {
     to: "/serum",
     title: "Сыворотки",
     subitems: products
@@ -490,6 +494,10 @@ export const navigation: NaviItem[] = [
         to: `/catalog/${product.slug}`,
         title: product.title,
       })),
+  },
+  {
+    to: "/cream",
+    title: "Кремы",
   },
   // {
   //   to: "/ingredients",

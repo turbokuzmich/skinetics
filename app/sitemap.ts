@@ -3,7 +3,14 @@ import { getPublishedProducts } from "@/lib/catalog";
 
 const siteUrl = "https://skinetics.ru";
 
-const indexableStaticPaths = ["/", "/catalog", "/serum", "/about", "/contacts"];
+const indexableStaticPaths = [
+  "/",
+  "/catalog",
+  "/serum",
+  "/cream",
+  "/about",
+  "/contacts",
+];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
