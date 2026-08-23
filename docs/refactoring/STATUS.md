@@ -5,9 +5,9 @@ Last updated: 2026-08-23
 ## Current position
 
 - **Active phase:** 04 — Redesign
-- **Phase state:** In progress — design approved; written specification awaiting owner review
-- **Current focus:** review the accepted navigational-editorial design, asset backlog, quality budgets, image refresh, and coordinated rollout before implementation planning
-- **Next action:** owner reviews `phase-04-redesign/DESIGN.md`; after approval, create the detailed implementation plan
+- **Phase state:** In progress — design approved; implementation plan prepared
+- **Current focus:** choose the execution approach for the reviewed Phase 04 implementation plan
+- **Next action:** execute `docs/superpowers/plans/2026-08-23-skinetics-phase-04-redesign.md` without deploying to production
 
 ## Phase dashboard
 
@@ -17,7 +17,7 @@ Last updated: 2026-08-23
 | 01 — Catalog foundation | Complete | Typed multi-brand catalog, optional marketplaces, structured content, contextual analytics, and regression validation accepted |
 | 02 — Cream launch | Implementation validated; deployment pending | Five-product local release candidate passed build, route, SEO, representative responsive, and representative analytics validation |
 | 03 — Site architecture and content | Complete | Owner accepted the evidence-gated architecture, preserved URL map, navigation, content system, migration rules, and Phase 04 requirements |
-| 04 — Redesign | In progress | Navigational-editorial direction, component boundaries, page flows, quality budgets, image refresh, and coordinated rollout approved; written spec awaiting review |
+| 04 — Redesign | In progress | Navigational-editorial direction and written specification approved; implementation plan prepared |
 | 05 — Growth program | Not started | Depends on reliable product-level marketplace measurement |
 
 ## Open blockers and decisions
@@ -29,12 +29,13 @@ Last updated: 2026-08-23
 
 ## Next three actions
 
-1. Review and approve or correct the written Phase 04 design specification.
-2. Create the detailed Phase 04 implementation plan after written-spec approval.
+1. Choose inline or subagent-driven execution for the Phase 04 implementation plan.
+2. Implement and validate the redesign locally without publishing it.
 3. Keep Phase 02 deployment and the later Phase 04 production release separately authorized.
 
 ## Recently completed
 
+- Approved the written Phase 04 design specification and prepared a nine-task, test-first implementation plan covering the design system, shell, listings, product pages, homepage, verified serum imagery, forms, future-template contracts, and coordinated validation.
 - Approved the Phase 04 navigational-editorial direction, shared Skinetics system with restrained brand accents, text-first verified trust layer, practical WCAG/performance target, and coordinated release strategy.
 - Preserved all files under `public/video/` while specifying removal of homepage video delivery, and accepted a verified Wildberries final-gallery refresh for the three serum images.
 - Created a non-blocking future asset intake backlog for official identities, guidelines, trust documents, photography, specialist evidence, and supporting materials.

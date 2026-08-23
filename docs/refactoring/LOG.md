@@ -2,6 +2,16 @@
 
 This is an append-only record of meaningful work sessions. Add new entries immediately below this introduction, newest first. Use [templates/log-entry.md](./templates/log-entry.md) for the entry format.
 
+## 2026-08-23 — Phase 04 implementation plan prepared
+
+- **Phase:** 04 — Redesign
+- **Status:** In progress
+- **Summary:** The owner approved the written navigational-editorial design, and a test-first implementation plan was prepared for the local redesign and coordinated validation.
+- **Evidence:** `docs/refactoring/phase-04-redesign/DESIGN.md` and `docs/superpowers/plans/2026-08-23-skinetics-phase-04-redesign.md`.
+- **Decisions:** Preserve all existing URLs and analytics contracts; retain every file under `public/video/` while removing homepage video delivery; refresh serum presentation images from the verified final Wildberries gallery slides; document gated templates without publishing routes; keep production deployment separately authorized.
+- **Blockers:** No implementation blocker is open. Official identity and documentary assets remain a non-blocking future backlog.
+- **Next:** Choose an execution approach, implement the plan locally, and complete validation before any separate production authorization.
+
 ## 2026-08-23 — Phase 04 redesign approved
 
 - **Phase:** 04 — Redesign

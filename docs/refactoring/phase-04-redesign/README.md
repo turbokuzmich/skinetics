@@ -1,6 +1,6 @@
 # Phase 04 — Redesign
 
-- **State:** In progress — design approved; written spec awaiting review
+- **State:** In progress — design approved; implementation plan prepared
 - **Owner:** Dmitry, business owner
 - **Started:** 2026-08-23
 - **Completed:** —
@@ -57,4 +57,5 @@ Official logos, brand guidelines, documentary assets, and photography remain a n
 - [Brand architecture](../shared/brand-architecture.md)
 - Phase 03 architecture artifacts
 - [Approved Phase 04 design](./DESIGN.md)
+- [Phase 04 implementation plan](../../superpowers/plans/2026-08-23-skinetics-phase-04-redesign.md)
 - [Future asset backlog](./artifacts/future-asset-backlog.md)
