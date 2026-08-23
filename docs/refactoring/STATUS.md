@@ -5,9 +5,9 @@ Last updated: 2026-08-23
 ## Current position
 
 - **Active phase:** Phase 03 — Site architecture and content
-- **Phase state:** In progress
-- **Current focus:** record evidence and produce the approved architecture artifacts
-- **Next action:** complete the sanitized marketplace-question themes and current-content inventory
+- **Phase state:** In validation
+- **Current focus:** owner review of the completed Phase 03 architecture and content-system artifacts
+- **Next action:** review the six Phase 03 artifacts and decision 0006, then accept them or request corrections
 
 ## Phase dashboard
 
@@ -16,7 +16,7 @@ Last updated: 2026-08-23
 | 00 — Baseline and product truth | Complete | Product/brand truth, URL policy, claims audit, measurement contract, and sanitized baseline accepted |
 | 01 — Catalog foundation | Complete | Typed multi-brand catalog, optional marketplaces, structured content, contextual analytics, and regression validation accepted |
 | 02 — Cream launch | Implementation validated; deployment pending | Five-product local release candidate passed build, route, SEO, representative responsive, and representative analytics validation |
-| 03 — Site architecture and content | In progress | Approved documentation work proceeds while Phase 02 production monitoring remains unavailable |
+| 03 — Site architecture and content | In validation | Architecture, migration, click-depth, orphan, page-purpose, and content-policy checks pass; owner acceptance remains open |
 | 04 — Redesign | Not started | Depends on approved information architecture and page requirements |
 | 05 — Growth program | Not started | Depends on reliable product-level marketplace measurement |
 
@@ -29,12 +29,15 @@ Last updated: 2026-08-23
 
 ## Next three actions
 
-1. Record the sanitized marketplace-question themes and current-content inventory.
-2. Produce the Phase 03 URL, navigation, internal-linking, content, and migration artifacts.
-3. Validate the architecture and obtain owner acceptance before Phase 04.
+1. Review the six Phase 03 artifacts and decision 0006.
+2. Record owner acceptance or return requested corrections to the relevant artifact and repeat validation.
+3. Begin Phase 04 design or resume the separately authorized Phase 02 deployment work only after an explicit request.
 
 ## Recently completed
 
+- Produced and mechanically validated the Phase 03 evidence, inventory, URL, navigation, content, and migration artifacts.
+- Accepted decision 0006: product type remains primary and brand, concern, ingredient, and expert paths remain evidence-gated secondary relationships.
+- Preserved every current URL, specified no redirects, and proved product and discovery-page click-depth targets.
 - Implemented and locally validated Neon Beard Ultra Lift and SkineticsLab ReneWal with final packaging quantities of 100 g and 50 g.
 - Added `/cream`, five-product homepage and catalog discovery, category-aware breadcrumbs, sitemap entries, and category-aware `Масса`/`Объем` labels.
 - Verified the homepage at 1280 px, `/cream` at 1280/1440/390 px, and both cream pages at 1280/390 px; representative marketplace analytics used local stubs.

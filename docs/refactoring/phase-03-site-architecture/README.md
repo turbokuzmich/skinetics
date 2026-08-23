@@ -1,6 +1,6 @@
 # Phase 03 — Site architecture and content
 
-- **State:** In progress
+- **State:** In validation
 - **Owner:** Dmitry, business owner
 - **Started:** 2026-08-23
 - **Completed:** —
@@ -44,11 +44,11 @@ Define a scalable, evidence-led site structure that lets visitors browse by bran
 
 ## Exit criteria
 
-- [ ] Every proposed indexable page has a user purpose and validated search or business demand.
-- [ ] Important products are reachable within three clicks.
-- [ ] Brand is not the only way to discover products.
-- [ ] Existing URLs have explicit preserve or migration treatment.
-- [ ] No orphan pages remain in the proposed structure.
+- [x] Every proposed indexable page has a user purpose and validated search or business demand.
+- [x] Important products are reachable within three clicks.
+- [x] Brand is not the only way to discover products.
+- [x] Existing URLs have explicit preserve or migration treatment.
+- [x] No orphan pages remain in the proposed structure.
 - [ ] Phase 04 has approved requirements for every page template.
 
 ## Related records
@@ -56,3 +56,6 @@ Define a scalable, evidence-led site structure that lets visitors browse by bran
 - [Roadmap](../ROADMAP.md#phase-03--site-architecture-and-content)
 - [Brand architecture](../shared/brand-architecture.md)
 - [URL inventory](../shared/url-inventory.md)
+- [Phase 03 design](./DESIGN.md)
+- [Phase 03 artifacts](./artifacts/README.md)
+- [Architecture decision 0006](../decisions/0006-evidence-gated-site-architecture.md)
