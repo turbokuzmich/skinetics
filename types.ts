@@ -21,6 +21,7 @@ export type Brand = {
 export type ProductCategory = {
   id: ProductCategoryId;
   name: string;
+  path: string;
 };
 
 export type Marketplace = {
@@ -32,8 +33,14 @@ export type Marketplace = {
   allowedHostnames: readonly string[];
 };
 
+export type ProductFaqItem = {
+  question: string;
+  answer: string;
+};
+
 export type ProductContent = {
   overview: string;
+  suitableUse?: string;
   activeComponents: string;
   featureSection: {
     heading: string;
@@ -43,7 +50,9 @@ export type ProductContent = {
     heading: string;
     instructions: string;
   };
+  precautionsHeading?: string;
   precautions: string;
+  faq?: readonly ProductFaqItem[];
 };
 
 export type Product = {
@@ -52,6 +61,7 @@ export type Product = {
   status: ProductStatus;
   brandId: BrandId;
   categoryId: ProductCategoryId;
+  barcode: string;
   title: string;
   summary: string;
   image: string;

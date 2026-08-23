@@ -31,10 +31,12 @@ export const productCategories: Record<ProductCategoryId, ProductCategory> = {
   serum: {
     id: "serum",
     name: "Сыворотки",
+    path: "/serum",
   },
   "face-cream": {
     id: "face-cream",
     name: "Кремы для лица",
+    path: "/cream",
   },
 };
 
@@ -64,6 +66,7 @@ export const products: Product[] = [
     status: "published",
     brandId: "dr-health",
     categoryId: "serum",
+    barcode: "2043752266957",
     title: "Сыворотка от выпадения и для роста волос",
     summary:
       "Несмываемая сыворотка-спрей с красным перцем и никотиновой кислотой",
@@ -110,6 +113,7 @@ export const products: Product[] = [
     status: "published",
     brandId: "dr-health",
     categoryId: "serum",
+    barcode: "2043752250338",
     title: "Сыворотка от выпадения и для роста волос",
     summary: "Несмываемая сыворотка с трипептидом меди GHK-Cu",
     image: "/items/copper_tripeptide.png",
@@ -154,6 +158,7 @@ export const products: Product[] = [
     status: "published",
     brandId: "dr-health",
     categoryId: "serum",
+    barcode: "4630247421137",
     title: "Средство от перхоти и себореи с климбазолом",
     summary: "Несмываемая сыворотка с климбазолом и пироктон оламином",
     image: "/items/climbazole.png",

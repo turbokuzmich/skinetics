@@ -38,6 +38,7 @@ export function assertCatalogIntegrity({
 }: CatalogData) {
   const ids = new Set<string>();
   const slugs = new Set<string>();
+  const barcodes = new Set<string>();
 
   for (const product of products) {
     if (ids.has(product.id)) {
@@ -49,6 +50,14 @@ export function assertCatalogIntegrity({
       fail(product, `duplicate product slug "${product.slug}"`);
     }
     slugs.add(product.slug);
+
+    if (!/^\d{13}$/.test(product.barcode)) {
+      fail(product, `malformed barcode "${product.barcode}"`);
+    }
+    if (barcodes.has(product.barcode)) {
+      fail(product, `duplicate barcode "${product.barcode}"`);
+    }
+    barcodes.add(product.barcode);
 
     if (!brands[product.brandId]) {
       fail(product, `unknown brand "${product.brandId}"`);
@@ -114,6 +123,24 @@ export function assertCatalogIntegrity({
       !product.content.featureSection.items.every(hasText)
     ) {
       fail(product, "published product has an incomplete feature list");
+    }
+    if (
+      product.content.faq &&
+      (product.content.faq.length === 0 ||
+        !product.content.faq.every(
+          ({ question, answer }) => hasText(question) && hasText(answer)
+        ))
+    ) {
+      fail(product, "published product has an incomplete FAQ");
+    }
+
+    if (product.categoryId === "face-cream") {
+      if (!hasText(product.content.suitableUse)) {
+        fail(product, "published face cream has no suitable-use copy");
+      }
+      if (!product.content.faq || product.content.faq.length === 0) {
+        fail(product, "published face cream has no FAQ");
+      }
     }
     if (links.length === 0) {
       fail(product, "published product has no marketplace destination");
