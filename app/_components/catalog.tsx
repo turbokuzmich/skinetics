@@ -8,13 +8,26 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Link from "next/link";
-import WbButton from "./wbButton";
-import { items } from "@/constants";
+import MarketplaceActions from "./marketplaceActions";
+import {
+  getPublishedProducts,
+  getPublishedProductsByCategory,
+} from "@/lib/catalog";
+import type { ProductCategoryId } from "@/types";
 
 export default function Catalog({
   header = "Косметика для волос Dr. Health",
   omitDescription,
-}: Readonly<{ header?: string; omitDescription?: boolean }>) {
+  categoryId,
+}: Readonly<{
+  header?: string;
+  omitDescription?: boolean;
+  categoryId?: ProductCategoryId;
+}>) {
+  const products = categoryId
+    ? getPublishedProductsByCategory(categoryId)
+    : getPublishedProducts();
+
   return (
     <Container
       id="catalog"
@@ -57,17 +70,19 @@ export default function Catalog({
         </Typography> */}
       </Box>
       <Grid container spacing={2}>
-        {items.map((item) => (
+        {products.map((product) => (
           <Grid
             size={{ xs: 12, sm: 6, md: 4 }}
-            key={item.id}
+            key={product.id}
             sx={{ display: "flex" }}
           >
             <Card
               sx={{ width: "100%", display: "flex", flexDirection: "column" }}
             >
               <CardMedia
-                image={item.image}
+                image={product.image}
+                role="img"
+                aria-label={product.imageAlt}
                 sx={{
                   height: 250,
                   backgroundSize: "contain",
@@ -76,13 +91,13 @@ export default function Catalog({
                 }}
               />
               <CardHeader
-                title={item.title}
+                title={product.title}
                 titleTypographyProps={{
                   variant: "h6",
                   lineHeight: "1.7rem",
                   gutterBottom: true,
                 }}
-                subheader={item.subheader}
+                subheader={product.summary}
                 sx={{ flexGrow: 1, alignItems: "flex-start" }}
               />
               <CardActions
@@ -91,16 +106,19 @@ export default function Catalog({
                   flexShrink: 0,
                   flexGrow: 0,
                   justifyContent: "space-between",
+                  gap: 1,
+                  flexWrap: "wrap",
                 }}
               >
-                <Link href={`/catalog/${item.id}`}>
+                <Link href={`/catalog/${product.slug}`}>
                   <Button variant="outlined" color="primary" size="large">
                     Подробнее
                   </Button>
                 </Link>
-                <WbButton
-                  link={item.links.wildberries}
-                  buttonText="Купить на WB"
+                <MarketplaceActions
+                  product={product}
+                  placement="catalog-card"
+                  compact
                 />
               </CardActions>
             </Card>

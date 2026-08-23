@@ -1,21 +1,21 @@
 # Refactoring status
 
-Last updated: 2026-08-22
+Last updated: 2026-08-23
 
 ## Current position
 
-- **Active phase:** Phase 01 — Catalog foundation
-- **Phase state:** Ready
-- **Current focus:** design the typed multi-brand, multi-marketplace product model
-- **Next action:** begin the Phase 01 design in a new task using `phase-01-catalog-foundation/README.md` and `INPUTS.md`
+- **Active phase:** Phase 02 — Cream launch
+- **Phase state:** Blocked
+- **Current focus:** obtain authoritative application and precaution wording for both creams
+- **Next action:** product owner supplies and approves the missing wording before cream-page design or publication
 
 ## Phase dashboard
 
 | Phase | State | Progress note |
 |---|---|---|
 | 00 — Baseline and product truth | Complete | Product/brand truth, URL policy, claims audit, measurement contract, and sanitized baseline accepted |
-| 01 — Catalog foundation | Ready | Phase 00 prerequisites accepted; implementation design is next |
-| 02 — Cream launch | Not started | Depends on the Phase 01 product model and verified cream data |
+| 01 — Catalog foundation | Complete | Typed multi-brand catalog, optional marketplaces, structured content, contextual analytics, and regression validation accepted |
+| 02 — Cream launch | Blocked | Catalog foundation is ready; authoritative application and precaution wording is still missing for both creams |
 | 03 — Site architecture and content | Not started | Depends on portfolio positioning and search-demand evidence |
 | 04 — Redesign | Not started | Depends on approved information architecture and page requirements |
 | 05 — Growth program | Not started | Depends on reliable product-level marketplace measurement |
@@ -30,12 +30,15 @@ Last updated: 2026-08-22
 
 ## Next three actions
 
-1. Review Phase 01 questions for category membership, marketplace action order, and publishable product fields.
-2. Approve the short Phase 01 technical design before implementation.
-3. Implement and validate the catalog foundation using the three existing products only.
+1. Obtain authoritative application and precaution wording for Ultra Lift and ReneWal.
+2. Review both cream records and cosmetic claims against packaging and manufacturer evidence.
+3. Approve the Phase 02 page/content design, then add the two products using the Phase 01 catalog model.
 
 ## Recently completed
 
+- Completed Phase 01 and migrated the three serums to the typed multi-brand, multi-marketplace catalog model without changing public URLs.
+- Added generic marketplace actions, product- and placement-aware analytics, integrity checks, and safe product-authoring instructions.
+- Validated lint, production build, live routes, static HTML, responsive layouts, form validation, optional destinations, and two-marketplace rendering.
 - Completed Phase 00 and accepted the closure design.
 - Resolved Skinetics, SkineticsLab, Neon Beard, Dr. Health, ReneWal, and Ultra Lift identity rules.
 - Recorded the five-product scope and marketplace mappings.

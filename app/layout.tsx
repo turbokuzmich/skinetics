@@ -28,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Script>
+      <Script id="yandex-metrica">
         {`(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
 m[i].l=1*new Date();
 for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
@@ -43,7 +43,7 @@ ym(98874723, "init", {
   webvisor:true
 });`}
       </Script>
-      <Script>
+      <Script id="mailru-counter">
         {`var _tmr = window._tmr || (window._tmr = []);
 _tmr.push({id: "3589962", type: "pageView", start: (new Date()).getTime()});
 (function (d, w, id) {

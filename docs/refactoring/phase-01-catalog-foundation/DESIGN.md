@@ -1,7 +1,7 @@
 # Phase 01 catalog foundation design
 
 Date: 2026-08-23
-Status: Approved in design review; pending written-spec review
+Status: Implemented and validated
 Owner: Dmitry, business owner
 
 ## Purpose

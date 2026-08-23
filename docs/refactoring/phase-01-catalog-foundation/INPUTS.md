@@ -1,6 +1,6 @@
 # Phase 01 inputs
 
-Status: Ready for design
+Status: Accepted
 
 - accepted Phase 00 product source of truth;
 - accepted canonical brand identifiers and display names;

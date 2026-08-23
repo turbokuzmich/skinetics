@@ -1,25 +1,101 @@
 import {
   Marketplace,
-  Item,
+  Product,
+  Brand,
+  ProductCategory,
   Ingredient,
   IngredientName,
   NaviItem,
-  ItemCategory,
+  BrandId,
+  MarketplaceId,
+  ProductCategoryId,
 } from "./types";
+import { assertCatalogIntegrity } from "./lib/catalogIntegrity";
 
-export const items: Item[] = [
+export const brands: Record<BrandId, Brand> = {
+  "dr-health": {
+    id: "dr-health",
+    name: "Dr. Health",
+  },
+  skineticslab: {
+    id: "skineticslab",
+    name: "SkineticsLab",
+  },
+  "neon-beard": {
+    id: "neon-beard",
+    name: "Neon Beard",
+  },
+};
+
+export const productCategories: Record<ProductCategoryId, ProductCategory> = {
+  serum: {
+    id: "serum",
+    name: "Сыворотки",
+  },
+  "face-cream": {
+    id: "face-cream",
+    name: "Кремы для лица",
+  },
+};
+
+export const marketplaces: Record<MarketplaceId, Marketplace> = {
+  wildberries: {
+    id: "wildberries",
+    name: "Wildberries",
+    buttonLabel: "Купить на Wildberries",
+    compactButtonLabel: "Купить на WB",
+    order: 10,
+    allowedHostnames: ["wildberries.ru"],
+  },
+  ozon: {
+    id: "ozon",
+    name: "Ozon",
+    buttonLabel: "Купить на Ozon",
+    compactButtonLabel: "Купить на Ozon",
+    order: 20,
+    allowedHostnames: ["ozon.ru"],
+  },
+};
+
+export const products: Product[] = [
   {
     id: "red_pepper",
-    type: ItemCategory.serum,
+    slug: "red_pepper",
+    status: "published",
+    brandId: "dr-health",
+    categoryId: "serum",
     title: "Сыворотка от выпадения и для роста волос",
-    subheader:
+    summary:
       "Несмываемая сыворотка-спрей с красным перцем и никотиновой кислотой",
     image: "/items/red_pepper.png",
+    imageAlt:
+      "Сыворотка-спрей Dr. Health с красным перцем и никотиновой кислотой",
     composition:
       "Вода подготовленная; ниацинамид (витамин PP/B3); гиалуроновая кислота низкомолекулярная; гиалуроновая кислота высокомолекулярная; аллантоин; экстракт крапивы; экстракт ромашки; экстракт брокколи; пантенол (провитамин B5); феноксиэтанол; этилглицерин; ПЭГ-40; олеорезин стручкового перца; эфирное масло чёрного перца; аромакомпозиция; молочная кислота.",
     volume: "100 мл",
-    links: {
-      [Marketplace.wildberries]:
+    content: {
+      overview:
+        "Несмываемая сыворотка-спрей с красным перцем и никотиновой кислотой предназначена для ухода за кожей головы и волосами, склонными к выпадению. Средство подходит женщинам и мужчинам, быстро впитывается и не утяжеляет волосы.",
+      activeComponents:
+        "Формула содержит ниацинамид (витамин B3), пантенол (провитамин B5), низко- и высокомолекулярную гиалуроновую кислоту, аллантоин, экстракты крапивы, ромашки и брокколи, олеорезин стручкового перца и эфирное масло чёрного перца. По информации производителя, 97,3% формулы составляют вещества натурального происхождения.",
+      featureSection: {
+        heading: "Действие и тип волос",
+        items: [
+          "Поддерживает рост волос и помогает уменьшить их выпадение.",
+          "Предназначена для ухода за корнями и кожей головы, а также для регулирования работы сальных желёз.",
+          "Подходит для тонких, ослабленных, ломких и повреждённых волос.",
+        ],
+      },
+      application: {
+        heading: "Как применять?",
+        instructions:
+          "Нанесите средство с помощью дозатора на кожу головы по проборам, избегая попадания в глаза. После нанесения помассируйте кожу до впитывания и не смывайте. Рекомендовано курсовое применение.",
+      },
+      precautions:
+        "Возможна индивидуальная непереносимость компонентов. При появлении раздражения прекратите применение. Косметическое средство не заменяет консультацию врача при выраженном или длительном дискомфорте кожи головы.",
+    },
+    marketplaceLinks: {
+      wildberries:
         "https://www.wildberries.ru/catalog/397061523/detail.aspx",
     },
     metadata: {
@@ -30,15 +106,40 @@ export const items: Item[] = [
   },
   {
     id: "copper_tripeptide",
-    type: ItemCategory.serum,
+    slug: "copper_tripeptide",
+    status: "published",
+    brandId: "dr-health",
+    categoryId: "serum",
     title: "Сыворотка от выпадения и для роста волос",
-    subheader: "Несмываемая сыворотка с трипептидом меди GHK-Cu",
+    summary: "Несмываемая сыворотка с трипептидом меди GHK-Cu",
     image: "/items/copper_tripeptide.png",
+    imageAlt: "Сыворотка Dr. Health с трипептидом меди GHK-Cu",
     composition:
       "Вода подготовленная; трипептид меди-1 (GHK-Cu); гиалуроновая кислота низкомолекулярная; гиалуроновая кислота высокомолекулярная; аллантоин; экстракт крапивы; экстракт календулы; экстракт чёрного перца; пантенол (провитамин B5); кофеин; феноксиэтанол; этилглицерин; ПЭГ-40; аромакомпозиция; молочная кислота.",
     volume: "100 мл",
-    links: {
-      [Marketplace.wildberries]:
+    content: {
+      overview:
+        "Несмываемая сыворотка-бустер с пептидами предназначена для ухода за кожей головы и волосами, склонными к выпадению. Средство также можно использовать для ухода за бородой: лёгкая текстура впитывается и не утяжеляет волосы.",
+      activeComponents:
+        "В составе указаны трипептид меди-1 GHK-Cu, низко- и высокомолекулярная гиалуроновая кислота, пантенол, кофеин, аллантоин, экстракты крапивы, календулы и чёрного перца. По информации производителя, 95,7% формулы составляют компоненты натурального происхождения.",
+      featureSection: {
+        heading: "Формат ухода",
+        items: [
+          "Поддерживает рост волос и помогает уменьшить их выпадение.",
+          "Подходит для регулярного несмываемого ухода за кожей головы и волосами от корней до кончиков.",
+          "Может использоваться самостоятельно или вместе с другими средствами ухода за волосами.",
+        ],
+      },
+      application: {
+        heading: "Как пользоваться?",
+        instructions:
+          "Нанесите сыворотку с помощью спреера на кожу головы, избегая попадания в глаза, затем массируйте до впитывания. Средство не требует смывания.",
+      },
+      precautions:
+        "Возможна индивидуальная непереносимость компонентов. При появлении раздражения прекратите применение. Косметическое средство не заменяет консультацию врача при выраженном или длительном дискомфорте кожи головы.",
+    },
+    marketplaceLinks: {
+      wildberries:
         "https://www.wildberries.ru/catalog/397059149/detail.aspx",
     },
     metadata: {
@@ -49,15 +150,41 @@ export const items: Item[] = [
   },
   {
     id: "climbazole",
-    type: ItemCategory.serum,
+    slug: "climbazole",
+    status: "published",
+    brandId: "dr-health",
+    categoryId: "serum",
     title: "Средство от перхоти и себореи с климбазолом",
-    subheader: "Несмываемая сыворотка с климбазолом и пироктон оламином",
+    summary: "Несмываемая сыворотка с климбазолом и пироктон оламином",
     image: "/items/climbazole.png",
+    imageAlt:
+      "Сыворотка Dr. Health с климбазолом и пироктон оламином",
     composition:
       "Вода подготовленная; климбазол; пироктон оламин; гиалуроновая кислота высокомолекулярная; гиалуроновая кислота низкомолекулярная; сера МСМ; аллантоин; экстракт ромашки; феноксиэтанол; этилглицерин; молочная кислота; аромакомпозиция.",
     volume: "100 мл",
-    links: {
-      [Marketplace.wildberries]:
+    content: {
+      overview:
+        "Несмываемая сыворотка предназначена для ухода за кожей головы, склонной к перхоти, себорее, шелушению и жирности. Средство используют отдельно от мытья головы: оно наносится по проборам и не требует смывания.",
+      activeComponents:
+        "Формула сочетает климбазол, пироктон оламин и метилсульфонилметан (МСМ). Уход дополняют низко- и высокомолекулярная гиалуроновая кислота, аллантоин и экстракт ромашки.",
+      featureSection: {
+        heading: "Действие средства",
+        items: [
+          "Предназначено для ухода против перхоти и себореи.",
+          "Помогает регулировать работу сальных желёз.",
+          "Подходит для проблемной кожи головы и всех типов волос.",
+        ],
+      },
+      application: {
+        heading: "Как использовать?",
+        instructions:
+          "Хорошо встряхните флакон, нанесите средство с помощью дозатора на кожу головы по проборам и массируйте до впитывания. Не смывайте. Голову можно мыть в привычном режиме по мере необходимости.",
+      },
+      precautions:
+        "Возможна индивидуальная непереносимость компонентов. Избегайте попадания средства в глаза; при попадании промойте их водой. При стойком зуде, шелушении или другом выраженном дискомфорте обратитесь к дерматологу.",
+    },
+    marketplaceLinks: {
+      wildberries:
         "https://www.wildberries.ru/catalog/236310045/detail.aspx",
     },
     metadata: {
@@ -200,21 +327,18 @@ export const navigation: NaviItem[] = [
     to: "/about",
     title: "О нас",
   },
-  // {
-  //   to: "/catalog",
-  //   title: "Каталог",
-  //   subitems: items.map((item) => ({
-  //     to: `/catalog/${item.id}`,
-  //     title: item.title,
-  //   })),
-  // },
   {
     to: "/serum",
     title: "Сыворотки",
-    subitems: items.map((item) => ({
-      to: `/catalog/${item.id}`,
-      title: item.title,
-    })),
+    subitems: products
+      .filter(
+        (product) =>
+          product.status === "published" && product.categoryId === "serum"
+      )
+      .map((product) => ({
+        to: `/catalog/${product.slug}`,
+        title: product.title,
+      })),
   },
   // {
   //   to: "/ingredients",
@@ -225,3 +349,10 @@ export const navigation: NaviItem[] = [
     title: "Контакты",
   },
 ];
+
+assertCatalogIntegrity({
+  brands,
+  productCategories,
+  marketplaces,
+  products,
+});

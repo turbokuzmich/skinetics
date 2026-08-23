@@ -1,9 +1,9 @@
 # Phase 01 — Catalog foundation
 
-- **State:** Ready
+- **State:** Complete
 - **Owner:** Dmitry, business owner
-- **Started:** —
-- **Completed:** —
+- **Started:** 2026-08-23
+- **Completed:** 2026-08-23
 
 ## Objective
 
@@ -42,15 +42,17 @@ Create a scalable product model that supports multiple brands, product categorie
 
 ## Exit criteria
 
-- [ ] All three existing product pages render from the new model.
-- [ ] Existing product URLs and metadata remain valid.
-- [ ] A product can have Wildberries, Ozon, both, or neither without type or rendering errors.
-- [ ] Outbound events identify product, brand, marketplace, placement, and page.
-- [ ] Lint and production build pass.
-- [ ] A manual regression covers homepage, catalog, serum listing, product pages, and forms.
+- [x] All three existing product pages render from the new model.
+- [x] Existing product URLs and metadata remain valid.
+- [x] A product can have Wildberries, Ozon, both, or neither without type or rendering errors.
+- [x] Outbound events identify product, brand, marketplace, placement, and page.
+- [x] Lint and production build pass.
+- [x] A manual regression covers homepage, catalog, serum listing, product pages, and forms.
 
 ## Related records
 
 - [Roadmap](../ROADMAP.md#phase-01--catalog-foundation)
 - [Product source of truth](../shared/product-source-of-truth.md)
 - [Measurement plan](../shared/measurement-plan.md)
+- [Adding a catalog product](./artifacts/adding-a-product.md)
+- [Validation](./VALIDATION.md)

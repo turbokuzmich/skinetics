@@ -16,7 +16,11 @@ export default function SerumPage() {
   return (
     <Box paddingTop={8}>
       <Metrika />
-      <Catalog header="Сыворотки для волос Dr. Health" omitDescription />
+      <Catalog
+        header="Сыворотки для волос Dr. Health"
+        categoryId="serum"
+        omitDescription
+      />
     </Box>
   );
 }

@@ -1,8 +1,8 @@
 # Phase 02 — Cream launch
 
-- **State:** Not started
+- **State:** Blocked
 - **Owner:** Unassigned
-- **Started:** —
+- **Started:** 2026-08-23
 - **Completed:** —
 
 ## Objective
@@ -11,8 +11,8 @@ Publish accurate, useful, indexable pages for the two priority face creams with 
 
 ## Prerequisites
 
-- [ ] Phase 01 complete
-- [ ] Cream brands and product identities accepted
+- [x] Phase 01 complete
+- [x] Cream brands and product identities accepted
 - [ ] Packaging, INCI, application, precautions, and approved images verified
 - [ ] Cosmetic claims reviewed
 

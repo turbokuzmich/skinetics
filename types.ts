@@ -1,24 +1,75 @@
 import { type Metadata } from "next";
 
-export enum Marketplace {
-  wildberries = "wildberries",
-}
+export type BrandId = "dr-health" | "skineticslab" | "neon-beard";
 
-export enum ItemCategory {
-  oil = "oil",
-  serum = "serum",
-}
+export type ProductCategoryId = "serum" | "face-cream";
 
-export type Item = {
+export type MarketplaceId = "wildberries" | "ozon";
+
+export type ProductStatus = "draft" | "published";
+
+export type MarketplacePlacement =
+  | "catalog-card"
+  | "product-hero"
+  | "sticky-mobile";
+
+export type Brand = {
+  id: BrandId;
+  name: string;
+};
+
+export type ProductCategory = {
+  id: ProductCategoryId;
+  name: string;
+};
+
+export type Marketplace = {
+  id: MarketplaceId;
+  name: string;
+  buttonLabel: string;
+  compactButtonLabel: string;
+  order: number;
+  allowedHostnames: readonly string[];
+};
+
+export type ProductContent = {
+  overview: string;
+  activeComponents: string;
+  featureSection: {
+    heading: string;
+    items: readonly string[];
+  };
+  application: {
+    heading: string;
+    instructions: string;
+  };
+  precautions: string;
+};
+
+export type Product = {
   id: string;
-  type: ItemCategory;
+  slug: string;
+  status: ProductStatus;
+  brandId: BrandId;
+  categoryId: ProductCategoryId;
   title: string;
-  subheader: string;
+  summary: string;
   image: string;
+  imageAlt: string;
   composition: string;
   volume: string;
-  links: Record<Marketplace, string>;
+  content: ProductContent;
+  marketplaceLinks: Partial<Record<MarketplaceId, string>>;
   metadata: Metadata;
+};
+
+export type MarketplaceClickEvent = {
+  product_id: Product["id"];
+  brand_id: BrandId;
+  marketplace: MarketplaceId;
+  placement: MarketplacePlacement;
+  page_path: string;
+  campaign?: string;
 };
 
 export enum IngredientName {

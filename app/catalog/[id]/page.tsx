@@ -1,6 +1,8 @@
-import type { FC } from "react";
-import type { Item } from "@/types";
-import { items } from "@/constants";
+import type { Product } from "@/types";
+import {
+  getPublishedProductBySlug,
+  getPublishedProducts,
+} from "@/lib/catalog";
 import { notFound } from "next/navigation";
 import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
@@ -8,55 +10,41 @@ import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import Typography from "@mui/material/Typography";
 import Metrika from "@/app/_components/metrika";
-import WbButton from "@/app/_components/wbButton";
+import MarketplaceActions from "@/app/_components/marketplaceActions";
+import ProductDescription from "@/app/_components/productDescription";
 import { type Metadata } from "next";
-import RedPepper from "./_descriptions/red_pepper";
-import CopperTripeptide from "./_descriptions/copper_tripeptide";
-import Climbazole from "./_descriptions/climbazole";
 
 type Props = Readonly<{
-  params: { id: Item["id"] };
+  params: { id: Product["slug"] };
 }>;
 
 export function generateMetadata({ params: { id } }: Props): Metadata {
-  const item = items.find((item) => item.id === id);
+  const product = getPublishedProductBySlug(id);
 
-  if (!item) {
+  if (!product) {
     return {};
   }
 
   return {
-    ...item.metadata,
+    ...product.metadata,
     alternates: {
-      canonical: `/catalog/${item.id}`,
+      canonical: `/catalog/${product.slug}`,
     },
   };
 }
 
 export function generateStaticParams() {
-  return items.map(({ id }) => ({ id }));
+  return getPublishedProducts().map(({ slug }) => ({ id: slug }));
 }
 
 export const dynamicParams = false;
 
-function Null() {
-  return null;
-}
-
-const descriptions: Record<string, FC> = {
-  red_pepper: RedPepper,
-  copper_tripeptide: CopperTripeptide,
-  climbazole: Climbazole,
-};
-
 export default function CatalogItem({ params: { id } }: Props) {
-  const item = items.find((item) => item.id === id);
+  const product = getPublishedProductBySlug(id);
 
-  if (!item) {
+  if (!product) {
     notFound();
   }
-
-  const Description: FC = descriptions[item.id] ?? Null;
 
   return (
     <>
@@ -73,8 +61,10 @@ export default function CatalogItem({ params: { id } }: Props) {
           <Box
             flexShrink={0}
             flexGrow={0}
+            role="img"
+            aria-label={product.imageAlt}
             sx={{
-              backgroundImage: `url(${item.image})`,
+              backgroundImage: `url(${product.image})`,
               backgroundSize: "contain",
               backgroundPosition: "center",
               backgroundRepeat: "no-repeat",
@@ -89,25 +79,22 @@ export default function CatalogItem({ params: { id } }: Props) {
             }}
           />
           <Box>
-            {/* <Typography variant="body1" color="text.secondary">
-              {item.subheader}
-            </Typography>
-            <Typography variant="h5" paragraph>
-              {item.title}
-            </Typography> */}
             <Typography variant="h5" component="h1" paragraph>
-              {item.title}
+              {product.title}
             </Typography>
             <Typography variant="subtitle2">Объем</Typography>
-            <Typography paragraph>{item.volume}</Typography>
+            <Typography paragraph>{product.volume}</Typography>
             <Box marginBottom={2}>
-              <WbButton link={item.links.wildberries} />
+              <MarketplaceActions
+                product={product}
+                placement="product-hero"
+              />
             </Box>
-            <Description />
+            <ProductDescription content={product.content} />
             <Typography variant="h6" component="div">
               Полный состав
             </Typography>
-            <Typography paragraph>{item.composition}</Typography>
+            <Typography paragraph>{product.composition}</Typography>
           </Box>
         </Stack>
       </Container>

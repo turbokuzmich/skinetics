@@ -2,6 +2,16 @@
 
 This is an append-only record of meaningful work sessions. Add new entries immediately below this introduction, newest first. Use [templates/log-entry.md](./templates/log-entry.md) for the entry format.
 
+## 2026-08-23 — Phase 01 catalog foundation completed
+
+- **Phase:** 01 — Catalog foundation
+- **Status:** Complete
+- **Summary:** Replaced the Wildberries-only product shape with a typed multi-brand catalog, structured reusable product content, optional ordered marketplace destinations, contextual analytics adapters, and build-time integrity checks. Migrated the three published serums without changing their URLs or accepted copy.
+- **Evidence:** `types.ts`, `constants.ts`, `lib/catalog.ts`, `lib/catalogIntegrity.ts`, `lib/marketplaceUrl.ts`, generic marketplace and product components, and `docs/refactoring/phase-01-catalog-foundation/VALIDATION.md`.
+- **Decisions:** One primary category per product; missing marketplace links are omitted; marketplace order is global; only published complete records feed public routes; Yandex receives one compatibility goal per click.
+- **Blockers:** Phase 02 cannot publish either cream until authoritative application and precaution wording is supplied and approved.
+- **Next:** Obtain the missing cream wording, then review and approve the Phase 02 page/content design.
+
 ## 2026-08-22 — Phase 00 baseline completed
 
 - **Phase:** 00 — Baseline and product truth
