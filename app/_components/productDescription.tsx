@@ -7,11 +7,19 @@ export default function ProductDescription({
   return (
     <>
       <Typography paragraph>{content.overview}</Typography>
-      <Typography variant="h6" component="h4">
+      {content.suitableUse ? (
+        <>
+          <Typography variant="h6" component="h2">
+            Кому подходит
+          </Typography>
+          <Typography paragraph>{content.suitableUse}</Typography>
+        </>
+      ) : null}
+      <Typography variant="h6" component="h2">
         Активные компоненты
       </Typography>
       <Typography paragraph>{content.activeComponents}</Typography>
-      <Typography variant="h6" component="h4" gutterBottom>
+      <Typography variant="h6" component="h2" gutterBottom>
         {content.featureSection.heading}
       </Typography>
       <Typography component="ul" paragraph>
@@ -25,12 +33,12 @@ export default function ProductDescription({
           </Typography>
         ))}
       </Typography>
-      <Typography variant="h6" component="h4">
+      <Typography variant="h6" component="h2">
         {content.application.heading}
       </Typography>
       <Typography paragraph>{content.application.instructions}</Typography>
-      <Typography variant="h6" component="h4">
-        Важная информация
+      <Typography variant="h6" component="h2">
+        {content.precautionsHeading ?? "Важная информация"}
       </Typography>
       <Typography paragraph>{content.precautions}</Typography>
     </>
