@@ -198,6 +198,152 @@ export const products: Product[] = [
         "Несмываемая сыворотка с климбазолом, пироктон оламином и МСМ для кожи головы, склонной к перхоти и себорее. Состав и применение.",
     },
   },
+  {
+    id: "ultra_lift",
+    slug: "ultra-lift",
+    status: "published",
+    brandId: "neon-beard",
+    categoryId: "face-cream",
+    barcode: "4630247421502",
+    title: "Крем для лица с пептидами Ultra Lift",
+    summary:
+      "Крем Neon Beard с пептидами, гиалуроновой кислотой и растительными маслами для ежедневного ухода за кожей лица.",
+    image: "/items/ultra_lift.webp",
+    imageAlt:
+      "Крем для лица с пептидами Neon Beard Ultra Lift, 100 г",
+    composition:
+      "Aqua; Cetearyl Olivate; Sorbitan Olivate; SpecPed SC-AH8® (Acetyl Hexapeptide-8, GHK-Cu (Copper Tripeptide-1)); Hydroxypropyl Cyclodextrin; Syn-Ake® (Dipeptide Diaminobutyroyl Benzylamide Diacetate); Glyceryl Stearate; Shea Butter; Theobroma Cacao Seed Butter; Butyrospermum Parkii; Simmondsia Chinensis (Jojoba) Seed Oil; Ethylhexyl Stearate; Cetyl Stearyl Alcohol; Ceteareth-20; Phenoxyethanol; Ethylhexylglycerin; Hyaluronic Acid; Hydroxyethyl Urea; Semisqualane; Rosa Centifolia Flower Extract CO2; Octyldodecanol; Allantoin; EDTA; Fragrance.",
+    volume: "100 г",
+    content: {
+      overview:
+        "Крем Neon Beard Ultra Lift предназначен для ежедневного ухода за кожей лица. Формула помогает поддерживать ощущение увлажнённости, смягчает кожу и способствует более ухоженному внешнему виду.",
+      suitableUse:
+        "Подходит для всех типов кожи, а также для утреннего и вечернего ухода. Крем является косметическим средством и не предполагает инъекционного или лечебного действия.",
+      activeComponents:
+        "В составе указаны ацетил гексапептид-8, трипептид меди-1 GHK-Cu и дипептид диаминобутироил бензиламид диацетат. Пептидные компоненты дополнены гиалуроновой кислотой, гидроксиэтилмочевиной, аллантоином, а также маслами ши, какао и жожоба для комплексного косметического ухода.",
+      featureSection: {
+        heading: "Формат ухода",
+        items: [
+          "Подходит для регулярного ухода за кожей лица утром и/или вечером.",
+          "Сочетает пептидные, увлажняющие и смягчающие компоненты.",
+          "Помогает поддерживать мягкость, комфорт и ухоженный вид кожи.",
+        ],
+      },
+      application: {
+        heading: "Способ применения",
+        instructions:
+          "Нанесите небольшое количество крема на предварительно очищенную сухую кожу лица, избегая области вокруг глаз. Равномерно распределите лёгкими массажными движениями до полного впитывания. Используйте утром и/или вечером.",
+      },
+      precautionsHeading: "Меры предосторожности",
+      precautions:
+        "Только для наружного применения. Возможна индивидуальная непереносимость компонентов. Избегайте попадания средства в глаза; при попадании тщательно промойте их водой. При появлении раздражения прекратите применение.",
+      faq: [
+        {
+          question: "Для какого типа кожи подходит крем?",
+          answer:
+            "По данным актуальной карточки товара, крем подходит для всех типов кожи. При индивидуальной реакции на компоненты применение следует прекратить.",
+        },
+        {
+          question: "Когда использовать Ultra Lift?",
+          answer:
+            "Крем можно использовать утром и/или вечером после очищения кожи.",
+        },
+        {
+          question: "Можно ли наносить крем вокруг глаз?",
+          answer:
+            "Нет. Одобренная инструкция предусматривает нанесение на лицо с исключением области вокруг глаз.",
+        },
+        {
+          question: "Какого результата ожидать?",
+          answer:
+            "Крем предназначен для регулярного косметического ухода и помогает поддерживать мягкость, увлажнённость и ухоженный вид кожи. Он не является лечебным средством и не воспроизводит действие инъекционных процедур.",
+        },
+      ],
+    },
+    marketplaceLinks: {
+      wildberries:
+        "https://www.wildberries.ru/catalog/768970852/detail.aspx",
+      ozon: "https://www.ozon.ru/product/5223635791/",
+    },
+    metadata: {
+      title: "Крем для лица с пептидами Ultra Lift | Neon Beard",
+      description:
+        "Крем Neon Beard Ultra Lift, 100 г: пептиды, гиалуроновая кислота и растительные масла. Состав, применение и ссылки на Wildberries и Ozon.",
+    },
+  },
+  {
+    id: "renewal",
+    slug: "renewal",
+    status: "published",
+    brandId: "skineticslab",
+    categoryId: "face-cream",
+    barcode: "4630247421458",
+    title: "Крем для лица с пептидами ReneWal",
+    summary:
+      "Крем SkineticsLab с пептидами, производным витамина C и увлажняющими компонентами для ежедневного ухода за кожей лица.",
+    image: "/items/renewal.webp",
+    imageAlt:
+      "Крем для лица с пептидами SkineticsLab ReneWal, 50 г",
+    composition:
+      "Acetyl Hexapeptide-8; Jojoba Seed Oil; Cocos Nucifera (Coconut) Oil; 3-O-Ethyl Ascorbic Acid; GHK-Cu (Water, Butylene Glycol, Glycerin, Copper Tripeptide-1); Dipeptide Diaminobutyroyl Benzylamide Diacetate; Glyceryl Stearate; Olea Prunus Amygdalus Dulcis; Hydroxyethyl Urea; PPG-26-Buteth-26; Sodium Hyaluronate; PEG-40 Hydrogenated Castor Oil; 1,2-Hexanediol; Caprylyl Glycol; Glycine Soja Oil; Glycerin; Ethylhexyl Stearate; Panthenol; Cetyl Stearyl Alcohol; Ceteareth-20; Phenoxyethanol; Ethylhexylglycerin; Semisqualane; Octyldodecanol; Ageratum Conyzoides Leaf Extract; Xanthan Gum; Allantoin; Disodium EDTA; Fragrance; Syn-Ake®.",
+    volume: "50 г",
+    content: {
+      overview:
+        "Крем SkineticsLab ReneWal предназначен для ежедневного ухода за кожей лица. Формула помогает поддерживать ощущение увлажнённости и комфорта, смягчает кожу и способствует более ухоженному внешнему виду.",
+      suitableUse:
+        "Подходит для всех типов кожи, а также для утреннего и вечернего ухода. Крем является косметическим средством и не предназначен для лечения или гарантированной коррекции возрастных изменений.",
+      activeComponents:
+        "В составе указаны ацетил гексапептид-8, трипептид меди-1 GHK-Cu и дипептид диаминобутироил бензиламид диацетат. Формулу дополняют производное витамина C, гиалуронат натрия, пантенол, аллантоин, а также масла жожоба и кокоса.",
+      featureSection: {
+        heading: "Формат ухода",
+        items: [
+          "Подходит для регулярного ухода за кожей лица утром и/или вечером.",
+          "Сочетает пептиды с увлажняющими и смягчающими компонентами.",
+          "Помогает поддерживать мягкость, комфорт и ухоженный вид кожи.",
+        ],
+      },
+      application: {
+        heading: "Способ применения",
+        instructions:
+          "Нанесите небольшое количество крема на предварительно очищенную сухую кожу лица, избегая области вокруг глаз. Равномерно распределите лёгкими массажными движениями до полного впитывания. Используйте утром и/или вечером.",
+      },
+      precautionsHeading: "Меры предосторожности",
+      precautions:
+        "Только для наружного применения. Возможна индивидуальная непереносимость компонентов. Избегайте попадания средства в глаза; при попадании тщательно промойте их водой. При появлении раздражения прекратите применение.",
+      faq: [
+        {
+          question: "Для какого типа кожи подходит ReneWal?",
+          answer:
+            "По данным актуальной карточки товара, крем подходит для всех типов кожи. При индивидуальной реакции на компоненты применение следует прекратить.",
+        },
+        {
+          question: "Когда использовать крем?",
+          answer:
+            "ReneWal можно использовать утром и/или вечером после очищения кожи.",
+        },
+        {
+          question: "ReneWal — это бренд?",
+          answer:
+            "Нет. ReneWal — название крема, а его потребительский бренд — SkineticsLab.",
+        },
+        {
+          question: "Какого результата ожидать?",
+          answer:
+            "Крем предназначен для регулярного косметического ухода и помогает поддерживать мягкость, увлажнённость и ухоженный вид кожи. Результат зависит от индивидуальных особенностей и регулярности ухода.",
+        },
+      ],
+    },
+    marketplaceLinks: {
+      wildberries:
+        "https://www.wildberries.ru/catalog/771142529/detail.aspx",
+      ozon: "https://www.ozon.ru/product/5223519199/",
+    },
+    metadata: {
+      title: "Крем для лица с пептидами ReneWal | SkineticsLab",
+      description:
+        "Крем SkineticsLab ReneWal, 50 г: пептиды, производное витамина C и увлажняющие компоненты. Состав, применение и ссылки на Wildberries и Ozon.",
+    },
+  },
 ];
 
 export const ingredients: Record<IngredientName, Ingredient> = {
