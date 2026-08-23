@@ -4,10 +4,10 @@ Last updated: 2026-08-23
 
 ## Current position
 
-- **Active phase:** Phase 02 — Cream launch
-- **Phase state:** Implementation validated; deployment pending
-- **Current focus:** deploy the validated Phase 02 release candidate when explicitly authorized
-- **Next action:** build the Linux release artifact and deploy it through the approved VM process
+- **Active phase:** Phase 03 — Site architecture and content
+- **Phase state:** In progress
+- **Current focus:** record evidence and produce the approved architecture artifacts
+- **Next action:** complete the sanitized marketplace-question themes and current-content inventory
 
 ## Phase dashboard
 
@@ -16,7 +16,7 @@ Last updated: 2026-08-23
 | 00 — Baseline and product truth | Complete | Product/brand truth, URL policy, claims audit, measurement contract, and sanitized baseline accepted |
 | 01 — Catalog foundation | Complete | Typed multi-brand catalog, optional marketplaces, structured content, contextual analytics, and regression validation accepted |
 | 02 — Cream launch | Implementation validated; deployment pending | Five-product local release candidate passed build, route, SEO, representative responsive, and representative analytics validation |
-| 03 — Site architecture and content | Not started | Depends on portfolio positioning and search-demand evidence |
+| 03 — Site architecture and content | In progress | Approved documentation work proceeds while Phase 02 production monitoring remains unavailable |
 | 04 — Redesign | Not started | Depends on approved information architecture and page requirements |
 | 05 — Growth program | Not started | Depends on reliable product-level marketplace measurement |
 
@@ -29,9 +29,9 @@ Last updated: 2026-08-23
 
 ## Next three actions
 
-1. Obtain explicit authorization for production deployment.
-2. Build `skinetics-release.tar.gz` with the approved Node.js 24 `linux/amd64` process and deploy it through the approved VM procedure.
-3. Verify the live routes and begin the 14-day indexability and marketplace-click monitoring window.
+1. Record the sanitized marketplace-question themes and current-content inventory.
+2. Produce the Phase 03 URL, navigation, internal-linking, content, and migration artifacts.
+3. Validate the architecture and obtain owner acceptance before Phase 04.
 
 ## Recently completed
 

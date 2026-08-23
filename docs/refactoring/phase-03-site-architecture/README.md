@@ -1,8 +1,8 @@
 # Phase 03 — Site architecture and content
 
-- **State:** Not started
-- **Owner:** Unassigned
-- **Started:** —
+- **State:** In progress
+- **Owner:** Dmitry, business owner
+- **Started:** 2026-08-23
 - **Completed:** —
 
 ## Objective
@@ -11,11 +11,12 @@ Define a scalable, evidence-led site structure that lets visitors browse by bran
 
 ## Prerequisites
 
-- [ ] Phase 02 complete
-- [ ] Skinetics portfolio role accepted
-- [ ] Brand architecture accepted
-- [ ] Search-demand and URL baseline available
-- [ ] Initial cream and serum content questions collected
+- [x] Phase 02 local implementation validated
+- [ ] Phase 02 production deployment and monitoring complete — tracked separately and does not block architecture documentation
+- [x] Skinetics portfolio role accepted
+- [x] Brand architecture accepted
+- [x] Search-demand and URL baseline available
+- [x] Initial cream and serum content questions collected
 
 ## In scope
 
