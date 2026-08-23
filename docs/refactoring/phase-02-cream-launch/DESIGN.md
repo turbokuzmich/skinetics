@@ -2,7 +2,7 @@
 
 Date: 2026-08-23
 
-Status: Approved in design review; written record awaiting confirmation
+Status: Approved
 
 Owner: Dmitry, business owner
 
