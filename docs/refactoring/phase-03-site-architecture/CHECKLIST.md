@@ -29,5 +29,5 @@
 - [x] Produce the URL map and redirect specification.
 - [x] Check for orphan pages and excessive depth.
 - [x] Review architecture against current sitemap and search evidence.
-- [ ] Obtain approval before Phase 04.
-- [ ] Update root status and log.
+- [x] Obtain approval before Phase 04.
+- [x] Update root status and log.

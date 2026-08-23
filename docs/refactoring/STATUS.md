@@ -4,10 +4,10 @@ Last updated: 2026-08-23
 
 ## Current position
 
-- **Active phase:** Phase 03 — Site architecture and content
-- **Phase state:** In validation
-- **Current focus:** owner review of the completed Phase 03 architecture and content-system artifacts
-- **Next action:** review the six Phase 03 artifacts and decision 0006, then accept them or request corrections
+- **Active phase:** None — awaiting explicit authorization
+- **Phase state:** Phase 03 complete
+- **Current focus:** Phase 03 architecture is complete and Phase 04 is ready for design work; Phase 02 production deployment and its monitoring window remain pending separate authorization
+- **Next action:** begin Phase 04 design or resume the Phase 02 production deployment path only when explicitly authorized
 
 ## Phase dashboard
 
@@ -16,7 +16,7 @@ Last updated: 2026-08-23
 | 00 — Baseline and product truth | Complete | Product/brand truth, URL policy, claims audit, measurement contract, and sanitized baseline accepted |
 | 01 — Catalog foundation | Complete | Typed multi-brand catalog, optional marketplaces, structured content, contextual analytics, and regression validation accepted |
 | 02 — Cream launch | Implementation validated; deployment pending | Five-product local release candidate passed build, route, SEO, representative responsive, and representative analytics validation |
-| 03 — Site architecture and content | In validation | Architecture, migration, click-depth, orphan, page-purpose, and content-policy checks pass; owner acceptance remains open |
+| 03 — Site architecture and content | Complete | Owner accepted the evidence-gated architecture, preserved URL map, navigation, content system, migration rules, and Phase 04 requirements |
 | 04 — Redesign | Not started | Depends on approved information architecture and page requirements |
 | 05 — Growth program | Not started | Depends on reliable product-level marketplace measurement |
 
@@ -29,12 +29,13 @@ Last updated: 2026-08-23
 
 ## Next three actions
 
-1. Review the six Phase 03 artifacts and decision 0006.
-2. Record owner acceptance or return requested corrections to the relevant artifact and repeat validation.
-3. Begin Phase 04 design or resume the separately authorized Phase 02 deployment work only after an explicit request.
+1. Wait for explicit authorization before starting the next workstream.
+2. If authorized, begin Phase 04 design from the approved architecture and page requirements.
+3. If separately authorized, build and deploy the Phase 02 release candidate and begin its monitoring window.
 
 ## Recently completed
 
+- Completed Phase 03 after owner acceptance of the evidence-gated dual taxonomy, preserved URL map, navigation, internal-linking, content, indexation, migration, and Phase 04 template requirements.
 - Produced and mechanically validated the Phase 03 evidence, inventory, URL, navigation, content, and migration artifacts.
 - Accepted decision 0006: product type remains primary and brand, concern, ingredient, and expert paths remain evidence-gated secondary relationships.
 - Preserved every current URL, specified no redirects, and proved product and discovery-page click-depth targets.

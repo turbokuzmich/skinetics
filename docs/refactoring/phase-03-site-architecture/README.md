@@ -1,9 +1,9 @@
 # Phase 03 — Site architecture and content
 
-- **State:** In validation
+- **State:** Complete
 - **Owner:** Dmitry, business owner
 - **Started:** 2026-08-23
-- **Completed:** —
+- **Completed:** 2026-08-23
 
 ## Objective
 
@@ -49,7 +49,7 @@ Define a scalable, evidence-led site structure that lets visitors browse by bran
 - [x] Brand is not the only way to discover products.
 - [x] Existing URLs have explicit preserve or migration treatment.
 - [x] No orphan pages remain in the proposed structure.
-- [ ] Phase 04 has approved requirements for every page template.
+- [x] Phase 04 has approved requirements for every page template.
 
 ## Related records
 

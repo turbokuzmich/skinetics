@@ -2,6 +2,16 @@
 
 This is an append-only record of meaningful work sessions. Add new entries immediately below this introduction, newest first. Use [templates/log-entry.md](./templates/log-entry.md) for the entry format.
 
+## 2026-08-23 — Phase 03 site architecture completed
+
+- **Phase:** 03 — Site architecture and content
+- **Status:** Complete
+- **Summary:** Accepted the evidence-gated dual taxonomy, preserved all current URLs, and completed the navigation, internal-linking, content, indexation, migration, and Phase 04 template requirements.
+- **Evidence:** [Marketplace themes](./phase-03-site-architecture/artifacts/marketplace-question-themes.md), [content inventory and journeys](./phase-03-site-architecture/artifacts/content-inventory-and-journeys.md), [site tree and URL map](./phase-03-site-architecture/artifacts/site-tree-and-url-map.md), [navigation and internal linking](./phase-03-site-architecture/artifacts/navigation-and-internal-linking.md), [content map and page requirements](./phase-03-site-architecture/artifacts/content-map-and-page-requirements.md), [redirect matrix](./phase-03-site-architecture/artifacts/redirect-matrix.md), [decision 0006](./decisions/0006-evidence-gated-site-architecture.md), [findings](./phase-03-site-architecture/FINDINGS.md), and [validation](./phase-03-site-architecture/VALIDATION.md).
+- **Decisions:** Product type remains primary; brand, concern, ingredient, and expert content are evidence-gated secondary discovery relationships; no current redirect is required.
+- **Blockers:** Concern, ingredient, and expert pages remain gated; Phase 02 deployment remains pending; numerical organic demand is unavailable.
+- **Next:** Begin Phase 04 design only when explicitly authorized, or complete the separately authorized Phase 02 deployment path.
+
 ## 2026-08-23 — Phase 02 cream launch implementation validated
 
 - **Phase:** 02 — Cream launch

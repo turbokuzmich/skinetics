@@ -1,6 +1,6 @@
 # Phase 03 validation
 
-Status: In validation
+Status: Complete
 
 ## Architecture checks
 
@@ -26,7 +26,7 @@ Status: In validation
 
 ## Exit approval
 
-- **Reviewed by:** Codex mechanical/documentation review
+- **Reviewed by:** Dmitry, business owner
 - **Review date:** 2026-08-23
-- **Result:** Pending owner acceptance
-- **Notes:** Architecture, migration, click-depth, orphan, page-purpose, and content-policy checks pass; final owner acceptance remains open.
+- **Result:** Passed
+- **Notes:** Approved evidence-gated dual taxonomy, preserved URL map, navigation and internal-link specification, content priorities, page-template requirements, publication gates, and no-redirect migration matrix.

@@ -1,6 +1,6 @@
 # Phase 03 findings
 
-Status: In validation
+Status: Complete
 
 ## Audience and journey findings
 
