@@ -1,8 +1,8 @@
 # Phase 04 — Redesign
 
-- **State:** Not started
-- **Owner:** Unassigned
-- **Started:** —
+- **State:** In progress — design approved; written spec awaiting review
+- **Owner:** Dmitry, business owner
+- **Started:** 2026-08-23
 - **Completed:** —
 
 ## Objective
@@ -11,11 +11,13 @@ Implement a distinctive, accessible, responsive design system and page templates
 
 ## Prerequisites
 
-- [ ] Phase 03 complete
-- [ ] Page hierarchy and template requirements approved
-- [ ] Brand assets and portfolio visual relationship approved
-- [ ] Content and trust assets available
-- [ ] Performance and accessibility budgets agreed
+- [x] Phase 03 complete
+- [x] Page hierarchy and template requirements approved
+- [x] Portfolio visual relationship and text-label fallback approved
+- [x] Initial verified content and trust scope agreed
+- [x] Performance and accessibility budgets agreed
+
+Official logos, brand guidelines, documentary assets, and photography remain a non-blocking [future asset backlog](./artifacts/future-asset-backlog.md).
 
 ## In scope
 
@@ -54,3 +56,5 @@ Implement a distinctive, accessible, responsive design system and page templates
 - [Roadmap](../ROADMAP.md#phase-04--redesign)
 - [Brand architecture](../shared/brand-architecture.md)
 - Phase 03 architecture artifacts
+- [Approved Phase 04 design](./DESIGN.md)
+- [Future asset backlog](./artifacts/future-asset-backlog.md)

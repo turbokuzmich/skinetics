@@ -2,6 +2,16 @@
 
 This is an append-only record of meaningful work sessions. Add new entries immediately below this introduction, newest first. Use [templates/log-entry.md](./templates/log-entry.md) for the entry format.
 
+## 2026-08-23 — Phase 04 redesign approved
+
+- **Phase:** 04 — Redesign
+- **Status:** In progress
+- **Summary:** Audited the current desktop and mobile interface, compared three visual directions, and accepted the navigational-editorial Skinetics system, reusable component boundaries, page conversion flows, WCAG/performance targets, image policy, and coordinated release strategy.
+- **Evidence:** [Phase 04 design](./phase-04-redesign/DESIGN.md), [decision 0007](./decisions/0007-navigational-editorial-design-system.md), [future asset backlog](./phase-04-redesign/artifacts/future-asset-backlog.md), updated [findings](./phase-04-redesign/FINDINGS.md), and owner approvals recorded in the Phase 04 design conversation.
+- **Decisions:** Use one shared Skinetics system with restrained text-backed brand accents; use currently verified trust facts now; retain every `public/video/` file but remove homepage video delivery; refresh all three serum presentation images from verified final Wildberries gallery slides; implement incrementally and release in one coordinated production change.
+- **Blockers:** None for design or planning. Official identity, documentary, photography, and specialist assets remain a non-blocking intake backlog; production deployment remains separately authorized.
+- **Next:** Owner reviews the written design, then create the detailed implementation plan.
+
 ## 2026-08-23 — Phase 03 site architecture completed
 
 - **Phase:** 03 — Site architecture and content

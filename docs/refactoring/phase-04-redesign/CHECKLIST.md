@@ -2,11 +2,11 @@
 
 ## Direction and system
 
-- [ ] Audit current UI, responsive behavior, and accessibility.
-- [ ] Define and approve the visual direction before implementation.
-- [ ] Define typography, color, spacing, radius, elevation, motion, and imagery rules.
-- [ ] Define portfolio-level and sub-brand visual treatment.
-- [ ] Define component states and accessibility requirements.
+- [x] Audit current UI, responsive behavior, and accessibility.
+- [x] Define and approve the visual direction before implementation.
+- [x] Define typography, color, spacing, radius, elevation, motion, and imagery rules.
+- [x] Define portfolio-level and sub-brand visual treatment.
+- [x] Define component states and accessibility requirements.
 
 ## Page templates
 

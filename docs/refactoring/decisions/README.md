@@ -23,3 +23,5 @@ Do not create a decision record for routine implementation details that are alre
 - [0003 — Defer missing cream safety copy to Phase 02](./0003-defer-cream-safety-copy.md)
 - [0004 — Marketplace click measurement contract](./0004-marketplace-click-contract.md)
 - [0005 — Preserve established public URLs](./0005-url-preservation-policy.md)
+- [0006 — Use an evidence-gated dual taxonomy](./0006-evidence-gated-site-architecture.md)
+- [0007 — Use a navigational-editorial Skinetics design system](./0007-navigational-editorial-design-system.md)
