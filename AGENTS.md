@@ -10,7 +10,7 @@ The initial refactoring scope contains five cosmetics. The current public site e
 - a hair-loss and hair-growth care serum with copper tripeptide GHK-Cu;
 - a scalp serum for dandruff- and seborrhea-prone skin with climbazole and piroctone olamine.
 
-The planned catalog also includes two face creams: **SkineticsLab ReneWal**, 50 ml, and **Neon Beard Ultra Lift**, 100 ml. ReneWal is a product name, not a brand. Treat the accepted records in `docs/refactoring/shared/product-source-of-truth.md` as the refactoring source of truth; do not publish either cream until authoritative application and precaution wording is available.
+The locally validated catalog release candidate also includes two face creams: **SkineticsLab ReneWal**, 50 g, and **Neon Beard Ultra Lift**, 100 g. Production deployment remains pending. ReneWal is a product name, not a brand. Treat the accepted records in `docs/refactoring/shared/product-source-of-truth.md` as the refactoring source of truth.
 
 Treat the products as cosmetics and scalp, hair, or facial-care products, not medicines. Product copy should describe cosmetic use, ingredients, application, precautions, and realistic expectations. Do not introduce unsupported medical, therapeutic, absolute-safety, or guaranteed-effect claims. When claims, declarations, or labeling matter, the manufacturer documents, packaging, and current marketplace card are the authority.
 
@@ -30,9 +30,9 @@ Skinetics also supports lead generation. A site-wide form collects requests for 
 
 ## Current Content and Route Model
 
-- `/` presents the Dr. Health positioning, current product cards, company advantages, Wildberries calls to action, and the trichologist form.
-- `/serum` is the navigation-facing serum listing; `/catalog` exposes the broader catalog listing.
-- `/catalog/red_pepper`, `/catalog/copper_tripeptide`, and `/catalog/climbazole` are the current product pages. Each page contains a product image, volume, Wildberries link, purpose and application text, precautions, and full composition.
+- `/` presents neutral Skinetics multi-brand positioning, all five product cards, company advantages, marketplace calls to action, and the trichologist form.
+- `/serum` is the navigation-facing serum listing; `/cream` is the navigation-facing face-cream listing; `/catalog` exposes the broader catalog listing.
+- `/catalog/red_pepper`, `/catalog/copper_tripeptide`, `/catalog/climbazole`, `/catalog/ultra-lift`, and `/catalog/renewal` are the implemented product pages. Each page contains a product image, quantity, marketplace links, purpose and application text, precautions, and full composition. The cream pages also include suitable-use and FAQ content.
 - `/about` explains the brand/site role, links to the Dr. Health Wildberries brand page, and publishes the legal details of ООО «Демидов Люкс СПА».
 - `/contacts` publishes Russian phone contacts and `info@skinetics.ru`, and contains the feedback form.
 - `/ingredients` is currently a placeholder excluded from indexing and is not linked from the main navigation.
@@ -41,9 +41,9 @@ Skinetics also supports lead generation. A site-wide form collects requests for 
 
 ## Current SEO Implementation
 
-SEO is implemented through Next.js metadata and indexable page copy rather than through a separate SEO layer. The root layout sets `https://skinetics.ru` as `metadataBase`; the home, catalog, serum, about, and contacts routes define their own Russian `title`, `description`, and canonical URL. Product titles and descriptions live with each item in `constants.ts` and are returned by `generateMetadata()` for `/catalog/[id]`.
+SEO is implemented through Next.js metadata and indexable page copy rather than through a separate SEO layer. The root layout sets `https://skinetics.ru` as `metadataBase`; the home, catalog, serum, cream, about, and contacts routes define their own Russian `title`, `description`, and canonical URL. Product titles and descriptions live with each item in `constants.ts` and are returned by `generateMetadata()` for `/catalog/[id]`.
 
-Indexable pages render a descriptive `h1` and supporting Russian text. Product pages add structured sections for purpose, active components, use, precautions, and full composition. `app/sitemap.ts` lists the main static routes and every current product URL, while the unfinished `/ingredients` route sets `noindex, follow`. Existing product URL IDs are part of the site's accumulated search footprint; review `docs/skinetics-seo-context.md` before changing SEO copy, indexability, canonical URLs, sitemap membership, or route paths.
+Indexable pages render a descriptive `h1` and supporting Russian text. Product pages add structured sections for purpose, active components, use, precautions, and full composition; cream pages also render semantic FAQ content. Product pages emit category-aware `BreadcrumbList` JSON-LD but no `Product`, `Offer`, review, rating, or `FAQPage` markup. `app/sitemap.ts` lists the main static routes and every published product URL, while the unfinished `/ingredients` route sets `noindex, follow`. Existing product URL IDs are part of the site's accumulated search footprint; review `docs/skinetics-seo-context.md` before changing SEO copy, indexability, canonical URLs, sitemap membership, or route paths.
 
 ## Project Structure & Module Organization
 

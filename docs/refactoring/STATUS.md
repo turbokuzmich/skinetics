@@ -5,9 +5,9 @@ Last updated: 2026-08-23
 ## Current position
 
 - **Active phase:** Phase 02 — Cream launch
-- **Phase state:** Blocked
-- **Current focus:** obtain authoritative application and precaution wording for both creams
-- **Next action:** product owner supplies and approves the missing wording before cream-page design or publication
+- **Phase state:** Implementation validated; deployment pending
+- **Current focus:** deploy the validated Phase 02 release candidate when explicitly authorized
+- **Next action:** build the Linux release artifact and deploy it through the approved VM process
 
 ## Phase dashboard
 
@@ -15,7 +15,7 @@ Last updated: 2026-08-23
 |---|---|---|
 | 00 — Baseline and product truth | Complete | Product/brand truth, URL policy, claims audit, measurement contract, and sanitized baseline accepted |
 | 01 — Catalog foundation | Complete | Typed multi-brand catalog, optional marketplaces, structured content, contextual analytics, and regression validation accepted |
-| 02 — Cream launch | Blocked | Catalog foundation is ready; authoritative application and precaution wording is still missing for both creams |
+| 02 — Cream launch | Implementation validated; deployment pending | Five-product local release candidate passed build, route, SEO, representative responsive, and representative analytics validation |
 | 03 — Site architecture and content | Not started | Depends on portfolio positioning and search-demand evidence |
 | 04 — Redesign | Not started | Depends on approved information architecture and page requirements |
 | 05 — Growth program | Not started | Depends on reliable product-level marketplace measurement |
@@ -24,18 +24,21 @@ Last updated: 2026-08-23
 
 | Item | Type | Affects | Status |
 |---|---|---|---|
-| Authoritative application and precaution wording for both creams | Product evidence | Phase 02 | Open; requested from product owner and blocks publication |
 | Official brand logos and guidelines | Visual identity | Phase 04 | Open; text labels are accepted until assets exist |
 | Meaningful Ozon performance baseline | Measurement | Phases 02 and 05 | Open; launch is too recent for comparison |
 
 ## Next three actions
 
-1. Obtain authoritative application and precaution wording for Ultra Lift and ReneWal.
-2. Review both cream records and cosmetic claims against packaging and manufacturer evidence.
-3. Approve the Phase 02 page/content design, then add the two products using the Phase 01 catalog model.
+1. Obtain explicit authorization for production deployment.
+2. Build `skinetics-release.tar.gz` with the approved Node.js 24 `linux/amd64` process and deploy it through the approved VM procedure.
+3. Verify the live routes and begin the 14-day indexability and marketplace-click monitoring window.
 
 ## Recently completed
 
+- Implemented and locally validated Neon Beard Ultra Lift and SkineticsLab ReneWal with final packaging quantities of 100 g and 50 g.
+- Added `/cream`, five-product homepage and catalog discovery, category-aware breadcrumbs, sitemap entries, and category-aware `Масса`/`Объем` labels.
+- Verified the homepage at 1280 px, `/cream` at 1280/1440/390 px, and both cream pages at 1280/390 px; representative marketplace analytics used local stubs.
+- Received product-owner approval for the exact application and precaution wording for Ultra Lift and ReneWal.
 - Completed Phase 01 and migrated the three serums to the typed multi-brand, multi-marketplace catalog model without changing public URLs.
 - Added generic marketplace actions, product- and placement-aware analytics, integrity checks, and safe product-authoring instructions.
 - Validated lint, production build, live routes, static HTML, responsive layouts, form validation, optional destinations, and two-marketplace rendering.

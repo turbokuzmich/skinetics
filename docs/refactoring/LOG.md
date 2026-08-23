@@ -2,6 +2,46 @@
 
 This is an append-only record of meaningful work sessions. Add new entries immediately below this introduction, newest first. Use [templates/log-entry.md](./templates/log-entry.md) for the entry format.
 
+## 2026-08-23 — Phase 02 cream launch implementation validated
+
+- **Phase:** 02 — Cream launch
+- **Status:** Implementation validated; deployment pending
+- **Summary:** Added the Neon Beard Ultra Lift and SkineticsLab ReneWal cream records, local product imagery, the `/cream` listing, neutral five-product catalog copy, category-aware breadcrumbs, metadata, sitemap entries, and two-marketplace conversion paths.
+- **Evidence:** `constants.ts`, product and listing routes, shared catalog components, `public/items/`, implementation commits `7e4cdf5`, `470ceb9`, `458e13a`, `ad5b74b`, `e046439`, and `docs/refactoring/phase-02-cream-launch/VALIDATION.md`.
+- **Decisions:** Use packaging quantities 100 г and 50 г; preserve `/serum` and existing serum URLs; order Wildberries before Ozon; emit `BreadcrumbList` but defer product rich-result markup; use the owner-selected last-gallery images while treating ReneWal's printed English phrase only as package artwork; keep production deployment separately authorized.
+- **Blockers:** Local implementation is ready. Production deployment and the 14-day post-launch monitoring window remain pending.
+- **Next:** Build the approved Linux release artifact and deploy only after explicit authorization.
+
+## 2026-08-23 — Phase 02 design handoff saved
+
+- **Phase:** 02 — Cream launch
+- **Status:** In progress
+- **Summary:** Saved a self-contained handoff after reviewing the live marketplace cards and accepting the cream URLs and neutral five-product homepage direction.
+- **Evidence:** `docs/refactoring/phase-02-cream-launch/HANDOFF.md` and `docs/refactoring/phase-02-cream-launch/artifacts/live-marketplace-review-2026-08-23.md`.
+- **Decisions:** Use `/catalog/ultra-lift` and `/catalog/renewal`; show all five products on the homepage with neutral Skinetics copy; preserve `/serum` as the Dr. Health-only listing.
+- **Blockers:** No external publication blocker is open. The structured-data approach and complete Phase 02 design still require approval before implementation.
+- **Next:** In a fresh task, read the handoff, decide structured data, finish the architectural design, write and approve `DESIGN.md`, then create the implementation plan.
+
+## 2026-08-23 — Phase 02 cream wording approved
+
+- **Phase:** 02 — Cream launch
+- **Status:** In progress
+- **Summary:** The product owner approved the exact application and precaution wording separately for Neon Beard Ultra Lift and SkineticsLab ReneWal.
+- **Evidence:** `docs/refactoring/phase-02-cream-launch/artifacts/proposed-application-and-precautions.md` and the user's written approval on 2026-08-23.
+- **Decisions:** The same neutral application and precaution wording is accepted for both products; later packaging or manufacturer conflicts must supersede it.
+- **Blockers:** The wording blocker is resolved. Image, INCI, claims, page-design, implementation, and launch validation work remains.
+- **Next:** Complete the remaining product-evidence review and present the Phase 02 page/content design for approval.
+
+## 2026-08-23 — Phase 02 review-only safety copy proposed
+
+- **Phase:** 02 — Cream launch
+- **Status:** Blocked
+- **Summary:** Prepared one neutral application and precaution proposal for each cream after confirming that the existing serum wording contains scalp-specific guidance and should not be copied verbatim.
+- **Evidence:** `docs/refactoring/phase-02-cream-launch/artifacts/proposed-application-and-precautions.md`, updated Phase 02 inputs, checklist, findings, and root status.
+- **Decisions:** The draft remains non-authoritative; approval is required separately for Ultra Lift and ReneWal; no unsupported storage, age, patch-test, pregnancy, or formula-specific instructions were added.
+- **Blockers:** Neither cream may be published until its application and precautions are approved and remaining product evidence and claims checks pass.
+- **Next:** Product owner or manufacturer reviews and approves or corrects the proposal product by product.
+
 ## 2026-08-23 — Phase 01 catalog foundation completed
 
 - **Phase:** 01 — Catalog foundation

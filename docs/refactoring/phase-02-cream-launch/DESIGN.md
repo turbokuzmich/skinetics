@@ -2,7 +2,7 @@
 
 Date: 2026-08-23
 
-Status: Approved
+Status: Approved and implemented locally; deployment pending
 
 Owner: Dmitry, business owner
 
@@ -12,8 +12,8 @@ Publish two verified face creams in the Skinetics multi-brand catalog, give each
 
 Phase 02 publishes exactly:
 
-1. Neon Beard — «Крем для лица с пептидами Ultra Lift», 100 мл;
-2. SkineticsLab — «Крем для лица с пептидами ReneWal», 50 мл.
+1. Neon Beard — «Крем для лица с пептидами Ultra Lift», 100 г;
+2. SkineticsLab — «Крем для лица с пептидами ReneWal», 50 г.
 
 Skinetics remains the umbrella catalog and acquisition site. It does not provide checkout, payment, delivery, order management, marketplace prices, stock, ratings, or reviews.
 
@@ -43,7 +43,7 @@ Phase 02 does not include:
 
 ## Evidence and source precedence
 
-Product identity, marketplace pairings, barcodes, volumes, primary images, and marketplace compositions come from the accepted Phase 00 evidence and the live marketplace review dated 2026-08-23. Dmitry separately approved the exact application and precaution wording for both products on 2026-08-23.
+Product identity, marketplace pairings, barcodes, packaging quantities, selected gallery images, and marketplace compositions come from the accepted Phase 00 evidence and the live marketplace review dated 2026-08-23. Dmitry separately approved the exact application and precaution wording for both products on 2026-08-23.
 
 The composition strings below apply only unambiguous spelling, capitalization, and delimiter corrections to the reviewed Wildberries data. The design review accepted them as the owner-approved canonical site composition until a higher-precedence source conflicts.
 
@@ -97,21 +97,21 @@ Published face creams must contain suitable-use text and at least one complete F
 |---|---|---|
 | Internal ID | `ultra_lift` | `renewal` |
 | Public slug | `ultra-lift` | `renewal` |
-| Status | `published`; deployment is gated by launch validation | `published`; deployment is gated by launch validation |
+| Status | `published`; deployment requires explicit authorization | `published`; deployment requires explicit authorization |
 | Brand | `neon-beard` / Neon Beard | `skineticslab` / SkineticsLab |
 | Category | `face-cream` | `face-cream` |
 | Barcode | `4630247421502` | `4630247421458` |
-| Volume | `100 мл` | `50 мл` |
+| Packaging quantity | `100 г` | `50 г` |
 | Local image | `/items/ultra_lift.webp` | `/items/renewal.webp` |
 | Wildberries | `https://www.wildberries.ru/catalog/768970852/detail.aspx` | `https://www.wildberries.ru/catalog/771142529/detail.aspx` |
 | Ozon | `https://www.ozon.ru/product/5223635791/` | `https://www.ozon.ru/product/5223519199/` |
 
-The local images come from the reviewed Wildberries primary-image sources:
+The local images come from the owner-selected Wildberries gallery-image sources:
 
-- Ultra Lift: `https://mow-basket-cdn-54.geobasket.ru/vol7689/part768970/768970852/images/big/1.webp`;
-- ReneWal: `https://mow-basket-cdn-31.geobasket.ru/vol7711/part771142/771142529/images/big/1.webp`.
+- Ultra Lift: `https://mow-basket-cdn-54.geobasket.ru/vol7689/part768970/768970852/images/big/11.webp`;
+- ReneWal: `https://mow-basket-cdn-31.geobasket.ru/vol7711/part771142/771142529/images/big/12.webp`.
 
-Before publication, visually confirm that each local file shows the correct current product and brand, has no excluded claim text, and renders cleanly at desktop and mobile sizes.
+The product owner selected the last image in each marketplace gallery because both are product-only photographs without a separate promotional overlay. Ultra Lift image 11 contains no excluded claim text. ReneWal image 12 retains the small English phrase `Concentrated anti-wrinkle cream with a Botox effect` printed on the physical package; treat it only as documentary packaging artwork and do not repeat it in site copy, alternative text, metadata, or structured data. Before publication, visually confirm the correct current product and brand and clean rendering at desktop and mobile sizes.
 
 ## Product content
 
@@ -129,7 +129,7 @@ All copy describes cosmetic care. It does not claim treatment, injection equival
 
 **Image alternative text**
 
-> Крем для лица с пептидами Neon Beard Ultra Lift, 100 мл
+> Крем для лица с пептидами Neon Beard Ultra Lift, 100 г
 
 **Summary**
 
@@ -186,7 +186,7 @@ This normalization corrects `Copper Trepeptide-1`, `Shea Batter`, and `Simmonsa 
 
 **Image alternative text**
 
-> Крем для лица с пептидами SkineticsLab ReneWal, 50 мл
+> Крем для лица с пептидами SkineticsLab ReneWal, 50 г
 
 **Summary**
 
@@ -277,7 +277,7 @@ Add `/cream` as the navigation-facing face-cream listing. It contains only Ultra
 
 Add `Каталог` linking to `/catalog` and `Кремы` linking to `/cream` to both desktop and mobile navigation. Preserve `Сыворотки` linking to `/serum`.
 
-Homepage, catalog, and category cards link to the corresponding product page. Each card displays the resolved customer-facing brand and volume separately from the product title and summary. Marketplace actions remain Wildberries first and Ozon second according to the global marketplace registry.
+Homepage, catalog, and category cards link to the corresponding product page. Each card displays the resolved customer-facing brand and packaging quantity separately from the product title and summary. Marketplace actions remain Wildberries first and Ozon second according to the global marketplace registry.
 
 ## Metadata and indexability
 
@@ -295,8 +295,8 @@ Keep `/serum` metadata unchanged. Every listing keeps its self-referencing canon
 
 | Route | Title | Description |
 |---|---|---|
-| `/catalog/ultra-lift` | `Крем для лица с пептидами Ultra Lift \| Neon Beard` | `Крем Neon Beard Ultra Lift, 100 мл: пептиды, гиалуроновая кислота и растительные масла. Состав, применение и ссылки на Wildberries и Ozon.` |
-| `/catalog/renewal` | `Крем для лица с пептидами ReneWal \| SkineticsLab` | `Крем SkineticsLab ReneWal, 50 мл: пептиды, производное витамина C и увлажняющие компоненты. Состав, применение и ссылки на Wildberries и Ozon.` |
+| `/catalog/ultra-lift` | `Крем для лица с пептидами Ultra Lift \| Neon Beard` | `Крем Neon Beard Ultra Lift, 100 г: пептиды, гиалуроновая кислота и растительные масла. Состав, применение и ссылки на Wildberries и Ozon.` |
+| `/catalog/renewal` | `Крем для лица с пептидами ReneWal \| SkineticsLab` | `Крем SkineticsLab ReneWal, 50 г: пептиды, производное витамина C и увлажняющие компоненты. Состав, применение и ссылки на Wildberries и Ozon.` |
 
 Each product has exactly one H1, its exact self-referencing canonical, rendered copy, and static generation through the published-product selector. Add `/cream` and both product URLs to the sitemap without removing any established route. Keep `/ingredients` excluded from the sitemap and `noindex, follow`.
 
@@ -319,7 +319,7 @@ The generic product page resolves and displays the customer-facing brand before 
 
 1. visible breadcrumb;
 2. brand label and product H1;
-3. image, volume, and ordered marketplace actions;
+3. image, packaging quantity, and ordered marketplace actions;
 4. purpose;
 5. suitable-use section when present;
 6. active components;
@@ -408,10 +408,11 @@ For all five product pages, verify the three-level `BreadcrumbList` has the corr
 
 For each cream, verify:
 
-- canonical name, brand, volume, and barcode;
+- canonical name, brand, packaging quantity, and barcode;
 - exact approved copy and canonical composition;
 - correct local image and alternative text;
-- image text contains no excluded medical, guaranteed, or injection-equivalence claim;
+- Ultra Lift image text contains no excluded medical, guaranteed, or injection-equivalence claim;
+- ReneWal uses the owner-selected product-only gallery image; its recorded printed-package phrase is not repeated as authored site content;
 - Wildberries and Ozon URLs open the intended matching product;
 - Wildberries renders before Ozon;
 - actions open in a new tab with safe `rel` attributes.
@@ -432,11 +433,19 @@ Use local stub implementations of `ym`, `gtag`, and `_tmr` so validation does no
 
 Smoke-check the unchanged serum routes, `/about`, `/contacts`, and both forms with validation-only input and no real customer data.
 
+**Implementation evidence note — 2026-08-23:** The approved validation intent above remains the desired full matrix, but the local implementation-validation run used representative direct browser coverage: homepage at 1280 px; `/cream` at 1280 px, 1440 px, and 390 px; and both cream product pages at 1280 px and 390 px. `/catalog` was validated through generated HTML, source, its five-product listing count, and production-build output rather than direct browser checks at both target widths. The full all-routes-at-both-widths browser matrix was not run.
+
+Standard analytics stubs directly exercised ReneWal product-hero actions for Wildberries and Ozon and the Ultra Lift Wildberries catalog-card action. The Ultra Lift Wildberries product-hero action was exercised separately with `gtag` absent and with a throwing `ym` to confirm failure-safe default action. Other product, marketplace, and placement combinations were not directly exercised with standard stubs. The locally validated status is based on the passing build/static checks plus this representative browser and analytics evidence; it is not a claim that every originally listed combination passed.
+
 ## Documentation and launch monitoring
 
 After implementation, update the Phase 02 checklist, findings, validation record, README, root status, product source of truth, and append-only refactoring log. Record the deployment date and monitor indexability plus marketplace-click delivery for 14 days after deployment.
 
 Phase 02 is complete only when both creams are published with verified evidence, all validation passes, documentation records the result, and no unrelated worktree changes are included.
+
+## Implementation record
+
+The design was implemented and locally validated on 2026-08-23 in commits `7e4cdf5`, `470ceb9`, `458e13a`, `ad5b74b`, and `e046439`. The release candidate passed the recorded local checks in [VALIDATION.md](./VALIDATION.md). No production deployment occurred; the phase completion date and 14-day monitoring window remain open.
 
 ## Related records
 

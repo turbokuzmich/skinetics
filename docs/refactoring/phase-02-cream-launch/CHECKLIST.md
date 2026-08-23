@@ -1,36 +1,41 @@
 # Phase 02 checklist
 
+Status: Implementation validated; deployment pending
+
 ## Product evidence
 
-- [ ] Confirm final product names and brands.
-- [ ] Confirm volumes and barcodes.
-- [ ] Obtain approved product images.
-- [ ] Verify INCI, application, and precautions.
-- [ ] Review every efficacy and safety claim.
+- [x] Confirm final product names and brands.
+- [x] Confirm packaging quantities and barcodes.
+- [x] Obtain and visually verify the owner-selected product images.
+- [x] Review and minimally normalize the marketplace INCI accepted for site use.
+- [x] Approve application and precautions for both products.
+- [x] Review every authored efficacy and safety claim.
+
+The product owner approved the exact application and precaution wording separately for Ultra Lift and ReneWal on 2026-08-23.
 
 ## Page design and content
 
-- [ ] Select stable URL slugs.
-- [ ] Write unique title, description, H1, and product summary.
-- [ ] Write purpose, suitable-use, active-component, application, precaution, composition, and FAQ sections.
-- [ ] Define marketplace action order and labels.
-- [ ] Review content before implementation.
+- [x] Select stable URL slugs.
+- [x] Write unique title, description, H1, and product summary.
+- [x] Write purpose, suitable-use, active-component, application, precaution, composition, and FAQ sections.
+- [x] Define marketplace action order and labels.
+- [x] Review content before implementation.
 
 ## Implementation
 
-- [ ] Add both product records.
-- [ ] Add both product descriptions/pages.
-- [ ] Add Wildberries and Ozon links.
-- [ ] Add products to the correct catalog/listing surfaces.
-- [ ] Add metadata, canonicals, sitemap entries, and structured data where approved.
-- [ ] Add internal links from relevant existing pages.
+- [x] Add both product records.
+- [x] Add both product descriptions/pages.
+- [x] Add Wildberries and Ozon links.
+- [x] Add products to the correct catalog/listing surfaces, including `/cream`.
+- [x] Add metadata, canonicals, sitemap entries, and approved breadcrumb structured data.
+- [x] Add internal links from relevant existing pages.
 
 ## Validation and launch
 
-- [ ] Run lint and production build.
-- [ ] Verify desktop and mobile presentation.
-- [ ] Verify both marketplace destinations for each product.
-- [ ] Verify analytics events and UTM behavior.
-- [ ] Verify rendered HTML and indexability.
+- [x] Run lint and production build.
+- [x] Verify representative desktop and mobile presentation: homepage at 1280 px, `/cream` at 1280/1440/390 px, and both cream pages at 1280/390 px; validate `/catalog` through generated HTML, source, listing count, and build output.
+- [x] Verify both marketplace destinations for each product.
+- [x] Verify representative analytics coverage with local stubs: ReneWal hero Wildberries/Ozon, Ultra Lift catalog-card Wildberries, and Ultra Lift hero Wildberries failure-safe navigation probes.
+- [x] Verify rendered HTML and indexability.
 - [ ] Record launch date and post-launch monitoring window.
-- [ ] Update root status and log.
+- [x] Update root status and log for local implementation validation.

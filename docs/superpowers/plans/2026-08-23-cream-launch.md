@@ -10,6 +10,8 @@
 
 **Spec:** `docs/refactoring/phase-02-cream-launch/DESIGN.md`
 
+**Execution status:** Tasks 1–6 completed and validated locally on 2026-08-23. Production deployment is outside this plan and remains pending explicit authorization.
+
 ## Global Constraints
 
 - Read `AGENTS.md` and the complete spec before beginning each task.
@@ -39,7 +41,7 @@
 - Consumes: Existing `Product`, `ProductContent`, `ProductCategory`, and `assertCatalogIntegrity()` contracts.
 - Produces: `ProductFaqItem`; `ProductCategory.path: string`; `Product.barcode: string`; optional `ProductContent.suitableUse`, `precautionsHeading`, and `faq`; build-time barcode and face-cream content validation.
 
-- [ ] **Step 1: Add the new types and run the build as a failing type check**
+- [x] **Step 1: Add the new types and run the build as a failing type check**
 
 Modify the domain types to include these exact fields:
 
@@ -99,7 +101,7 @@ npm run build
 
 Expected: FAIL because the existing category and product records do not yet provide `path` and `barcode`.
 
-- [ ] **Step 2: Add category paths and the three existing serum barcodes**
+- [x] **Step 2: Add category paths and the three existing serum barcodes**
 
 Update the category registry:
 
@@ -126,7 +128,7 @@ barcode: "2043752250338", // copper_tripeptide
 barcode: "4630247421137", // climbazole
 ```
 
-- [ ] **Step 3: Implement barcode and cream-content integrity checks**
+- [x] **Step 3: Implement barcode and cream-content integrity checks**
 
 Add one barcode set beside the existing ID and slug sets:
 
@@ -169,7 +171,7 @@ if (product.categoryId === "face-cream") {
 }
 ```
 
-- [ ] **Step 4: Run the production build**
+- [x] **Step 4: Run the production build**
 
 Run:
 
@@ -179,7 +181,7 @@ npm run build
 
 Expected: PASS with the existing three products and no new warning.
 
-- [ ] **Step 5: Mutation-check duplicate barcode rejection**
+- [x] **Step 5: Mutation-check duplicate barcode rejection**
 
 Temporarily change the `copper_tripeptide` barcode to `2043752266957`, run:
 
@@ -195,7 +197,7 @@ Invalid catalog product "copper_tripeptide": duplicate barcode "2043752266957"
 
 Restore `copper_tripeptide` to `2043752250338`, rerun `npm run build`, and expect PASS.
 
-- [ ] **Step 6: Commit the domain change**
+- [x] **Step 6: Commit the domain change**
 
 ```bash
 git add types.ts constants.ts lib/catalogIntegrity.ts
@@ -215,29 +217,29 @@ git commit -m "P02: extend catalog product data"
 - Consumes: The extended `Product` and `ProductContent` types from Task 1; existing `brands`, `marketplaces`, and catalog integrity assertion.
 - Produces: Published `ultra_lift` and `renewal` products available to every published-product selector.
 
-- [ ] **Step 1: Download the reviewed primary images**
+- [x] **Step 1: Download the reviewed gallery images**
 
 Run:
 
 ```bash
-curl --fail --location "https://mow-basket-cdn-54.geobasket.ru/vol7689/part768970/768970852/images/big/1.webp" --output public/items/ultra_lift.webp
-curl --fail --location "https://mow-basket-cdn-31.geobasket.ru/vol7711/part771142/771142529/images/big/1.webp" --output public/items/renewal.webp
+curl --fail --location "https://mow-basket-cdn-54.geobasket.ru/vol7689/part768970/768970852/images/big/11.webp" --output public/items/ultra_lift.webp
+curl --fail --location "https://mow-basket-cdn-31.geobasket.ru/vol7711/part771142/771142529/images/big/12.webp" --output public/items/renewal.webp
 file public/items/ultra_lift.webp public/items/renewal.webp
 ```
 
 Expected: both downloads succeed and `file` identifies both assets as WebP images.
 
-- [ ] **Step 2: Visually inspect both assets**
+- [x] **Step 2: Visually inspect both assets**
 
 Open both files with the workspace image viewer at original detail. Confirm:
 
-- `ultra_lift.webp` shows Neon Beard Ultra Lift, 100 мл;
-- `renewal.webp` shows SkineticsLab ReneWal, 50 мл;
-- the visible packaging does not introduce `эффект ботокс`, injection equivalence, guaranteed wrinkle removal, treatment, or another excluded claim.
+- `ultra_lift.webp` shows Neon Beard Ultra Lift, 100 г, without an excluded claim;
+- `renewal.webp` shows SkineticsLab ReneWal, 50 г, without a separate marketplace promotional overlay;
+- ReneWal's small printed-package phrase `Concentrated anti-wrinkle cream with a Botox effect` is not repeated in page copy, alternative text, metadata, or structured data.
 
-Stop and replace the source image with a reviewed current packaging image if any check fails.
+Stop and replace the source image if its identity differs from these reviewed last-gallery assets or if a separate promotional overlay is present.
 
-- [ ] **Step 3: Add the exact Ultra Lift record**
+- [x] **Step 3: Add the exact Ultra Lift record**
 
 Append this object after the three serum records:
 
@@ -254,10 +256,10 @@ Append this object after the three serum records:
     "Крем Neon Beard с пептидами, гиалуроновой кислотой и растительными маслами для ежедневного ухода за кожей лица.",
   image: "/items/ultra_lift.webp",
   imageAlt:
-    "Крем для лица с пептидами Neon Beard Ultra Lift, 100 мл",
+    "Крем для лица с пептидами Neon Beard Ultra Lift, 100 г",
   composition:
     "Aqua; Cetearyl Olivate; Sorbitan Olivate; SpecPed SC-AH8® (Acetyl Hexapeptide-8, GHK-Cu (Copper Tripeptide-1)); Hydroxypropyl Cyclodextrin; Syn-Ake® (Dipeptide Diaminobutyroyl Benzylamide Diacetate); Glyceryl Stearate; Shea Butter; Theobroma Cacao Seed Butter; Butyrospermum Parkii; Simmondsia Chinensis (Jojoba) Seed Oil; Ethylhexyl Stearate; Cetyl Stearyl Alcohol; Ceteareth-20; Phenoxyethanol; Ethylhexylglycerin; Hyaluronic Acid; Hydroxyethyl Urea; Semisqualane; Rosa Centifolia Flower Extract CO2; Octyldodecanol; Allantoin; EDTA; Fragrance.",
-  volume: "100 мл",
+  volume: "100 г",
   content: {
     overview:
       "Крем Neon Beard Ultra Lift предназначен для ежедневного ухода за кожей лица. Формула помогает поддерживать ощущение увлажнённости, смягчает кожу и способствует более ухоженному внешнему виду.",
@@ -312,12 +314,12 @@ Append this object after the three serum records:
   metadata: {
     title: "Крем для лица с пептидами Ultra Lift | Neon Beard",
     description:
-      "Крем Neon Beard Ultra Lift, 100 мл: пептиды, гиалуроновая кислота и растительные масла. Состав, применение и ссылки на Wildberries и Ozon.",
+      "Крем Neon Beard Ultra Lift, 100 г: пептиды, гиалуроновая кислота и растительные масла. Состав, применение и ссылки на Wildberries и Ozon.",
   },
 },
 ```
 
-- [ ] **Step 4: Add the exact ReneWal record**
+- [x] **Step 4: Add the exact ReneWal record**
 
 Append this object after Ultra Lift:
 
@@ -334,10 +336,10 @@ Append this object after Ultra Lift:
     "Крем SkineticsLab с пептидами, производным витамина C и увлажняющими компонентами для ежедневного ухода за кожей лица.",
   image: "/items/renewal.webp",
   imageAlt:
-    "Крем для лица с пептидами SkineticsLab ReneWal, 50 мл",
+    "Крем для лица с пептидами SkineticsLab ReneWal, 50 г",
   composition:
     "Acetyl Hexapeptide-8; Jojoba Seed Oil; Cocos Nucifera (Coconut) Oil; 3-O-Ethyl Ascorbic Acid; GHK-Cu (Water, Butylene Glycol, Glycerin, Copper Tripeptide-1); Dipeptide Diaminobutyroyl Benzylamide Diacetate; Glyceryl Stearate; Olea Prunus Amygdalus Dulcis; Hydroxyethyl Urea; PPG-26-Buteth-26; Sodium Hyaluronate; PEG-40 Hydrogenated Castor Oil; 1,2-Hexanediol; Caprylyl Glycol; Glycine Soja Oil; Glycerin; Ethylhexyl Stearate; Panthenol; Cetyl Stearyl Alcohol; Ceteareth-20; Phenoxyethanol; Ethylhexylglycerin; Semisqualane; Octyldodecanol; Ageratum Conyzoides Leaf Extract; Xanthan Gum; Allantoin; Disodium EDTA; Fragrance; Syn-Ake®.",
-  volume: "50 мл",
+  volume: "50 г",
   content: {
     overview:
       "Крем SkineticsLab ReneWal предназначен для ежедневного ухода за кожей лица. Формула помогает поддерживать ощущение увлажнённости и комфорта, смягчает кожу и способствует более ухоженному внешнему виду.",
@@ -392,12 +394,12 @@ Append this object after Ultra Lift:
   metadata: {
     title: "Крем для лица с пептидами ReneWal | SkineticsLab",
     description:
-      "Крем SkineticsLab ReneWal, 50 мл: пептиды, производное витамина C и увлажняющие компоненты. Состав, применение и ссылки на Wildberries и Ozon.",
+      "Крем SkineticsLab ReneWal, 50 г: пептиды, производное витамина C и увлажняющие компоненты. Состав, применение и ссылки на Wildberries и Ozon.",
   },
 },
 ```
 
-- [ ] **Step 5: Run catalog and production checks**
+- [x] **Step 5: Run catalog and production checks**
 
 Run:
 
@@ -408,7 +410,7 @@ npm run build
 
 Expected: PASS; static generation now includes both cream product slugs, and the integrity assertion accepts both marketplace destinations and content records.
 
-- [ ] **Step 6: Commit the product records and assets**
+- [x] **Step 6: Commit the product records and assets**
 
 ```bash
 git add constants.ts public/items/ultra_lift.webp public/items/renewal.webp
@@ -429,7 +431,7 @@ git commit -m "P02: add cream catalog products"
 - Consumes: `Product`, `ProductFaqItem`, `brands`, `productCategories`, and the existing product route.
 - Produces: `ProductBreadcrumbs({ product })`, `ProductFaq({ items })`, visible category-aware navigation, escaped `BreadcrumbList` JSON-LD, brand labels, and optional cream content.
 
-- [ ] **Step 1: Add product-route references before creating the components**
+- [x] **Step 1: Add product-route references before creating the components**
 
 Add these imports and calls to `app/catalog/[id]/page.tsx`:
 
@@ -473,7 +475,7 @@ npm run build
 
 Expected: FAIL because `productBreadcrumbs.tsx` and `productFaq.tsx` do not exist.
 
-- [ ] **Step 2: Create the server-rendered breadcrumb component**
+- [x] **Step 2: Create the server-rendered breadcrumb component**
 
 Create `app/_components/productBreadcrumbs.tsx`:
 
@@ -532,7 +534,7 @@ export default function ProductBreadcrumbs({
 }
 ```
 
-- [ ] **Step 3: Create the semantic FAQ renderer**
+- [x] **Step 3: Create the semantic FAQ renderer**
 
 Create `app/_components/productFaq.tsx`:
 
@@ -570,7 +572,7 @@ export default function ProductFaq({
 }
 ```
 
-- [ ] **Step 4: Render suitable-use and product-specific precaution headings**
+- [x] **Step 4: Render suitable-use and product-specific precaution headings**
 
 In `ProductDescription`, insert the optional suitable-use section after the overview:
 
@@ -595,7 +597,7 @@ Replace the hard-coded precaution heading with:
 
 Use `component="h2"` for the active-components, feature, and application headings while retaining their existing visible MUI variants.
 
-- [ ] **Step 5: Keep composition before FAQ and complete the product route**
+- [x] **Step 5: Keep composition before FAQ and complete the product route**
 
 The product content order in `app/catalog/[id]/page.tsx` must be:
 
@@ -608,9 +610,9 @@ The product content order in `app/catalog/[id]/page.tsx` must be:
 <ProductFaq items={product.content.faq} />
 ```
 
-Keep the existing image, volume, marketplace placement, static params, metadata generation, canonical generation, `dynamicParams = false`, and not-found behavior.
+Keep the existing image, quantity, marketplace placement, static params, metadata generation, canonical generation, `dynamicParams = false`, and not-found behavior.
 
-- [ ] **Step 6: Build and inspect generated breadcrumb HTML**
+- [x] **Step 6: Build and inspect generated breadcrumb HTML**
 
 Run:
 
@@ -622,7 +624,7 @@ rg -n "BreadcrumbList|Главная|Сыворотки|catalog/red_pepper" .nex
 
 Expected: PASS; each generated file contains visible breadcrumb text and one `BreadcrumbList` payload with the correct category path.
 
-- [ ] **Step 7: Commit product rendering**
+- [x] **Step 7: Commit product rendering**
 
 ```bash
 git add app/_components/productBreadcrumbs.tsx app/_components/productFaq.tsx app/_components/productDescription.tsx app/catalog/[id]/page.tsx
@@ -644,9 +646,9 @@ git commit -m "P02: render product content and breadcrumbs"
 
 **Interfaces:**
 - Consumes: `getPublishedProducts()`, `getPublishedProductsByCategory()`, `brands`, category path data, and generic marketplace actions.
-- Produces: A two-product `/cream` listing; five-product homepage and catalog; neutral multi-brand copy; brand/volume card context; Russian document language; navigation and sitemap links.
+- Produces: A two-product `/cream` listing; five-product homepage and catalog; neutral multi-brand copy; brand/quantity card context; Russian document language; navigation and sitemap links.
 
-- [ ] **Step 1: Add explicit catalog description support and card brand context**
+- [x] **Step 1: Add explicit catalog description support and card brand context**
 
 Extend `Catalog` props:
 
@@ -680,7 +682,7 @@ Import `brands` and replace the current hard-coded Dr. Health paragraph with:
 )}
 ```
 
-Add `CardContent` and render brand, volume, and summary separately between `CardHeader` and `CardActions`:
+Add `CardContent` and render brand, packaging quantity, and summary separately between `CardHeader` and `CardActions`:
 
 ```tsx
 <CardHeader
@@ -700,7 +702,7 @@ Add `CardContent` and render brand, volume, and summary separately between `Card
 
 Remove the old use of `summary` as `CardHeader.subheader`. Keep the current grid, image behavior, details link, marketplace actions, and responsive wrapping.
 
-- [ ] **Step 2: Add the cream listing route**
+- [x] **Step 2: Add the cream listing route**
 
 Create `app/cream/page.tsx`:
 
@@ -733,7 +735,7 @@ export default function CreamPage() {
 }
 ```
 
-- [ ] **Step 3: Apply exact homepage and catalog metadata and copy**
+- [x] **Step 3: Apply exact homepage and catalog metadata and copy**
 
 Replace homepage metadata with:
 
@@ -774,7 +776,7 @@ Render its catalog with:
 
 Do not alter `/serum`.
 
-- [ ] **Step 4: Add catalog and cream navigation entries**
+- [x] **Step 4: Add catalog and cream navigation entries**
 
 Update `navigation` to this top-level order while retaining the existing serum subitems:
 
@@ -812,7 +814,7 @@ export const navigation: NaviItem[] = [
 ];
 ```
 
-- [ ] **Step 5: Update language and sitemap**
+- [x] **Step 5: Update language and sitemap**
 
 Change the root element:
 
@@ -833,7 +835,7 @@ const indexableStaticPaths = [
 ];
 ```
 
-- [ ] **Step 6: Run lint and build**
+- [x] **Step 6: Run lint and build**
 
 Run:
 
@@ -844,7 +846,7 @@ npm run build
 
 Expected: PASS with no new warning. The build output contains `/cream`, `/catalog/ultra-lift`, and `/catalog/renewal`; all established routes remain.
 
-- [ ] **Step 7: Commit listing and SEO changes**
+- [x] **Step 7: Commit listing and SEO changes**
 
 ```bash
 git add app/_components/catalog.tsx app/cream/page.tsx app/page.tsx app/catalog/page.tsx app/layout.tsx app/sitemap.ts constants.ts
@@ -863,7 +865,7 @@ git commit -m "P02: add cream discovery pages"
 - Consumes: The production build and all public Phase 02 routes.
 - Produces: Evidence that the local release candidate meets routing, HTML, SEO, responsive, marketplace, and analytics requirements without sending production data.
 
-- [ ] **Step 1: Run final static checks**
+- [x] **Step 1: Run final static checks**
 
 Run:
 
@@ -875,7 +877,7 @@ npm run build
 
 Expected: all commands pass. Only the five warnings already recorded for `carousel.tsx`, `form.tsx`, and `reports.tsx` may remain; Phase 02 files introduce no warning.
 
-- [ ] **Step 2: Start the production server on an isolated port**
+- [x] **Step 2: Start the production server on an isolated port**
 
 Run in a persistent terminal:
 
@@ -885,7 +887,7 @@ npm run start -- -p 3100
 
 Expected: the server reports ready at `http://localhost:3100`.
 
-- [ ] **Step 3: Verify route status**
+- [x] **Step 3: Verify route status**
 
 Run:
 
@@ -907,7 +909,7 @@ curl --silent --output /dev/null --write-out "%{http_code}\n" http://localhost:3
 
 Expected: every `--fail` request succeeds and the final command prints `404`.
 
-- [ ] **Step 4: Verify listing counts and internal links in rendered HTML**
+- [x] **Step 4: Verify listing counts and internal links in rendered HTML**
 
 Save rendered HTML outside the repository:
 
@@ -930,7 +932,7 @@ rg -o 'href="/catalog/[^"]+"' /tmp/skinetics-phase-02-validation/cream.html
 
 Expected unique product destinations: homepage 5, catalog 5, serum 3, cream 2. Confirm navigation contains `/catalog`, `/serum`, and `/cream`.
 
-- [ ] **Step 5: Verify cream metadata, copy, canonicals, and breadcrumbs**
+- [x] **Step 5: Verify cream metadata, copy, canonicals, and breadcrumbs**
 
 Save both product pages:
 
@@ -956,7 +958,7 @@ rg -n '"@type":"(Product|Offer|Review|AggregateRating|FAQPage)"|"price"|"availab
 
 Expected: no match.
 
-- [ ] **Step 6: Verify the sitemap**
+- [x] **Step 6: Verify the sitemap**
 
 Run:
 
@@ -968,7 +970,7 @@ rg -n 'https://skinetics.ru/ingredients' /tmp/skinetics-phase-02-validation/site
 
 Expected: the first search finds every new and established product/category URL; the second finds no match.
 
-- [ ] **Step 7: Verify marketplace destinations and order**
+- [x] **Step 7: Verify marketplace destinations and order**
 
 In both cream HTML files, confirm:
 
@@ -978,9 +980,9 @@ rg -n 'wildberries.ru/catalog/(768970852|771142529)|ozon.ru/product/(5223635791|
 
 Expected: each page contains its matching Wildberries and Ozon IDs, Wildberries occurs before Ozon, and both links use safe new-tab attributes.
 
-- [ ] **Step 8: Perform responsive browser checks**
+- [x] **Step 8: Perform representative responsive browser checks**
 
-Open these routes in the local browser at 1280 px and 390 px widths:
+The approved target matrix was these routes at desktop width and 390 px mobile width:
 
 - `/`;
 - `/catalog`;
@@ -988,9 +990,18 @@ Open these routes in the local browser at 1280 px and 390 px widths:
 - `/catalog/ultra-lift`;
 - `/catalog/renewal`.
 
-At each width, confirm no horizontal overflow; images are contained; headings, composition, and FAQ remain readable; brand and volume are visible; and both marketplace buttons remain visible and usable. Confirm `/serum` still shows only the three original products.
+At each width, confirm no horizontal overflow; images are contained; headings, composition, and FAQ remain readable; brand and quantity are visible; and both marketplace buttons remain visible and usable. Confirm `/serum` still shows only the three original products.
 
-- [ ] **Step 9: Validate analytics with local stubs**
+Completed representative evidence:
+
+- homepage: direct browser check at 1280 px;
+- `/cream`: direct browser checks at 1280 px, 1440 px, and 390 px;
+- `/catalog/ultra-lift` and `/catalog/renewal`: direct browser checks at 1280 px and 390 px;
+- `/catalog`: generated HTML, source, five-product listing count, and production-build validation; no direct 1440 px and 390 px browser checks.
+
+No horizontal overflow appeared in the directly observed cases. The full all-routes-at-both-widths browser matrix was not run.
+
+- [x] **Step 9: Validate representative analytics with local stubs**
 
 Before clicking marketplace actions, install these local browser stubs:
 
@@ -1014,13 +1025,21 @@ Expected:
 
 Repeat one click with `window.gtag` removed and one with a throwing `window.ym`; the target link must still open.
 
-- [ ] **Step 10: Smoke-check unchanged routes and forms**
+Completed representative evidence:
+
+- standard stubs: ReneWal product hero for Wildberries and Ozon;
+- standard stubs: Ultra Lift catalog card for Wildberries;
+- failure-safety probes: Ultra Lift Wildberries product hero with `gtag` absent and with a throwing `ym`; a local default-action marker ran in both cases while external navigation was suppressed.
+
+Other product, marketplace, and placement combinations were not directly exercised with standard stubs in this run.
+
+- [x] **Step 10: Smoke-check unchanged routes and forms**
 
 Open `/about`, `/contacts`, and `/serum`. Submit the trichologist and feedback forms with empty validation-only input.
 
 Expected: unchanged pages render, serum metadata and products remain intact, client validation appears, no request containing customer data is sent, and no console error is introduced.
 
-- [ ] **Step 11: Correct defects and rerun the affected validation**
+- [x] **Step 11: Correct defects and rerun the affected validation**
 
 For every defect, make the smallest in-scope correction in the owning file, rerun `npm run lint` and `npm run build`, repeat the failed manual check, and amend the Task 4 commit:
 
@@ -1036,6 +1055,8 @@ Do not stage unrelated paths. If a fix belongs to an earlier focused commit and 
 ### Task 6: Record implementation validation and deployment readiness
 
 **Files:**
+- Modify: `AGENTS.md`
+- Modify: `docs/refactoring/ROADMAP.md`
 - Modify: `docs/refactoring/phase-02-cream-launch/README.md`
 - Modify: `docs/refactoring/phase-02-cream-launch/INPUTS.md`
 - Modify: `docs/refactoring/phase-02-cream-launch/CHECKLIST.md`
@@ -1043,6 +1064,7 @@ Do not stage unrelated paths. If a fix belongs to an earlier focused commit and 
 - Modify: `docs/refactoring/phase-02-cream-launch/VALIDATION.md`
 - Modify: `docs/refactoring/phase-02-cream-launch/DESIGN.md`
 - Modify: `docs/refactoring/phase-02-cream-launch/artifacts/README.md`
+- Modify: `docs/refactoring/shared/brand-architecture.md`
 - Modify: `docs/refactoring/shared/product-source-of-truth.md`
 - Modify: `docs/refactoring/STATUS.md`
 - Modify: `docs/refactoring/LOG.md`
@@ -1054,7 +1076,7 @@ Do not stage unrelated paths. If a fix belongs to an earlier focused commit and 
 - Consumes: Passing evidence from Task 5 and the approved design.
 - Produces: A truthful repository record that implementation is locally validated and deployment plus the 14-day production-monitoring window remain separate pending work.
 
-- [ ] **Step 1: Review every pre-existing Phase 02 documentation diff**
+- [x] **Step 1: Review every pre-existing Phase 02 documentation diff**
 
 Run:
 
@@ -1064,7 +1086,7 @@ git diff -- docs/refactoring/LOG.md docs/refactoring/STATUS.md docs/refactoring/
 
 Confirm the changes belong to Phase 02 and preserve all accepted evidence. Do not stage or rewrite `.agents/`, `docs/seo-start/`, `export.sh`, or `skills-lock.json`.
 
-- [ ] **Step 2: Update Phase 02 status without claiming deployment**
+- [x] **Step 2: Update Phase 02 status without claiming deployment**
 
 Set the Phase 02 README state to:
 
@@ -1074,7 +1096,7 @@ Implementation validated; deployment pending
 
 Keep the completion date unset until production deployment. Mark product-evidence, page-design, implementation, and local-validation checklist items complete. Leave deployment date and 14-day post-launch monitoring incomplete.
 
-- [ ] **Step 3: Record exact local validation evidence**
+- [x] **Step 3: Record exact local validation evidence**
 
 Replace the pending validation status with:
 
@@ -1090,16 +1112,16 @@ Record:
 - listing counts 5/5/3/2;
 - metadata, canonical, sitemap, language, and indexability checks;
 - five correct breadcrumbs and absence of deferred rich-result markup;
-- responsive checks at 1280 px and 390 px;
+- direct responsive checks for the homepage at 1280 px, `/cream` at 1280/1440/390 px, and both cream pages at 1280/390 px, plus markup/build verification for `/catalog`;
 - exact marketplace pairings and Wildberries-before-Ozon order;
 - stubbed analytics results and navigation-safe failure behavior;
 - unchanged serum, about, contacts, and form-validation smoke checks.
 
 Use only results actually observed in Task 5. If any item failed, keep its checkbox open and record the failure instead of writing `Passed`.
 
-- [ ] **Step 4: Update findings, source of truth, and root status**
+- [x] **Step 4: Update findings, source of truth, and root status**
 
-Record both creams as implemented and locally validated in the product source of truth. In Phase 02 findings, document the accepted composition normalization, local image verification, conservative claims treatment, `/cream`, breadcrumbs, and local validation result.
+Record both creams as implemented and locally validated in the product source of truth. In Phase 02 findings, document the accepted composition normalization, local image verification, the owner-selected last-gallery assets and ReneWal printed-package-text exception, conservative authored claims treatment, `/cream`, breadcrumbs, and local validation result.
 
 Set root status to:
 
@@ -1112,7 +1134,7 @@ Set root status to:
 
 Do not mark Phase 03 active and do not claim the products are live on Skinetics.
 
-- [ ] **Step 5: Add the implementation-validation log entry**
+- [x] **Step 5: Add the implementation-validation log entry**
 
 Add this newest entry below the log introduction:
 
@@ -1128,7 +1150,7 @@ Add this newest entry below the log introduction:
 - **Next:** Build the approved Linux release artifact and deploy only after explicit authorization.
 ```
 
-- [ ] **Step 6: Run documentation consistency checks**
+- [x] **Step 6: Run documentation consistency checks**
 
 Run:
 
@@ -1139,12 +1161,12 @@ git diff --check
 
 Expected: no stale statement says the structured-data decision, application wording, or application implementation is unresolved. Historical handoff language may remain only where clearly dated as historical evidence.
 
-- [ ] **Step 7: Commit only Phase 02 documentation**
+- [x] **Step 7: Commit only Phase 02 documentation**
 
 Stage the exact in-scope documentation:
 
 ```bash
-git add docs/refactoring/LOG.md docs/refactoring/STATUS.md docs/refactoring/phase-02-cream-launch docs/refactoring/shared/product-source-of-truth.md
+git add AGENTS.md docs/refactoring/LOG.md docs/refactoring/ROADMAP.md docs/refactoring/STATUS.md docs/refactoring/phase-02-cream-launch docs/refactoring/shared/brand-architecture.md docs/refactoring/shared/product-source-of-truth.md docs/superpowers/plans/2026-08-23-cream-launch.md
 git commit -m "P02: record cream launch validation"
 ```
 

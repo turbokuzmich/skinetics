@@ -1,6 +1,6 @@
 # Skinetics upgrade roadmap
 
-Last reviewed: 2026-08-22
+Last reviewed: 2026-08-23
 
 ## Program objective
 
@@ -53,13 +53,15 @@ Primary work:
 
 Primary work:
 
-- add the Neon Beard Ultra Lift cream, 100 ml;
-- add the SkineticsLab ReneWal cream, 50 ml, using compliant cosmetic wording;
+- add the Neon Beard Ultra Lift cream, 100 г;
+- add the SkineticsLab ReneWal cream, 50 г, using compliant cosmetic wording;
 - provide separate Wildberries and Ozon purchase actions;
-- add verified images, volume, INCI, application, precautions, metadata, and internal links;
+- add verified images, packaging quantity, INCI, application, precautions, metadata, and internal links;
 - update sitemap and structured data where appropriate.
 
 **Exit:** both product pages are accurate, indexable, linked from the catalog, tracked by product and marketplace, and validated on mobile and desktop.
+
+**Current state:** Implementation validated; deployment pending. The local release candidate meets the pre-deployment validation requirements; production publication and the post-launch monitoring window remain separately authorized work before the phase can exit.
 
 ## Phase 03 — Site architecture and content
 
