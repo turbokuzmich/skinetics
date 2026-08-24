@@ -25,7 +25,15 @@ const getTransport = (function () {
 })();
 
 export async function PUT(request: NextRequest) {
-  const parsed = doctorFormSchema.safeParse(await request.json());
+  let values: unknown;
+
+  try {
+    values = await request.json();
+  } catch {
+    return NextResponse.json({ success: false }, { status: 400 });
+  }
+
+  const parsed = doctorFormSchema.safeParse(values);
 
   if (parsed.error) {
     return NextResponse.json({ success: false }, { status: 400 });
@@ -34,7 +42,7 @@ export async function PUT(request: NextRequest) {
   try {
     await getTransport().sendMail({
       to: "info@skinetics.ru",
-      html: `<pre>${JSON.stringify(parsed.data, null, 2)}</pre>`,
+      text: JSON.stringify(parsed.data, null, 2),
       subject: "Запись к трихологу",
       from: process.env.EMAIL_SENDER,
     });

@@ -35,10 +35,16 @@ export default function DoctorForm() {
 
       try {
         await submitJson("/api/doctor", values);
-        reachGoalForm();
         setIsSubmitted(true);
       } catch {
         setSubmissionError(true);
+        return;
+      }
+
+      try {
+        reachGoalForm();
+      } catch {
+        // Analytics failure must not turn a delivered request into a retry.
       }
     },
     [],
@@ -63,7 +69,7 @@ export default function DoctorForm() {
       Мы свяжемся с вами в ближайшее время.
     </Alert>
   ) : (
-    <form onSubmit={handleSubmit(onSubmit)} id="appointment-form">
+    <form onSubmit={handleSubmit(onSubmit)} id="appointment-form" noValidate>
       <Stack spacing={2} useFlexGap>
         <TextField
           label="Ваше имя"
@@ -72,6 +78,7 @@ export default function DoctorForm() {
           error={Boolean(formState.errors.name)}
           helperText={formState.errors.name?.message}
           autoComplete="name"
+          required
           {...register("name")}
         />
         <TextField
@@ -82,6 +89,7 @@ export default function DoctorForm() {
           error={Boolean(formState.errors.phone)}
           helperText={formState.errors.phone?.message}
           autoComplete="tel"
+          required
           {...register("phone")}
         />
         {submissionError ? (

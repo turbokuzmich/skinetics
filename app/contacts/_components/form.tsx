@@ -34,10 +34,16 @@ export default function FeedbackForm() {
 
       try {
         await submitJson("/api/feedback", values);
-        reachGoalForm();
         setIsSubmitted(true);
       } catch {
         setSubmissionError(true);
+        return;
+      }
+
+      try {
+        reachGoalForm();
+      } catch {
+        // Analytics failure must not turn a delivered request into a retry.
       }
     },
     [],
@@ -48,7 +54,7 @@ export default function FeedbackForm() {
       Мы свяжемся с вами в ближайшее время.
     </Alert>
   ) : (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} noValidate>
       <Stack spacing={2} padding={4} useFlexGap>
         <Typography component="h3" variant="h5">
           Напишите нам
@@ -59,6 +65,7 @@ export default function FeedbackForm() {
           error={Boolean(formState.errors.name)}
           helperText={formState.errors.name?.message}
           autoComplete="name"
+          required
           {...register("name")}
         />
         <TextField
@@ -67,6 +74,7 @@ export default function FeedbackForm() {
           error={Boolean(formState.errors.email)}
           helperText={formState.errors.email?.message}
           autoComplete="email"
+          required
           {...register("email")}
         />
         <TextField
@@ -85,6 +93,7 @@ export default function FeedbackForm() {
           helperText={formState.errors.message?.message}
           rows={3}
           multiline
+          required
           {...register("message")}
         />
         {submissionError ? (

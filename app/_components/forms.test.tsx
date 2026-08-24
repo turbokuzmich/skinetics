@@ -27,34 +27,42 @@ describe("lead forms", () => {
     vi.resetAllMocks();
   });
 
-  it("identifies every field with a persistent visible label", () => {
-    const { unmount } = render(<DoctorForm />);
+  it("identifies every field and required value explicitly", () => {
+    const { container, unmount } = render(<DoctorForm />);
 
-    expect(
-      screen.getByRole("textbox", { name: "Ваше имя" }),
-    ).toBeVisible();
-    expect(
-      screen.getByRole("textbox", { name: "Номер телефона" }),
-    ).toBeVisible();
+    const doctorName = screen.getByRole("textbox", { name: "Ваше имя" });
+    const doctorPhone = screen.getByRole("textbox", {
+      name: "Номер телефона",
+    });
+    expect(doctorName).toBeVisible();
+    expect(doctorPhone).toBeVisible();
+    expect(doctorName).toBeRequired();
+    expect(doctorPhone).toBeRequired();
+    expect(container.querySelector("form")).toHaveAttribute("novalidate");
 
     unmount();
-    render(<FeedbackForm />);
+    const feedback = render(<FeedbackForm />);
 
     expect(
       screen.getByRole("heading", { level: 3, name: "Напишите нам" }),
     ).toBeVisible();
-    expect(
-      screen.getByRole("textbox", { name: "Ваше имя" }),
-    ).toBeVisible();
-    expect(
-      screen.getByRole("textbox", { name: "Электронная почта" }),
-    ).toBeVisible();
-    expect(
-      screen.getByRole("textbox", { name: "Номер телефона" }),
-    ).toBeVisible();
-    expect(
-      screen.getByRole("textbox", { name: "Сообщение" }),
-    ).toBeVisible();
+    const feedbackName = screen.getByRole("textbox", { name: "Ваше имя" });
+    const feedbackEmail = screen.getByRole("textbox", {
+      name: "Электронная почта",
+    });
+    const feedbackPhone = screen.getByRole("textbox", {
+      name: "Номер телефона",
+    });
+    const feedbackMessage = screen.getByRole("textbox", {
+      name: "Сообщение",
+    });
+    expect(feedbackName).toBeRequired();
+    expect(feedbackEmail).toBeRequired();
+    expect(feedbackPhone).not.toBeRequired();
+    expect(feedbackMessage).toBeRequired();
+    expect(feedback.container.querySelector("form")).toHaveAttribute(
+      "novalidate",
+    );
   });
 
   it("associates client-validation messages with their fields", async () => {
@@ -140,5 +148,61 @@ describe("lead forms", () => {
     expect(screen.getByRole("status")).toHaveTextContent(
       "Мы свяжемся с вами в ближайшее время.",
     );
+  });
+
+  it("shows doctor-form success when analytics throws after delivery", async () => {
+    const user = userEvent.setup();
+    submitJsonMock.mockResolvedValueOnce(undefined);
+    reachGoalFormMock.mockImplementationOnce(() => {
+      throw new Error("analytics unavailable");
+    });
+    render(<DoctorForm />);
+
+    await user.type(
+      screen.getByRole("textbox", { name: "Ваше имя" }),
+      "Анна",
+    );
+    await user.type(
+      screen.getByRole("textbox", { name: "Номер телефона" }),
+      "+7 123 123 23 23",
+    );
+    await user.click(screen.getByRole("button", { name: "Записаться" }));
+
+    expect(await screen.findByRole("status")).toHaveTextContent(
+      "Мы свяжемся с вами в ближайшее время.",
+    );
+    expect(submitJsonMock).toHaveBeenCalledTimes(1);
+    expect(reachGoalFormMock).toHaveBeenCalledTimes(1);
+    expect(screen.queryByRole("button", { name: "Записаться" })).toBeNull();
+  });
+
+  it("shows feedback success when analytics throws after delivery", async () => {
+    const user = userEvent.setup();
+    submitJsonMock.mockResolvedValueOnce(undefined);
+    reachGoalFormMock.mockImplementationOnce(() => {
+      throw new Error("analytics unavailable");
+    });
+    render(<FeedbackForm />);
+
+    await user.type(
+      screen.getByRole("textbox", { name: "Ваше имя" }),
+      "Анна",
+    );
+    await user.type(
+      screen.getByRole("textbox", { name: "Электронная почта" }),
+      "anna@example.com",
+    );
+    await user.type(
+      screen.getByRole("textbox", { name: "Сообщение" }),
+      "Хочу уточнить состав средства",
+    );
+    await user.click(screen.getByRole("button", { name: "Отправить" }));
+
+    expect(await screen.findByRole("status")).toHaveTextContent(
+      "Мы свяжемся с вами в ближайшее время.",
+    );
+    expect(submitJsonMock).toHaveBeenCalledTimes(1);
+    expect(reachGoalFormMock).toHaveBeenCalledTimes(1);
+    expect(screen.queryByRole("button", { name: "Отправить" })).toBeNull();
   });
 });

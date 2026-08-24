@@ -21,6 +21,14 @@ function createRequest(path: string, body: unknown) {
   });
 }
 
+function createMalformedRequest(path: string) {
+  return new NextRequest(`https://skinetics.ru${path}`, {
+    body: "{",
+    headers: { "content-type": "application/json" },
+    method: "PUT",
+  });
+}
+
 describe("form API routes", () => {
   beforeEach(() => {
     vi.clearAllMocks();
@@ -72,6 +80,55 @@ describe("form API routes", () => {
     await expect(response.json()).resolves.toEqual({ success: false });
     expect(sendMailMock).not.toHaveBeenCalled();
   });
+
+  it.each([
+    { path: "/api/doctor", submit: submitDoctorForm },
+    { path: "/api/feedback", submit: submitFeedbackForm },
+  ])(
+    "returns a generic 400 response for malformed JSON at $path",
+    async ({ path, submit }) => {
+      const response = await submit(createMalformedRequest(path));
+
+      expect(response.status).toBe(400);
+      await expect(response.json()).resolves.toEqual({ success: false });
+      expect(sendMailMock).not.toHaveBeenCalled();
+    },
+  );
+
+  it.each([
+    {
+      path: "/api/doctor",
+      submit: submitDoctorForm,
+      values: {
+        name: "</pre><img src=x onerror=alert(1)>",
+        phone: "+7 123 123 23 23",
+      },
+    },
+    {
+      path: "/api/feedback",
+      submit: submitFeedbackForm,
+      values: {
+        name: "Анна",
+        email: "anna@example.com",
+        phone: "",
+        message: "</pre><img src=x onerror=alert(1)>",
+      },
+    },
+  ])(
+    "puts hostile-looking user input only in a plain-text email for $path",
+    async ({ path, submit, values }) => {
+      sendMailMock.mockResolvedValueOnce(undefined);
+
+      const response = await submit(createRequest(path, values));
+
+      expect(response.status).toBe(200);
+      expect(sendMailMock).toHaveBeenCalledTimes(1);
+      const mail = sendMailMock.mock.calls[0][0];
+      expect(mail).not.toHaveProperty("html");
+      expect(mail).toHaveProperty("text");
+      expect(mail.text).toContain("</pre><img src=x onerror=alert(1)>");
+    },
+  );
 
   it("keeps successful delivery at 200", async () => {
     sendMailMock.mockResolvedValueOnce(undefined);
