@@ -30,7 +30,7 @@ The implementation:
 - Standalone image optimization was restored with production `sharp@0.35.3`; trust-list markup now contains only `li` children.
 - Form delivery now survives analytics exceptions, retains values on failure, returns generic API errors, and prevents HTML interpretation of submitted values.
 - `/ingredients` remains gated/noindex but now has the single H1 required by the global page contract.
-- Initial mobile Lighthouse scored 85 because third-party analytics dominated early loading. Immediate queues plus interaction/fallback external loaders reduced TBT from 305 ms to 11 ms and produced a final 92 performance / 100 accessibility score.
+- Initial mobile Lighthouse scored 85 because third-party analytics dominated early loading. Immediate queues plus parser-installed interaction/fallback loaders reduced TBT from 305 ms to 4 ms and produced a final 94 performance / 100 accessibility score.
 - The final browser matrix exposed undersized wordmark and short footer targets; the shared shell now guarantees 44×44 px and all 24 route/viewport checks pass.
 
 No local implementation blocker remains. Production deployment is intentionally not part of Phase 04 validation.

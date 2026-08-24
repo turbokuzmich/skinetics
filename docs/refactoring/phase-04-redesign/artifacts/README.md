@@ -6,5 +6,5 @@ Store design-direction comparisons, approved mockups, token and component invent
 - [Serum image sources](./serum-image-sources-2026-08-23.md) — verified Wildberries final-gallery URLs, dimensions, hashes, and retained-source evidence.
 - [Performance summary](./performance-summary.md) — final Lighthouse budgets, resource transfer, and the mobile tuning record.
 - [Responsive matrix](./responsive-matrix.md) — all 24 route/viewport landmark, overflow, target-size, and embedded-form results.
-- [Before/after browser captures](./captures/README.md) — production baseline homepage and all 24 validated local route/viewport screenshots.
+- [Before/after browser captures](./captures/README.md) — production baseline homepage, all 24 validated local route/viewport screenshots, and eight dedicated form views.
 - [Release and rollback notes](./release-and-rollback-notes.md) — authorized Linux artifact procedure, production smoke tests, and rollback boundary.

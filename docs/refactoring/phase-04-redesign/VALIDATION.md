@@ -30,10 +30,10 @@ The rendered validator checked `/`, `/catalog`, `/serum`, `/cream`, all five `/c
 
 The local production build was reviewed at 390×844, 768×1024, 1280×900, and 1440×900 for the homepage, catalog listing, a serum product, a cream product, About, Contacts, the doctor form, and the feedback form. The 24 measured rows are recorded in [responsive-matrix.md](./artifacts/responsive-matrix.md); the doctor form is embedded in every row and the feedback form is embedded in each Contacts row.
 
-The still-live pre-redesign homepage was captured at 390 and 1440 px, and all 24 final local cases were captured and linked from the [browser capture index](./artifacts/captures/README.md). No production mutation was performed.
+The still-live pre-redesign homepage was captured at 390 and 1440 px. All 24 final local route cases plus dedicated doctor/feedback form views at every width were captured and linked from the [browser capture index](./artifacts/captures/README.md). No production mutation was performed.
 
 - [x] All 24 route/viewport combinations had zero horizontal overflow and one H1/main/header/footer.
-- [x] All 24 final viewport captures plus two production baseline captures are retained as Phase 04 artifacts.
+- [x] All 24 final route captures, eight dedicated form captures, and two production baseline captures are retained as Phase 04 artifacts.
 - [x] Interactive controls measured at least 44×44 px, including the header/footer wordmarks and short footer links.
 - [x] Mobile navigation has a named dialog, focus trap, Escape close, close/link actions, and trigger focus restoration; focused tests pass.
 - [x] Keyboard order, visible focus treatment, heading order, landmarks, labels, image alternatives, and long product names remained usable.
@@ -56,8 +56,8 @@ Focused tests use local stubs and prove:
 
 ## Performance and media
 
-- [x] Mobile Lighthouse: performance 92, accessibility 100, LCP 3.34 s, CLS 0, TBT 11 ms.
-- [x] Desktop Lighthouse: performance 100, accessibility 100, LCP 0.75 s, CLS 0, TBT 0 ms.
+- [x] Mobile Lighthouse: performance 94, accessibility 100, LCP 3.16 s, CLS 0, TBT 4 ms.
+- [x] Desktop Lighthouse: performance 100, accessibility 100, LCP 0.74 s, CLS 0, TBT 0 ms.
 - [x] The four files under `public/video/` still exist and have no Phase 04 diff from `6a80ecc`.
 - [x] The three accepted serum sources are 900×1200 WebP files with source URLs and SHA-256 hashes recorded in the provenance artifact.
 - [x] The homepage and rendered runtime contain no video/carousel request or reference.
