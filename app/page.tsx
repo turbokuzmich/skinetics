@@ -1,12 +1,9 @@
-import Divider from "@mui/material/Divider";
-import Highlights from "./_components/advantages";
-import Testimonials from "./_components/reports";
-import Faq from "./_components/frequentlyAskedQuestions";
-import Advantages from "./_components/advantages";
-import Catalog from "./_components/catalog";
-import Carousel from "./_components/carousel";
-import Metrika from "./_components/metrika";
 import { type Metadata } from "next";
+import Catalog from "./_components/catalog";
+import CategoryNavigation from "./_components/categoryNavigation";
+import HomeHero from "./_components/homeHero";
+import Metrika from "./_components/metrika";
+import TrustEvidence from "./_components/trustEvidence";
 
 export const metadata: Metadata = {
   title: "Косметика для лица, волос и кожи головы | Skinetics",
@@ -21,18 +18,16 @@ export default function LandingPage() {
   return (
     <>
       <Metrika />
-      <Carousel />
+      <HomeHero />
+      <CategoryNavigation />
       <Catalog
-        heading="Косметика для лица, волос и кожи головы"
-        description="Skinetics объединяет средства Dr. Health, SkineticsLab и Neon Beard. Изучите назначение, состав и способ применения, затем выберите доступный маркетплейс."
+        eyebrow="Все пять средств"
+        heading="Выберите средство"
+        headingComponent="h2"
+        description="Сравните продукты трёх брендов и откройте страницу средства, чтобы изучить состав и применение."
+        showMarketplaceActions={false}
       />
-      <Advantages />
-      {/* <Divider />
-      <Testimonials />
-      <Divider />
-      <Highlights />
-      <Divider />
-      <Faq /> */}
+      <TrustEvidence />
     </>
   );
 }
