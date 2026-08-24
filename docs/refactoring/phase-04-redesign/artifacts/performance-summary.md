@@ -19,18 +19,18 @@ Raw Lighthouse profiles remain temporary and are not committed.
 
 | Profile | Performance | Accessibility | LCP | CLS | TBT | Resource-summary transfer | Requests |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| Mobile, 390×844 | 92 | 100 | 3.33 s | 0 | 12 ms | 384,518 B | 29 |
-| Desktop preset | 100 | 100 | 0.74 s | 0 | 0 ms | 429,301 B | 39 |
+| Mobile, 390×844 | 92 | 100 | 3.34 s | 0 | 11 ms | 384,511 B | 29 |
+| Desktop preset | 100 | 100 | 0.75 s | 0 | 0 ms | 429,373 B | 39 |
 
-Mobile transfer by resource type: scripts 215,908 B; fonts 100,688 B; images 42,757 B; document 17,166 B; other 6,376 B; stylesheet 1,623 B; media 0 B; third-party 0 B during the measured initial window.
+Mobile transfer by resource type: scripts 215,908 B; fonts 100,688 B; images 42,755 B; document 17,142 B; other 6,395 B; stylesheet 1,623 B; media 0 B; third-party 0 B during the measured initial window.
 
-Desktop transfer by resource type: scripts 223,461 B; fonts 100,688 B; images 59,562 B; other 26,801 B; document 17,166 B; stylesheet 1,623 B; media 0 B; third-party 0 B during the measured initial window.
+Desktop transfer by resource type: scripts 223,461 B; fonts 100,688 B; images 59,562 B; other 26,897 B; document 17,142 B; stylesheet 1,623 B; media 0 B; third-party 0 B during the measured initial window.
 
 ## Tuning record
 
 The first mobile measurement scored 85 performance / 100 accessibility with LCP 3.40 s, CLS 0, and TBT 305 ms. The trace attributed about 335 KB and 18 requests to analytics scripts during the initial render.
 
-The final implementation creates GA, Yandex Metrica, and Mail.ru queues before interaction, so product/form/navigation events retain their client contract, and loads the external libraries after the initial rendering window. Focused analytics tests still prove the exact marketplace payload and safe navigation when adapters throw. The final mobile measurement improved to 92 performance and reduced TBT to 12 ms.
+The final implementation creates GA, Yandex Metrica, and Mail.ru queues before interaction, so product/form/navigation events retain their client contract. It loads the external libraries on the first pointer or keyboard interaction, with a five-second fallback for passive sessions. Queue-state tests prove the interaction trigger, duplicate-loader prevention, and one route-owned Mail.ru pageview. Focused analytics tests prove the serum/cream and card/hero payload matrix plus safe navigation when adapters throw. The final mobile measurement improved to 92 performance and reduced TBT to 11 ms.
 
 ## Interpretation
 

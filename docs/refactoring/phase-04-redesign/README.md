@@ -1,9 +1,9 @@
 # Phase 04 — Redesign
 
-- **State:** In progress — design approved; implementation plan prepared
+- **State:** Implementation validated; deployment pending
 - **Owner:** Dmitry, business owner
 - **Started:** 2026-08-23
-- **Completed:** —
+- **Validated:** 2026-08-24
 
 ## Objective
 
@@ -44,12 +44,14 @@ Official logos, brand guidelines, documentary assets, and photography remain a n
 
 ## Exit criteria
 
-- [ ] Key templates implement the approved content hierarchy and conversion paths.
-- [ ] Dr. Health, SkineticsLab, and Neon Beard are distinguishable within a coherent Skinetics system.
-- [ ] Keyboard, focus, contrast, semantics, and responsive behavior pass review.
-- [ ] SEO-critical content is present in server-rendered output.
-- [ ] No established URL or analytics contract is unintentionally broken.
-- [ ] Lint, build, route, form, analytics, and marketplace-link checks pass.
+- [x] Key current-route templates implement the approved content hierarchy and conversion paths.
+- [x] Dr. Health, SkineticsLab, and Neon Beard are distinguishable within a coherent Skinetics system.
+- [x] Keyboard, focus, contrast, semantics, and responsive behavior pass review.
+- [x] SEO-critical content is present in server-rendered output.
+- [x] No established URL or analytics contract is unintentionally broken.
+- [x] Tests, lint, build, route, form, analytics, marketplace-link, and Lighthouse checks pass.
+
+Production deployment remains a separate, explicitly authorized action.
 
 ## Related records
 
@@ -59,3 +61,5 @@ Official logos, brand guidelines, documentary assets, and photography remain a n
 - [Approved Phase 04 design](./DESIGN.md)
 - [Phase 04 implementation plan](../../superpowers/plans/2026-08-23-skinetics-phase-04-redesign.md)
 - [Future asset backlog](./artifacts/future-asset-backlog.md)
+- [Validation record](./VALIDATION.md)
+- [Release and rollback notes](./artifacts/release-and-rollback-notes.md)

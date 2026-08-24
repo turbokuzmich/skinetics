@@ -37,7 +37,7 @@
 - [x] Meet the agreed local Lighthouse budgets.
 - [x] Check raw HTML and rendered DOM for SEO-critical content.
 - [x] Test marketplace links, forms, analytics, sitemap, robots, and canonicals.
-- [x] Record approved design, implementation commits, responsive matrix, provenance, and performance evidence.
+- [x] Record approved design, implementation commits, baseline/final browser captures, responsive matrix, provenance, and performance evidence.
 - [x] Update root status and log.
 - [ ] Build the Linux release artifact — requires explicit authorization.
 - [ ] Deploy to production — requires explicit authorization.

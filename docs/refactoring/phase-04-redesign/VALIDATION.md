@@ -10,7 +10,7 @@ Reviewed by: Codex local implementation validation
 
 ## Automated checks
 
-- [x] `npm test` — 11 files and 45 tests passed.
+- [x] `npm test` — 13 files and 52 tests passed.
 - [x] `npm run lint` — passed with the pre-existing `app/_components/reports.tsx` `<img>` warning only.
 - [x] `npm run build` — passed; 21 static pages were generated and all five product routes remained SSG routes.
 - [x] `git diff --check` — passed.
@@ -28,9 +28,12 @@ The rendered validator checked `/`, `/catalog`, `/serum`, `/cream`, all five `/c
 
 ## Responsive and accessibility review
 
-The local production build was reviewed at 390×844, 768×1024, 1280×900, and 1440×900 for the homepage, catalog listing, a serum product, a cream product, About, Contacts, the doctor form, and the feedback form.
+The local production build was reviewed at 390×844, 768×1024, 1280×900, and 1440×900 for the homepage, catalog listing, a serum product, a cream product, About, Contacts, the doctor form, and the feedback form. The 24 measured rows are recorded in [responsive-matrix.md](./artifacts/responsive-matrix.md); the doctor form is embedded in every row and the feedback form is embedded in each Contacts row.
+
+The still-live pre-redesign homepage was captured at 390 and 1440 px, and all 24 final local cases were captured and linked from the [browser capture index](./artifacts/captures/README.md). No production mutation was performed.
 
 - [x] All 24 route/viewport combinations had zero horizontal overflow and one H1/main/header/footer.
+- [x] All 24 final viewport captures plus two production baseline captures are retained as Phase 04 artifacts.
 - [x] Interactive controls measured at least 44×44 px, including the header/footer wordmarks and short footer links.
 - [x] Mobile navigation has a named dialog, focus trap, Escape close, close/link actions, and trigger focus restoration; focused tests pass.
 - [x] Keyboard order, visible focus treatment, heading order, landmarks, labels, image alternatives, and long product names remained usable.
@@ -47,17 +50,19 @@ Focused tests use local stubs and prove:
 - [x] Both APIs return generic errors, reject malformed JSON, and send user values only as plain text.
 - [x] Marketplace actions preserve product, brand, marketplace, placement, page path, and campaign data for catalog cards and product heroes.
 - [x] One-marketplace serum and two-marketplace cream actions remain usable; navigation survives analytics exceptions.
-- [x] Analytics queues exist before interaction, while external GA, Yandex Metrica, and Mail.ru scripts load after the initial render.
+- [x] Analytics queues exist before interaction; external GA, Yandex Metrica, and Mail.ru scripts load on the first pointer/keyboard interaction or a five-second fallback, whichever comes first.
+- [x] Queue-state tests prove one route-owned Mail.ru pageview, interaction-triggered loader creation, and duplicate-loader prevention.
+- [x] In the local production browser, the first mobile menu interaction created the `google-analytics`, `yandex-metrica`, and `tmr-code` script elements before the fallback.
 
 ## Performance and media
 
-- [x] Mobile Lighthouse: performance 92, accessibility 100, LCP 3.33 s, CLS 0, TBT 12 ms.
-- [x] Desktop Lighthouse: performance 100, accessibility 100, LCP 0.74 s, CLS 0, TBT 0 ms.
+- [x] Mobile Lighthouse: performance 92, accessibility 100, LCP 3.34 s, CLS 0, TBT 11 ms.
+- [x] Desktop Lighthouse: performance 100, accessibility 100, LCP 0.75 s, CLS 0, TBT 0 ms.
 - [x] The four files under `public/video/` still exist and have no Phase 04 diff from `6a80ecc`.
 - [x] The three accepted serum sources are 900×1200 WebP files with source URLs and SHA-256 hashes recorded in the provenance artifact.
 - [x] The homepage and rendered runtime contain no video/carousel request or reference.
 
-Detailed numbers are recorded in [performance-summary.md](./artifacts/performance-summary.md). Release boundaries are recorded in [release-and-rollback-notes.md](./artifacts/release-and-rollback-notes.md).
+Detailed numbers are recorded in [performance-summary.md](./artifacts/performance-summary.md). Responsive measurements are recorded in [responsive-matrix.md](./artifacts/responsive-matrix.md). Release boundaries are recorded in [release-and-rollback-notes.md](./artifacts/release-and-rollback-notes.md).
 
 ## Exit approval
 

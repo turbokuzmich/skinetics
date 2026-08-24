@@ -36,7 +36,7 @@ Last updated: 2026-08-24
 ## Recently completed
 
 - Implemented and locally validated the full Phase 04 navigational-editorial redesign across the shared system, site shell, homepage, listings, five product pages, trust pages, and forms.
-- Passed 45 automated tests, lint, production build, 12-route rendered validation, a 24-case responsive matrix, and Lighthouse budgets of mobile 92/100 and desktop 100/100 for performance/accessibility.
+- Passed 52 automated tests, lint, production build, 12-route rendered validation, a recorded 24-case responsive matrix, and Lighthouse budgets of mobile 92/100 and desktop 100/100 for performance/accessibility.
 - Preserved every public URL, analytics event contract, gated-route boundary, and file under `public/video/`; refreshed only the three accepted serum presentation paths with verified final Wildberries gallery WebPs.
 - Approved the written Phase 04 design specification and prepared a nine-task, test-first implementation plan covering the design system, shell, listings, product pages, homepage, verified serum imagery, forms, future-template contracts, and coordinated validation.
 - Approved the Phase 04 navigational-editorial direction, shared Skinetics system with restrained brand accents, text-first verified trust layer, practical WCAG/performance target, and coordinated release strategy.
