@@ -5,8 +5,8 @@ import Link from "@mui/material/Link";
 import Toolbar from "@mui/material/Toolbar";
 import NextLink from "next/link";
 import { navigation } from "@/constants";
+import Logo from "./logo";
 import MobileNavigation from "./mobileNavigation";
-import Wordmark from "./wordmark";
 
 export default function SiteHeader() {
   return (
@@ -35,9 +35,10 @@ export default function SiteHeader() {
               minHeight: 44,
               minWidth: 44,
               mr: { md: 8 },
+              width: 150,
             }}
           >
-            <Wordmark />
+            <Logo />
           </Link>
           <Box
             component="nav"
@@ -61,7 +62,6 @@ export default function SiteHeader() {
                   display: "inline-flex",
                   minHeight: 44,
                   px: 3,
-                  "&:hover": { color: "secondary.main" },
                 }}
               >
                 {title}

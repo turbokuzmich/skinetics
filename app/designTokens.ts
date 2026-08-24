@@ -6,7 +6,8 @@ export const skinColors = {
   border: "#D8D0C2",
   clay: "#A5563B",
   botanical: "#657A68",
-  focus: "#005FCC",
+  brandBlue: "#004AAD",
+  focus: "#004AAD",
 };
 
 export const brandAccents = {

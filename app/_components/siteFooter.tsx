@@ -7,7 +7,7 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import NextLink from "next/link";
 import DoctorForm from "./form";
-import Wordmark from "./wordmark";
+import Logo from "./logo";
 
 const catalogLinks = [
   { title: "Все средства", to: "/catalog" },
@@ -93,9 +93,10 @@ export default function SiteFooter() {
                     display: "inline-flex",
                     minHeight: 44,
                     minWidth: 44,
+                    width: 150,
                   }}
                 >
-                  <Wordmark />
+                  <Logo />
                 </Link>
                 <Typography color="text.secondary" sx={{ mt: 4, maxWidth: 500 }}>
                   Skinetics помогает выбрать средство, а покупка и доставка оформляются на Wildberries или Ozon.

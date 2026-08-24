@@ -15,10 +15,12 @@ const expectedLinks = [
 describe("site shell", () => {
   it("renders the accepted desktop navigation in order", () => {
     render(<SiteHeader />);
-    expect(screen.getByRole("link", { name: "Skinetics, главная" })).toHaveStyle({
+    const homeLink = screen.getByRole("link", { name: "Skinetics, главная" });
+    expect(homeLink).toHaveStyle({
       minHeight: "44px",
       minWidth: "44px",
     });
+    expect(homeLink.querySelector('svg[viewBox="0 0 300.75 51"]')).toBeInTheDocument();
     const nav = screen.getByRole("navigation", { name: "Основная навигация" });
     expect(within(nav).getAllByRole("link").map((link) => link.textContent)).toEqual(
       expectedLinks.map(({ title }) => title)
@@ -92,10 +94,12 @@ describe("site shell", () => {
       "Каталог",
       "Skinetics",
     ]);
-    expect(within(footer).getByRole("link", { name: "Skinetics, главная" })).toHaveStyle({
+    const homeLink = within(footer).getByRole("link", { name: "Skinetics, главная" });
+    expect(homeLink).toHaveStyle({
       minHeight: "44px",
       minWidth: "44px",
     });
+    expect(homeLink.querySelector('svg[viewBox="0 0 300.75 51"]')).toBeInTheDocument();
     expect(within(footer).getByRole("link", { name: "О нас" })).toHaveStyle({
       minHeight: "44px",
       minWidth: "44px",

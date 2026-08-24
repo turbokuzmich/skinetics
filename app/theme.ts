@@ -91,6 +91,9 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           textUnderlineOffset: "0.18em",
+          "&:hover": {
+            color: skinColors.brandBlue,
+          },
           "&:focus-visible": focusVisible,
         },
       },

@@ -18,7 +18,7 @@ body {
 }
 
 .skip-link:focus {
-  outline: 3px solid #005fcc;
+  outline: 3px solid #004aad;
   outline-offset: 2px;
   transform: translateY(0);
 }

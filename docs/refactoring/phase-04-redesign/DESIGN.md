@@ -21,7 +21,7 @@ The redesign covers the existing homepage, catalog and category listings, produc
 - Product type remains the primary catalog taxonomy. Brand, concern, ingredient, and expert content remain secondary, evidence-gated discovery relationships.
 - Existing routes, canonicals, sitemap behavior, breadcrumb hierarchy, product metadata, and analytics contracts must not change unintentionally.
 - Skinetics is a discovery and acquisition site. Product pages remain the primary commercial destinations before marketplace exit.
-- No official portfolio or sub-brand logo package is currently available. Text labels and provisional accents are accepted until approved assets arrive.
+- The official Skinetics logo is owner-approved and used in the site shell. Complete sub-brand logo packages and broader identity guidelines are not yet available, so product-brand text labels and provisional accents remain accepted.
 - Initial trust content is limited to accepted company details, Moscow Innovation Cluster membership, Moscow Exporter catalog entry, «Сделано в Москве» participation, and approved product information.
 - Files under `public/video/` remain in the repository. Phase 04 removes the homepage carousel and runtime video requests, not the video assets.
 - The three serum presentation images will be refreshed from the final gallery slide of each current Wildberries product card after identity and packaging verification. Downloaded source files remain intact; delivery optimization must not overwrite or degrade them.
@@ -79,9 +79,10 @@ The initial light interface uses these semantic roles:
 | Border | `#D8D0C2` | Dividers and card boundaries |
 | Clay | `#A5563B` | Editorial emphasis and selected highlights |
 | Botanical | `#657A68` | Portfolio trust and supportive accents |
-| Focus | `#005FCC` | Keyboard focus indicator on light surfaces |
+| Brand blue | `#004AAD` | Official logo accent and restrained link/navigation hover states |
+| Focus | `#004AAD` | Keyboard focus indicator on light surfaces |
 
-Token roles are stable. Exact values may move during contrast validation without changing the approved direction. Phase 04 does not add dark mode.
+The official blue complements rather than replaces the warm editorial palette: clay remains the emphasis color, while blue is reserved for the logo and interaction feedback. Token roles are stable. Exact non-logo values may move during contrast validation without changing the approved direction. Phase 04 does not add dark mode.
 
 ### Product-brand accents
 

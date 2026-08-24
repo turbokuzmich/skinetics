@@ -37,8 +37,17 @@ describe("Phase 04 design tokens", () => {
       border: "#D8D0C2",
       clay: "#A5563B",
       botanical: "#657A68",
-      focus: "#005FCC",
+      brandBlue: "#004AAD",
+      focus: "#004AAD",
     });
+  });
+
+  it("uses the approved logo blue as an accessible portfolio accent", () => {
+    expect(skinColors.brandBlue).toBe("#004AAD");
+    expect(skinColors.focus).toBe(skinColors.brandBlue);
+    expect(
+      contrastRatio(skinColors.brandBlue, skinColors.surface),
+    ).toBeGreaterThanOrEqual(4.5);
   });
 
   it("keeps all brand accents text-backed and centrally named", () => {
