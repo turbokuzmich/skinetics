@@ -14,12 +14,18 @@ import type { NaviItem } from "@/types";
 
 type Props = Readonly<{ items: readonly NaviItem[] }>;
 
+const drawerId = "mobile-navigation-drawer";
+const drawerTitleId = "mobile-navigation-title";
+
 export default function MobileNavigation({ items }: Props) {
   const [open, setOpen] = useState(false);
 
   return (
     <Box sx={{ display: { xs: "block", md: "none" }, ml: "auto" }}>
       <IconButton
+        aria-controls={drawerId}
+        aria-expanded={open}
+        aria-haspopup="dialog"
         aria-label="Открыть меню"
         color="inherit"
         onClick={() => setOpen(true)}
@@ -27,7 +33,16 @@ export default function MobileNavigation({ items }: Props) {
       >
         <MenuIcon aria-hidden="true" />
       </IconButton>
-      <Drawer anchor="right" open={open} onClose={() => setOpen(false)}>
+      <Drawer
+        anchor="right"
+        open={open}
+        onClose={() => setOpen(false)}
+        PaperProps={{
+          "aria-labelledby": drawerTitleId,
+          id: drawerId,
+          role: "dialog",
+        }}
+      >
         <Box
           sx={{
             display: "flex",
@@ -38,11 +53,12 @@ export default function MobileNavigation({ items }: Props) {
           }}
         >
           <Stack direction="row" alignItems="center" justifyContent="space-between">
-            <Typography component="h2" variant="h5">
+            <Typography component="h2" id={drawerTitleId} variant="h5">
               Меню
             </Typography>
             <IconButton
               aria-label="Закрыть меню"
+              autoFocus
               color="inherit"
               onClick={() => setOpen(false)}
               sx={{ height: 44, width: 44 }}

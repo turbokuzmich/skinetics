@@ -29,7 +29,7 @@ function FooterLinkGroup({
 }>) {
   return (
     <Box>
-      <Typography component="h3" variant="subtitle2" sx={{ mb: 3 }}>
+      <Typography component="h2" variant="subtitle2" sx={{ mb: 3 }}>
         {heading}
       </Typography>
       <Stack spacing={2}>
