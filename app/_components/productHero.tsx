@@ -24,29 +24,23 @@ export default function ProductHero({
       sx={{
         display: "grid",
         gap: { xs: 8, md: 12 },
+        gridTemplateAreas: {
+          xs: '"heading" "media" "actions"',
+          md: '"media heading" "media actions"',
+        },
         gridTemplateColumns: { xs: "minmax(0, 1fr)", md: "5fr 7fr" },
+        gridTemplateRows: { md: "auto 1fr" },
         py: { xs: 6, md: 10 },
       }}
     >
-      <Box
-        sx={{
-          alignSelf: "start",
-          border: "1px solid",
-          borderColor: "divider",
-          borderTop: `4px solid ${accent}`,
-          maxWidth: { xs: 520, md: "none" },
-          width: "100%",
-        }}
-      >
-        <ProductMedia
-          product={product}
-          priority
-          sizes="(max-width: 899px) 100vw, 42vw"
-        />
-      </Box>
       <Stack
         spacing={{ xs: 5, md: 6 }}
-        sx={{ alignItems: "flex-start", alignSelf: "center", minWidth: 0 }}
+        sx={{
+          alignItems: "flex-start",
+          alignSelf: "end",
+          gridArea: "heading",
+          minWidth: 0,
+        }}
       >
         <Typography
           component="p"
@@ -71,6 +65,33 @@ export default function ProductHero({
         >
           {product.title}
         </Typography>
+      </Stack>
+      <Box
+        sx={{
+          alignSelf: "start",
+          border: "1px solid",
+          borderColor: "divider",
+          borderTop: `4px solid ${accent}`,
+          gridArea: "media",
+          maxWidth: { xs: 520, md: "none" },
+          width: "100%",
+        }}
+      >
+        <ProductMedia
+          product={product}
+          priority
+          sizes="(max-width: 899px) 100vw, 42vw"
+        />
+      </Box>
+      <Stack
+        spacing={{ xs: 5, md: 6 }}
+        sx={{
+          alignItems: "flex-start",
+          alignSelf: "start",
+          gridArea: "actions",
+          minWidth: 0,
+        }}
+      >
         <Box
           sx={{
             borderBlock: "1px solid",
