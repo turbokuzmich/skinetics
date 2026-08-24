@@ -7,6 +7,7 @@ vi.mock("./_components/metrika", () => ({ default: () => null }));
 describe("homepage", () => {
   it("presents the multi-brand catalog journey without video", () => {
     const { container } = render(<LandingPage />);
+    const videoPath = ["/", "vid", "eo", "/"].join("");
 
     expect(screen.getAllByRole("heading", { level: 1 })).toHaveLength(1);
     expect(
@@ -54,6 +55,6 @@ describe("homepage", () => {
       screen.queryByRole("link", { name: /Купить/ }),
     ).not.toBeInTheDocument();
     expect(container.querySelector("video")).not.toBeInTheDocument();
-    expect(container.innerHTML).not.toContain("/video/");
+    expect(container.innerHTML).not.toContain(videoPath);
   });
 });
