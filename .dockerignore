@@ -8,3 +8,8 @@ docs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+.agents
+.eslintrc.json
+build.sh
+export.sh
+skills-lock.json
