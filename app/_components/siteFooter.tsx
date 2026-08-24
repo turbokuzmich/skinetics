@@ -40,7 +40,14 @@ function FooterLinkGroup({
             key={to}
             color="text.primary"
             underline="hover"
-            sx={{ alignSelf: "flex-start", minHeight: 44, py: 2 }}
+            sx={{
+              alignItems: "center",
+              alignSelf: "flex-start",
+              display: "inline-flex",
+              minHeight: 44,
+              minWidth: 44,
+              py: 2,
+            }}
           >
             {title}
           </Link>
@@ -81,6 +88,12 @@ export default function SiteFooter() {
                   href="/"
                   aria-label="Skinetics, главная"
                   underline="none"
+                  sx={{
+                    alignItems: "center",
+                    display: "inline-flex",
+                    minHeight: 44,
+                    minWidth: 44,
+                  }}
                 >
                   <Wordmark />
                 </Link>

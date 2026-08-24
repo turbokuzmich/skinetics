@@ -29,7 +29,13 @@ export default function SiteHeader() {
             href="/"
             aria-label="Skinetics, главная"
             underline="none"
-            sx={{ display: "inline-flex", mr: { md: 8 } }}
+            sx={{
+              alignItems: "center",
+              display: "inline-flex",
+              minHeight: 44,
+              minWidth: 44,
+              mr: { md: 8 },
+            }}
           >
             <Wordmark />
           </Link>

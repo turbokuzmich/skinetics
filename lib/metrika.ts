@@ -26,8 +26,11 @@ export default function reachGoal(goal: Goal) {
   if ("ym" in window) {
     (window.ym as ReachGoalFn)(98874723, "reachGoal", goal);
   }
-  if ("_tmr" in window && window._tmr.push) {
-    (window._tmr as TMR).push({ id: 3589962, type: "reachGoal", goal });
+  if ("_tmr" in window) {
+    const tmr = window._tmr as TMR;
+    if (tmr.push) {
+      tmr.push({ id: 3589962, type: "reachGoal", goal });
+    }
   }
 }
 
@@ -65,12 +68,15 @@ export function reachMarketplaceClick(event: MarketplaceClickEvent) {
   }
 
   try {
-    if ("_tmr" in window && window._tmr.push) {
-      (window._tmr as TMR).push({
-        id: 3589962,
-        type: "reachGoal",
-        goal: compatibilityGoal,
-      });
+    if ("_tmr" in window) {
+      const tmr = window._tmr as TMR;
+      if (tmr.push) {
+        tmr.push({
+          id: 3589962,
+          type: "reachGoal",
+          goal: compatibilityGoal,
+        });
+      }
     }
   } catch {
     // Analytics must never prevent marketplace navigation.

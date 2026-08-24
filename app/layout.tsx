@@ -4,12 +4,21 @@ import theme from "./theme";
 import { ThemeProvider } from "@mui/material/styles";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import Script from "next/script";
-import { GoogleAnalytics } from "@next/third-parties/google";
 import { literata, manrope } from "./fonts";
 import SiteFooter from "./_components/siteFooter";
 import SiteHeader from "./_components/siteHeader";
 
 import "./globals.css";
+
+const analyticsQueues = `window.dataLayer=window.dataLayer||[];
+window.gtag=window.gtag||function(){window.dataLayer.push(arguments)};
+window.gtag("js",new Date());
+window.gtag("config","G-6JC9JR7TQ0");
+window.ym=window.ym||function(){(window.ym.a=window.ym.a||[]).push(arguments)};
+window.ym.l=1*new Date();
+window.ym(98874723,"init",{defer:true,clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});
+window._tmr=window._tmr||[];
+window._tmr.push({id:"3589962",type:"pageView",start:(new Date()).getTime()});`;
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://skinetics.ru"),
@@ -26,34 +35,30 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <Script id="yandex-metrica">
-        {`(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-m[i].l=1*new Date();
-for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
-ym(98874723, "init", {
-  defer:true,
-  clickmap:true,
-  trackLinks:true,
-  accurateTrackBounce:true,
-  webvisor:true
-});`}
-      </Script>
-      <Script id="mailru-counter">
-        {`var _tmr = window._tmr || (window._tmr = []);
-_tmr.push({id: "3589962", type: "pageView", start: (new Date()).getTime()});
-(function (d, w, id) {
-  if (d.getElementById(id)) return;
-  var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true; ts.id = id;
-  ts.src = "https://top-fwz1.mail.ru/js/code.js";
-  var f = function () {var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ts, s);};
-  if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
-})(document, window, "tmr-code");`}
+      <head>
+        <script
+          id="analytics-queues"
+          dangerouslySetInnerHTML={{ __html: analyticsQueues }}
+        />
+      </head>
+      <Script id="analytics-loaders" strategy="lazyOnload">
+        {`window.setTimeout(function(){
+var sources=[
+  ["google-analytics","https://www.googletagmanager.com/gtag/js?id=G-6JC9JR7TQ0"],
+  ["yandex-metrica","https://mc.yandex.ru/metrika/tag.js"],
+  ["tmr-code","https://top-fwz1.mail.ru/js/code.js"]
+];
+sources.forEach(function(source){
+  if(document.getElementById(source[0]))return;
+  var script=document.createElement("script");
+  script.async=true;
+  script.id=source[0];
+  script.src=source[1];
+  document.head.appendChild(script);
+});
+},5000);`}
       </Script>
       <body className={`${manrope.variable} ${literata.variable}`}>
-        <GoogleAnalytics gaId="G-6JC9JR7TQ0" />
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
             <CssBaseline />
