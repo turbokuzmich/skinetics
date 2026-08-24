@@ -3,7 +3,6 @@ import CssBaseline from "@mui/material/CssBaseline";
 import theme from "./theme";
 import { ThemeProvider } from "@mui/material/styles";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
-import Script from "next/script";
 import { literata, manrope } from "./fonts";
 import { analyticsLoaders, analyticsQueues } from "@/lib/analyticsBootstrap";
 import SiteFooter from "./_components/siteFooter";
@@ -31,10 +30,11 @@ export default function RootLayout({
           id="analytics-queues"
           dangerouslySetInnerHTML={{ __html: analyticsQueues }}
         />
+        <script
+          id="analytics-loaders"
+          dangerouslySetInnerHTML={{ __html: analyticsLoaders }}
+        />
       </head>
-      <Script id="analytics-loaders" strategy="lazyOnload">
-        {analyticsLoaders}
-      </Script>
       <body className={`${manrope.variable} ${literata.variable}`}>
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>

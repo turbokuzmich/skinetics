@@ -64,7 +64,10 @@ assert(
   homepage.includes('<script id="analytics-queues">'),
   "analytics queues should be parser-executed from rendered HTML",
 );
-assert(homepage.includes("analytics-loaders"), "deferred analytics loaders should render");
+assert(
+  homepage.includes('<script id="analytics-loaders">'),
+  "interaction analytics listeners should be parser-executed from rendered HTML",
+);
 assert(homepage.includes("window.gtag"), "Google Analytics queue should render");
 assert(homepage.includes("window.ym"), "Yandex Metrica queue should render");
 assert(homepage.includes("window._tmr"), "Mail.ru queue should render");
