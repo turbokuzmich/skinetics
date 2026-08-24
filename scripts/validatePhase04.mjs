@@ -18,11 +18,11 @@ const routes = [
 ];
 
 const productRoutes = [
-  { path: "/catalog/red_pepper", categoryPath: "/serum" },
-  { path: "/catalog/copper_tripeptide", categoryPath: "/serum" },
-  { path: "/catalog/climbazole", categoryPath: "/serum" },
-  { path: "/catalog/ultra-lift", categoryPath: "/cream" },
-  { path: "/catalog/renewal", categoryPath: "/cream" },
+  { path: "/catalog/red_pepper", categoryPath: "/serum", categoryName: "Сыворотки" },
+  { path: "/catalog/copper_tripeptide", categoryPath: "/serum", categoryName: "Сыворотки" },
+  { path: "/catalog/climbazole", categoryPath: "/serum", categoryName: "Сыворотки" },
+  { path: "/catalog/ultra-lift", categoryPath: "/cream", categoryName: "Кремы" },
+  { path: "/catalog/renewal", categoryPath: "/cream", categoryName: "Кремы" },
 ];
 
 const gatedRoutes = ["/brands", "/concerns", "/expert"];
@@ -68,21 +68,51 @@ assert(homepage.includes("analytics-loaders"), "deferred analytics loaders shoul
 assert(homepage.includes("window.gtag"), "Google Analytics queue should render");
 assert(homepage.includes("window.ym"), "Yandex Metrica queue should render");
 assert(homepage.includes("window._tmr"), "Mail.ru queue should render");
+const analyticsQueueHtml = homepage.match(
+  /<script id="analytics-queues">([\s\S]*?)<\/script>/i,
+)?.[1];
+assert(analyticsQueueHtml, "analytics queue script should be readable");
+assert(
+  !analyticsQueueHtml.includes('type:"pageView"'),
+  "the route tracker should exclusively own Mail.ru pageviews",
+);
+assert(
+  homepage.includes("pointerdown") &&
+    homepage.includes("keydown") &&
+    homepage.includes("loadAnalytics"),
+  "analytics adapters should load on the first pointer or keyboard interaction",
+);
 
-for (const { path, categoryPath } of productRoutes) {
+for (const { path, categoryPath, categoryName } of productRoutes) {
   const html = htmlByPath.get(path);
   assert(html, `${path} HTML should be present`);
+  const breadcrumbHtml = html.match(
+    /<nav[^>]+aria-label="Хлебные крошки"[^>]*>([\s\S]*?)<\/nav>/i,
+  )?.[1];
+  assert(breadcrumbHtml, `${path} should contain visible breadcrumbs`);
   assert(
-    html.includes(`href="${categoryPath}"`),
-    `${path} should link its canonical category breadcrumb`,
+    breadcrumbHtml.includes(`href="${categoryPath}"`) &&
+      breadcrumbHtml.includes(categoryName),
+    `${path} should show its canonical category inside visible breadcrumbs`,
   );
   assert(
     /href="https:\/\/(?:www\.)?(?:wildberries|ozon)\.ru\//i.test(html),
     `${path} should contain an accepted marketplace link`,
   );
-  assert(
-    html.includes('"@type":"BreadcrumbList"'),
-    `${path} should contain BreadcrumbList JSON-LD`,
+  const breadcrumbJsonLd = [...html.matchAll(
+    /<script type="application\/ld\+json">([\s\S]*?)<\/script>/gi,
+  )]
+    .map((match) => JSON.parse(match[1]))
+    .find((entry) => entry["@type"] === "BreadcrumbList");
+  assert(breadcrumbJsonLd, `${path} should contain BreadcrumbList JSON-LD`);
+  assert.deepEqual(
+    breadcrumbJsonLd.itemListElement.map(({ item }) => item),
+    [
+      "https://skinetics.ru/",
+      `https://skinetics.ru${categoryPath}`,
+      `https://skinetics.ru${path}`,
+    ],
+    `${path} should expose the exact canonical BreadcrumbList sequence`,
   );
 }
 
@@ -106,5 +136,5 @@ for (const path of gatedRoutes) {
 }
 
 console.log(
-  `Phase 04 rendered-site validation passed for ${routes.length} published routes and ${gatedRoutes.length} gated routes.`,
+  `Phase 04 rendered-site validation passed for ${routes.length} current routes and ${gatedRoutes.length} gated routes.`,
 );

@@ -1,7 +1,24 @@
-import { render, screen } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import { fireEvent, render, screen } from "@testing-library/react";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { products } from "@/constants";
 import ProductHero, { getQuantityLabel } from "./productHero";
+
+type AnalyticsWindow = Window & {
+  gtag?: ReturnType<typeof vi.fn>;
+  ym?: ReturnType<typeof vi.fn>;
+  _tmr?: { push: ReturnType<typeof vi.fn> };
+};
+
+const analyticsWindow = window as AnalyticsWindow;
+const serum = products.find(({ id }) => id === "red_pepper")!;
+const cream = products.find(({ id }) => id === "renewal")!;
+
+afterEach(() => {
+  delete analyticsWindow.gtag;
+  delete analyticsWindow.ym;
+  delete analyticsWindow._tmr;
+  window.history.replaceState({}, "", "/");
+});
 
 describe("ProductHero", () => {
   it("uses category-aware quantity labels", () => {
@@ -10,27 +27,101 @@ describe("ProductHero", () => {
   });
 
   it("renders canonical product identity and marketplace actions", () => {
-    const product = products.find(({ id }) => id === "renewal")!;
-    render(<ProductHero product={product} />);
+    render(<ProductHero product={cream} />);
     expect(
-      screen.getByRole("heading", { level: 1, name: product.title }),
+      screen.getByRole("heading", { level: 1, name: cream.title }),
     ).toBeVisible();
     expect(screen.getByText("SkineticsLab")).toBeVisible();
     expect(screen.getByText("50 г")).toBeVisible();
-    expect(screen.getByRole("img", { name: product.imageAlt })).toBeVisible();
+    expect(screen.getByRole("img", { name: cream.imageAlt })).toBeVisible();
     expect(screen.getAllByRole("link", { name: /Купить/ })).toHaveLength(2);
   });
 
+  it("emits the one-marketplace serum product-hero payload", () => {
+    const gtag = vi.fn();
+    analyticsWindow.gtag = gtag;
+    analyticsWindow.ym = vi.fn();
+    analyticsWindow._tmr = { push: vi.fn() };
+    window.history.replaceState({}, "", "/catalog/red_pepper?utm_campaign=growth");
+
+    render(<ProductHero product={serum} />);
+    const link = screen.getByRole("link", { name: "Купить на Wildberries" });
+    link.addEventListener("click", (event) => event.preventDefault());
+    fireEvent.click(link);
+
+    expect(gtag).toHaveBeenCalledWith("event", "marketplace_click", {
+      product_id: "red_pepper",
+      brand_id: "dr-health",
+      marketplace: "wildberries",
+      placement: "product-hero",
+      page_path: "/catalog/red_pepper",
+      campaign: "growth",
+    });
+  });
+
+  it("emits both two-marketplace cream product-hero payloads", () => {
+    const gtag = vi.fn();
+    analyticsWindow.gtag = gtag;
+    analyticsWindow.ym = vi.fn();
+    analyticsWindow._tmr = { push: vi.fn() };
+    window.history.replaceState({}, "", "/catalog/renewal?utm_campaign=renewal");
+
+    render(<ProductHero product={cream} />);
+    for (const link of screen.getAllByRole("link", { name: /Купить/ })) {
+      link.addEventListener("click", (event) => event.preventDefault());
+      fireEvent.click(link);
+    }
+
+    expect(gtag).toHaveBeenNthCalledWith(1, "event", "marketplace_click", {
+      product_id: "renewal",
+      brand_id: "skineticslab",
+      marketplace: "wildberries",
+      placement: "product-hero",
+      page_path: "/catalog/renewal",
+      campaign: "renewal",
+    });
+    expect(gtag).toHaveBeenNthCalledWith(2, "event", "marketplace_click", {
+      product_id: "renewal",
+      brand_id: "skineticslab",
+      marketplace: "ozon",
+      placement: "product-hero",
+      page_path: "/catalog/renewal",
+      campaign: "renewal",
+    });
+  });
+
+  it("keeps a cream product-hero destination usable when analytics throws", () => {
+    analyticsWindow.gtag = vi.fn(() => {
+      throw new Error("analytics unavailable");
+    });
+    analyticsWindow.ym = vi.fn(() => {
+      throw new Error("analytics unavailable");
+    });
+    analyticsWindow._tmr = {
+      push: vi.fn(() => {
+        throw new Error("analytics unavailable");
+      }),
+    };
+
+    render(<ProductHero product={cream} />);
+    const link = screen.getByRole("link", { name: "Купить на Ozon" });
+    link.addEventListener("click", (event) => event.preventDefault());
+
+    expect(() => fireEvent.click(link)).not.toThrow();
+    expect(link).toHaveAttribute("target", "_blank");
+    expect(link).toHaveAttribute("rel", "noopener noreferrer");
+    expect(link.getAttribute("href")).toMatch(/^https:\/\/(?:www\.)?ozon\.ru\//);
+  });
+
   it("keeps the mobile document order independent of the desktop grid", () => {
-    const product = products.find(({ id }) => id === "renewal")!;
-    render(<ProductHero product={product} />);
+    render(<ProductHero product={cream} />);
 
     const brand = screen.getByText("SkineticsLab");
     const heading = screen.getByRole("heading", {
       level: 1,
-      name: product.title,
+      name: cream.title,
     });
-    const image = screen.getByRole("img", { name: product.imageAlt });
+    const image = screen.getByRole("img", { name: cream.imageAlt });
     const quantity = screen.getByText("Масса");
     const marketplaceAction = screen.getByRole("link", {
       name: "Купить на Wildberries",

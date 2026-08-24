@@ -58,6 +58,28 @@ describe("ProductCard", () => {
     ).toEqual(["Купить на WB", "Купить на Ozon"]);
   });
 
+  it("emits the two-marketplace cream card payload", () => {
+    const gtag = vi.fn();
+    analyticsWindow.gtag = gtag;
+    analyticsWindow.ym = vi.fn();
+    analyticsWindow._tmr = { push: vi.fn() };
+    window.history.replaceState({}, "", "/cream?utm_campaign=face-care");
+
+    render(<ProductCard product={cream} showMarketplaceActions />);
+    const link = screen.getByRole("link", { name: "Купить на Ozon" });
+    link.addEventListener("click", (event) => event.preventDefault());
+    fireEvent.click(link);
+
+    expect(gtag).toHaveBeenCalledWith("event", "marketplace_click", {
+      product_id: "ultra_lift",
+      brand_id: "neon-beard",
+      marketplace: "ozon",
+      placement: "catalog-card",
+      page_path: "/cream",
+      campaign: "face-care",
+    });
+  });
+
   it("preserves marketplace URL attributes, campaign data, and catalog-card analytics", async () => {
     const gtag = vi.fn();
     const ym = vi.fn();
