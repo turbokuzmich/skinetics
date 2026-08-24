@@ -1,8 +1,8 @@
 "use client";
 
 import Button from "@mui/material/Button";
+import Alert from "@mui/material/Alert";
 import TextField from "@mui/material/TextField";
-import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { doctorFormSchema, type DoctorForm } from "@/lib/dto/doctorForm";
@@ -10,6 +10,7 @@ import { useForm } from "react-hook-form";
 import { useCallback, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { reachGoalForm } from "@/lib/metrika";
+import { submitJson } from "@/lib/submitJson";
 
 const defaultFormValues: DoctorForm = {
   name: "",
@@ -21,6 +22,7 @@ export default function DoctorForm() {
   const params = useSearchParams();
 
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submissionError, setSubmissionError] = useState(false);
 
   const { formState, setFocus, register, handleSubmit } = useForm<DoctorForm>({
     defaultValues: defaultFormValues,
@@ -29,18 +31,17 @@ export default function DoctorForm() {
 
   const onSubmit = useCallback(
     async (values: DoctorForm) => {
-      await fetch("/api/doctor", {
-        body: JSON.stringify(values),
-        headers: {
-          "content-type": "application/json",
-        },
-        method: "PUT",
-      });
+      setSubmissionError(false);
 
-      reachGoalForm();
-      setIsSubmitted(true);
+      try {
+        await submitJson("/api/doctor", values);
+        reachGoalForm();
+        setIsSubmitted(true);
+      } catch {
+        setSubmissionError(true);
+      }
     },
-    [setIsSubmitted]
+    [],
   );
 
   useEffect(() => {
@@ -55,38 +56,48 @@ export default function DoctorForm() {
         setFocus("name");
       }, 500);
     }
-  }, [router, setFocus]);
+  }, [params, router, setFocus]);
 
   return isSubmitted ? (
-    <Typography>Мы свяжемся с вами в ближайшее время</Typography>
+    <Alert severity="success" role="status">
+      Мы свяжемся с вами в ближайшее время.
+    </Alert>
   ) : (
     <form onSubmit={handleSubmit(onSubmit)} id="appointment-form">
       <Stack spacing={2} useFlexGap>
         <TextField
+          label="Ваше имя"
           variant="outlined"
-          placeholder="Ваше имя"
           sx={{ width: "100%", maxWidth: "450px" }}
           error={Boolean(formState.errors.name)}
           helperText={formState.errors.name?.message}
+          autoComplete="name"
           {...register("name")}
         />
         <TextField
+          label="Номер телефона"
           variant="outlined"
-          placeholder="Номер телефона (например, +7 123 123 23 45)"
+          placeholder="Например, +7 123 123 23 45"
           sx={{ width: "100%", maxWidth: "450px" }}
           error={Boolean(formState.errors.phone)}
           helperText={formState.errors.phone?.message}
+          autoComplete="tel"
           {...register("phone")}
         />
+        {submissionError ? (
+          <Alert severity="error" role="alert">
+            Не удалось отправить форму. Попробуйте ещё раз.
+          </Alert>
+        ) : null}
         <Button
           type="submit"
-          variant="outlined"
+          variant="contained"
           color="primary"
           size="large"
           disabled={formState.isSubmitting}
           sx={{ width: "100%", maxWidth: "450px" }}
         >
-          Записаться
+          {formState.isSubmitting ? "Отправляем…" : "Записаться"}
         </Button>
       </Stack>
     </form>

@@ -31,12 +31,17 @@ export async function PUT(request: NextRequest) {
     return NextResponse.json({ success: false }, { status: 400 });
   }
 
-  await getTransport().sendMail({
-    to: "info@skinetics.ru",
-    html: `<pre>${JSON.stringify(parsed.data, null, 2)}</pre>`,
-    subject: "Обратная связь на сайте",
-    from: process.env.EMAIL_SENDER,
-  });
+  try {
+    await getTransport().sendMail({
+      to: "info@skinetics.ru",
+      html: `<pre>${JSON.stringify(parsed.data, null, 2)}</pre>`,
+      subject: "Обратная связь на сайте",
+      from: process.env.EMAIL_SENDER,
+    });
+  } catch {
+    console.error("Feedback form email delivery failed.");
+    return NextResponse.json({ success: false }, { status: 502 });
+  }
 
   return NextResponse.json({ success: true });
 }
