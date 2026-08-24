@@ -20,7 +20,12 @@ export default function ContextualLinks({
         pt: 6,
       }}
     >
-      <Link component={NextLink} href={category.path} color="text.primary">
+      <Link
+        component={NextLink}
+        href={category.path}
+        color="text.primary"
+        sx={{ alignItems: "center", display: "inline-flex", minHeight: 44 }}
+      >
         Вернуться: {category.name}
       </Link>
     </Box>
