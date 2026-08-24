@@ -20,12 +20,16 @@ Object.defineProperty(window, "matchMedia", {
 });
 
 vi.mock("next/navigation", () => ({
-  usePathname: () => "/",
+  usePathname: () => window.location.pathname,
   useRouter: () => ({ replace: vi.fn() }),
   useSearchParams: () => new URLSearchParams(),
 }));
 
 vi.mock("next/image", () => ({
-  default: ({ alt, fill: _fill, priority: _priority, ...props }: Record<string, unknown>) =>
-    React.createElement("img", { alt, ...props }),
+  default: ({ alt, fill: _fill, priority, ...props }: Record<string, unknown>) =>
+    React.createElement("img", {
+      alt,
+      "data-priority": priority ? "true" : "false",
+      ...props,
+    }),
 }));

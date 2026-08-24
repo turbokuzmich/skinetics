@@ -13,11 +13,15 @@ import ProductMedia from "./productMedia";
 type Props = Readonly<{
   product: Product;
   showMarketplaceActions?: boolean;
+  headingComponent?: "h2" | "h3";
+  priority?: boolean;
 }>;
 
 export default function ProductCard({
   product,
   showMarketplaceActions = false,
+  headingComponent = "h3",
+  priority = false,
 }: Props) {
   return (
     <Card
@@ -31,7 +35,7 @@ export default function ProductCard({
         width: "100%",
       }}
     >
-      <ProductMedia product={product} />
+      <ProductMedia product={product} priority={priority} />
       <CardContent
         sx={{
           display: "flex",
@@ -51,7 +55,11 @@ export default function ProductCard({
           </Typography>
           <Typography color="text.secondary">{product.volume}</Typography>
         </Stack>
-        <Typography component="h3" variant="h3" sx={{ fontSize: "1.55rem" }}>
+        <Typography
+          component={headingComponent}
+          variant="h3"
+          sx={{ fontSize: "1.55rem" }}
+        >
           {product.title}
         </Typography>
         <Typography color="text.secondary" sx={{ lineHeight: 1.65 }}>

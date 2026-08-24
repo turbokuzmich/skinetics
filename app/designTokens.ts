@@ -10,7 +10,7 @@ export const skinColors = {
 };
 
 export const brandAccents = {
-  "dr-health": "#657A68",
+  "dr-health": "#526A56",
   skineticslab: "#315C70",
   "neon-beard": "#8C3F51",
 };

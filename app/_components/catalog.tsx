@@ -43,7 +43,7 @@ export default function Catalog({
         heading={heading}
       />
       <Grid container spacing={{ xs: 6, md: 8 }} sx={{ mt: { xs: 8, md: 12 } }}>
-        {products.map((product) => (
+        {products.map((product, index) => (
           <Grid
             key={product.id}
             size={{
@@ -54,6 +54,8 @@ export default function Catalog({
             sx={{ display: "flex" }}
           >
             <ProductCard
+              headingComponent={headingComponent === "h1" ? "h2" : "h3"}
+              priority={index === 0}
               product={product}
               showMarketplaceActions={showMarketplaceActions}
             />
