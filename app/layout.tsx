@@ -10,6 +10,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import Script from "next/script";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { literata, manrope } from "./fonts";
 
 import "./globals.css";
 
@@ -54,7 +55,7 @@ _tmr.push({id: "3589962", type: "pageView", start: (new Date()).getTime()});
   if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
 })(document, window, "tmr-code");`}
       </Script>
-      <body>
+      <body className={`${manrope.variable} ${literata.variable}`}>
         <GoogleAnalytics gaId="G-6JC9JR7TQ0" />
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>

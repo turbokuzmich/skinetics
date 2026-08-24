@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "@emotion/cache": "^11.11.0",
@@ -30,14 +32,21 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.6",
     "@types/color": "^3.0.6",
     "@types/lodash": "^4.17.6",
     "@types/node": "^20",
     "@types/nodemailer": "^6.4.15",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@vitejs/plugin-react": "4.3.4",
     "eslint": "^8.57.1",
     "eslint-config-next": "^14.2.35",
-    "typescript": "^5"
+    "jsdom": "25.0.1",
+    "lighthouse": "^13.4.1",
+    "typescript": "^5",
+    "vitest": "2.1.9"
   }
 }
