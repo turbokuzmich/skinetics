@@ -1,22 +1,19 @@
 import type { Metadata } from "next";
 import CssBaseline from "@mui/material/CssBaseline";
-import Navigation from "./_components/appBar";
-import Box from "@mui/material/Box";
-import Stack from "@mui/material/Stack";
-import Footer from "./_components/foot";
-import Divider from "@mui/material/Divider";
 import theme from "./theme";
 import { ThemeProvider } from "@mui/material/styles";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import Script from "next/script";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { literata, manrope } from "./fonts";
+import SiteFooter from "./_components/siteFooter";
+import SiteHeader from "./_components/siteHeader";
 
 import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://skinetics.ru"),
-  title: "SkineticsLab",
+  title: "Skinetics",
   other: {
     "google-site-verification": "0RAz7vJ8nacRfJbT0QEZrDjYD1lKQnKbG69AQCJChQw",
   },
@@ -60,23 +57,12 @@ _tmr.push({id: "3589962", type: "pageView", start: (new Date()).getTime()});
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
             <CssBaseline />
-            <Navigation />
-            <Stack
-              sx={{
-                minHeight: "100vh",
-              }}
-            >
-              <Box
-                sx={{
-                  flexGrow: 1,
-                  flexShrink: 1,
-                }}
-              >
-                {children}
-              </Box>
-              <Divider />
-              <Footer />
-            </Stack>
+            <a className="skip-link" href="#main-content">
+              Перейти к содержанию
+            </a>
+            <SiteHeader />
+            <main id="main-content">{children}</main>
+            <SiteFooter />
           </ThemeProvider>
         </AppRouterCacheProvider>
       </body>

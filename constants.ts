@@ -474,39 +474,11 @@ export const ingredients: Record<IngredientName, Ingredient> = {
 };
 
 export const navigation: NaviItem[] = [
-  {
-    to: "/about",
-    title: "О нас",
-  },
-  {
-    to: "/catalog",
-    title: "Каталог",
-  },
-  {
-    to: "/serum",
-    title: "Сыворотки",
-    subitems: products
-      .filter(
-        (product) =>
-          product.status === "published" && product.categoryId === "serum"
-      )
-      .map((product) => ({
-        to: `/catalog/${product.slug}`,
-        title: product.title,
-      })),
-  },
-  {
-    to: "/cream",
-    title: "Кремы",
-  },
-  // {
-  //   to: "/ingredients",
-  //   title: "Ингредиенты",
-  // },
-  {
-    to: "/contacts",
-    title: "Контакты",
-  },
+  { to: "/catalog", title: "Каталог" },
+  { to: "/serum", title: "Сыворотки" },
+  { to: "/cream", title: "Кремы" },
+  { to: "/about", title: "О нас" },
+  { to: "/contacts", title: "Контакты" },
 ];
 
 assertCatalogIntegrity({
