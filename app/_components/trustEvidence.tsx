@@ -58,14 +58,14 @@ export default function TrustEvidence() {
           <Grid size={{ xs: 12, md: 7 }}>
             <Stack
               component="ul"
-              divider={
-                <Box
-                  component="span"
-                  aria-hidden="true"
-                  sx={{ borderTop: `1px solid ${skinColors.mutedInk}` }}
-                />
-              }
-              sx={{ listStyle: "none", m: 0, p: 0 }}
+              sx={{
+                listStyle: "none",
+                m: 0,
+                p: 0,
+                "& > li + li": {
+                  borderTop: `1px solid ${skinColors.mutedInk}`,
+                },
+              }}
             >
               {trustFacts.map((fact) => (
                 <Typography

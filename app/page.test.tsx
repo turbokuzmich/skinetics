@@ -57,4 +57,18 @@ describe("homepage", () => {
     expect(container.querySelector("video")).not.toBeInTheDocument();
     expect(container.innerHTML).not.toContain(videoPath);
   });
+
+  it("renders trust evidence as a semantic list", () => {
+    render(<LandingPage />);
+
+    const firstFact = screen.getByText(
+      "ООО «Демидов Люкс СПА» является членом Московского инновационного кластера.",
+    );
+    const trustList = firstFact.closest("ul");
+
+    expect(trustList).not.toBeNull();
+    expect(
+      Array.from(trustList!.children, ({ tagName }) => tagName),
+    ).toEqual(["LI", "LI", "LI"]);
+  });
 });
