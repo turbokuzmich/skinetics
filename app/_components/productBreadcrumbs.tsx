@@ -30,11 +30,29 @@ export default function ProductBreadcrumbs({
 
   return (
     <>
-      <Breadcrumbs aria-label="Хлебные крошки" sx={{ mb: 3 }}>
-        <Link component={NextLink} href="/" color="inherit">
+      <Breadcrumbs
+        aria-label="Хлебные крошки"
+        sx={{
+          color: "text.secondary",
+          fontSize: "0.875rem",
+          overflowWrap: "anywhere",
+          pt: { xs: 6, md: 8 },
+        }}
+      >
+        <Link
+          component={NextLink}
+          href="/"
+          color="inherit"
+          sx={{ alignItems: "center", display: "inline-flex", minHeight: 44 }}
+        >
           Главная
         </Link>
-        <Link component={NextLink} href={category.path} color="inherit">
+        <Link
+          component={NextLink}
+          href={category.path}
+          color="inherit"
+          sx={{ alignItems: "center", display: "inline-flex", minHeight: 44 }}
+        >
           {category.name}
         </Link>
         <Typography color="text.primary" aria-current="page">

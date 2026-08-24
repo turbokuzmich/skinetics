@@ -5,16 +5,14 @@ import {
 } from "@/lib/catalog";
 import { notFound } from "next/navigation";
 import Container from "@mui/material/Container";
-import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
-import Divider from "@mui/material/Divider";
 import Typography from "@mui/material/Typography";
 import Metrika from "@/app/_components/metrika";
-import MarketplaceActions from "@/app/_components/marketplaceActions";
 import ProductDescription from "@/app/_components/productDescription";
 import ProductBreadcrumbs from "@/app/_components/productBreadcrumbs";
 import ProductFaq from "@/app/_components/productFaq";
-import { brands } from "@/constants";
+import ProductHero from "@/app/_components/productHero";
+import ContextualLinks from "@/app/_components/contextualLinks";
 import { type Metadata } from "next";
 
 type Props = Readonly<{
@@ -49,68 +47,33 @@ export default function CatalogItem({ params: { id } }: Props) {
     notFound();
   }
 
-  const brand = brands[product.brandId];
-
   return (
     <>
       <Metrika />
-      <Container sx={{ pt: 12, pb: { xs: 8, sm: 16 } }}>
+      <Container maxWidth="lg" sx={{ pb: { xs: 12, md: 18 } }}>
         <ProductBreadcrumbs product={product} />
-        <Stack
-          gap={2}
-          direction={{
-            xs: "column",
-            md: "row",
-          }}
-          useFlexGap
+        <ProductHero product={product} />
+        <ProductDescription content={product.content} />
+        <Box
+          component="section"
+          aria-labelledby="composition-heading"
+          sx={{ maxWidth: 800, mx: "auto", py: { xs: 8, md: 12 } }}
         >
-          <Box
-            flexShrink={0}
-            flexGrow={0}
-            role="img"
-            aria-label={product.imageAlt}
-            sx={{
-              backgroundImage: `url(${product.image})`,
-              backgroundSize: "contain",
-              backgroundPosition: "center",
-              backgroundRepeat: "no-repeat",
-              height: {
-                xs: 350,
-                md: 500,
-              },
-              width: {
-                xs: "auto",
-                md: 500,
-              },
-            }}
-          />
-          <Box>
-            <Typography variant="overline" component="div">
-              {brand.name}
-            </Typography>
-            <Typography variant="h5" component="h1" paragraph>
-              {product.title}
-            </Typography>
-            <Typography variant="subtitle2">
-              {product.categoryId === "face-cream" ? "Масса" : "Объем"}
-            </Typography>
-            <Typography paragraph>{product.volume}</Typography>
-            <Box marginBottom={2}>
-              <MarketplaceActions
-                product={product}
-                placement="product-hero"
-              />
-            </Box>
-            <ProductDescription content={product.content} />
-            <Typography variant="h6" component="h2">
-              Полный состав
-            </Typography>
-            <Typography paragraph>{product.composition}</Typography>
-            <ProductFaq items={product.content.faq} />
-          </Box>
-        </Stack>
+          <Typography
+            id="composition-heading"
+            component="h2"
+            variant="h2"
+            sx={{ fontSize: "clamp(1.75rem, 4vw, 2.5rem)", mb: 4 }}
+          >
+            Полный состав
+          </Typography>
+          <Typography sx={{ lineHeight: 1.75 }}>
+            {product.composition}
+          </Typography>
+        </Box>
+        <ProductFaq items={product.content.faq} />
+        <ContextualLinks product={product} />
       </Container>
-      <Divider />
     </>
   );
 }
