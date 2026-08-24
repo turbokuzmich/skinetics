@@ -70,7 +70,7 @@ export const products: Product[] = [
     title: "Сыворотка от выпадения и для роста волос",
     summary:
       "Несмываемая сыворотка-спрей с красным перцем и никотиновой кислотой",
-    image: "/items/red_pepper.png",
+    image: "/items/red_pepper-wildberries.webp",
     imageAlt:
       "Сыворотка-спрей Dr. Health с красным перцем и никотиновой кислотой",
     composition:
@@ -116,7 +116,7 @@ export const products: Product[] = [
     barcode: "2043752250338",
     title: "Сыворотка от выпадения и для роста волос",
     summary: "Несмываемая сыворотка с трипептидом меди GHK-Cu",
-    image: "/items/copper_tripeptide.png",
+    image: "/items/copper_tripeptide-wildberries.webp",
     imageAlt: "Сыворотка Dr. Health с трипептидом меди GHK-Cu",
     composition:
       "Вода подготовленная; трипептид меди-1 (GHK-Cu); гиалуроновая кислота низкомолекулярная; гиалуроновая кислота высокомолекулярная; аллантоин; экстракт крапивы; экстракт календулы; экстракт чёрного перца; пантенол (провитамин B5); кофеин; феноксиэтанол; этилглицерин; ПЭГ-40; аромакомпозиция; молочная кислота.",
@@ -161,7 +161,7 @@ export const products: Product[] = [
     barcode: "4630247421137",
     title: "Средство от перхоти и себореи с климбазолом",
     summary: "Несмываемая сыворотка с климбазолом и пироктон оламином",
-    image: "/items/climbazole.png",
+    image: "/items/climbazole-wildberries.webp",
     imageAlt:
       "Сыворотка Dr. Health с климбазолом и пироктон оламином",
     composition:
