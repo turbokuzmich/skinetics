@@ -20,7 +20,7 @@ All future pages keep Skinetics as the neutral umbrella catalog, keep Dr. Health
 - `SiteHeader`, the layout-owned `PageShell` behavior, and `SiteFooter` frame only destinations that have already passed publication review. Desktop and mobile expose the same approved links.
 - `SectionHeading` renders the page eyebrow, one descriptive Russian H1, and its concise scope. Each page has exactly one H1.
 - A generalized breadcrumb component must render the canonical hierarchy both as visible HTML and matching `BreadcrumbList` JSON-LD. `ProductBreadcrumbs` establishes the parity requirement but its product-only API must be generalized before use by these templates.
-- `TrustEvidence` may show only verified facts with a source or context label. It is not a container for generic trust claims.
+- The current `TrustEvidence` is hard-coded to company facts and must not be reused unchanged by a future template. Before template reuse, generalize it to a data-driven verified-evidence API whose entries require a fact, source or context label, review date, and optional approved visual. The generalized component must render only evidence relevant to the current page and must never inject unrelated company facts or generic trust claims.
 - `ProductCard` renders only accepted published products and uses `showMarketplaceActions={false}` by default on discovery pages so the canonical product visit stays primary.
 - `ContextualLinks` must be generalized from its current product-category API to accept a reviewed list of published, self-canonical destinations. It must never render an absent, placeholder, `noindex`, redirecting, or JavaScript-only destination.
 - `MarketplaceActions` is not a required block in any future discovery template. If editorial review later approves a direct marketplace exit, it must keep the existing `marketplace_click` payload and use an accurately approved `MarketplacePlacement`; it must not be mislabeled as `catalog-card` or `product-hero` merely to reuse an enum value.
@@ -31,7 +31,7 @@ All future pages keep Skinetics as the neutral umbrella catalog, keep Dr. Health
 
 Every template places its primary conversion in server-rendered HTML and names the success metric before publication. The conversion remains usable if analytics fails. Phase 04 does not invent an internal-navigation event: Phase 05 must approve the event name, payload, consent behavior, and reporting destination before instrumenting the named link placement.
 
-The existing `marketplace_click` event remains a downstream product-page measurement with `product_id`, `brand_id`, `marketplace`, `placement`, `page_path`, and optional `campaign`. The current Yandex and Mail.ru compatibility goals remain unchanged. A future page may use later-session marketplace clicks as a supporting outcome, but must not report them as direct Skinetics sales or as proof that the discovery page caused marketplace revenue.
+The existing `marketplace_click` event measures an approved marketplace exit with `product_id`, `brand_id`, `marketplace`, `placement`, `page_path`, and optional `campaign`. Current approved placements are `catalog-card` on catalog/category product cards and `product-hero` on product pages; a future placement requires an explicit contract change rather than borrowing either label. The current Yandex and Mail.ru compatibility goals remain unchanged. A future discovery page may use later-session marketplace clicks from approved placements as a supporting outcome, but must not report them as direct Skinetics sales or as proof that the discovery page caused marketplace revenue.
 
 ## Brand: composition contract
 
@@ -43,9 +43,9 @@ The existing `marketplace_click` event remains a downstream product-page measure
 4. **Verified evidence.** Present approved identity, portfolio, product, and documentary facts with source context and review dates. Official brand assets remain optional and cannot substitute for useful copy.
 5. **Products and categories.** Show only published products assigned to that brand and link each one directly to its single `/catalog/[slug]` canonical. Add published product-type category links where useful; do not create brand-specific product URLs.
 6. **Reviewed expert links.** Render only relevant expert destinations that have independently passed their gates. Omit the block when none are published.
-7. **Product conversion.** End with a descriptive product-page action, not a first-party checkout claim. The brand-to-product visit is primary; marketplace exit remains downstream on the product page.
+7. **Product conversion.** End with a descriptive product-page action, not a first-party checkout claim. The brand-to-product visit is primary; any marketplace exit remains downstream through an approved `catalog-card` or `product-hero` placement unless a new placement contract is separately approved.
 
-**Shared components consumed:** `SectionHeading`, generalized canonical breadcrumbs, `TrustEvidence`, `ProductCard`, generalized `ContextualLinks`, and the layout-owned `SiteHeader`, `PageShell`, and `SiteFooter`. `MarketplaceActions` is not required.
+**Shared components consumed:** `SectionHeading`, generalized canonical breadcrumbs, the data-driven generalized `TrustEvidence` API described above, `ProductCard`, generalized `ContextualLinks`, and the layout-owned `SiteHeader`, `PageShell`, and `SiteFooter`. The current hard-coded `TrustEvidence` must not be reused. `MarketplaceActions` is not required.
 
 **Required server-rendered content:** canonical breadcrumb; Skinetics-to-brand relationship; brand name and scope; evidence labels; product and category names and links; available reviewed expert links; primary product action; content owner, author, reviewer when applicable, source dates, publication/update dates, and review trigger.
 
@@ -69,7 +69,7 @@ The existing `marketplace_click` event remains a downstream product-page measure
 6. **Suitable products.** Show only products whose suitability is supported by accepted product copy, packaging, manufacturer documents, or the current reviewed marketplace card. Link directly to each canonical product page.
 7. **Expert links.** Offer published, reviewed selection or application material that advances the same intent. Omit the block when no expert destination is approved.
 
-**Shared components consumed:** `SectionHeading`, generalized canonical breadcrumbs, `ProductCard`, generalized `ContextualLinks`, optional `TrustEvidence` for sourced context, and the layout-owned `SiteHeader`, `PageShell`, and `SiteFooter`. `MarketplaceActions` is not required.
+**Shared components consumed:** `SectionHeading`, generalized canonical breadcrumbs, `ProductCard`, generalized `ContextualLinks`, the optional data-driven generalized `TrustEvidence` API described above for sourced context, and the layout-owned `SiteHeader`, `PageShell`, and `SiteFooter`. The current hard-coded `TrustEvidence` must not be reused. `MarketplaceActions` is not required.
 
 **Required server-rendered content:** breadcrumb; one-intent H1 and non-diagnostic context; selection factors; any required professional-advice caveat; reviewed ingredient links; suitable product names and canonical links; reviewed expert links; source and authorship record.
 
@@ -91,9 +91,9 @@ The existing `marketplace_click` event remains a downstream product-page measure
 4. **Evidence limits and sources.** Distinguish direct source statements, accepted product instructions, and editorial interpretation. Name authoritative sources, their review dates, limitations, and the next review trigger.
 5. **Verified product presence.** Include a product only when current accepted evidence verifies that ingredient in the formula. Link to the one `/catalog/[slug]` canonical and identify the customer-facing product brand in text.
 6. **Care contexts.** Link only to published, non-diagnostic concern pages and reviewed expert material. Explain that ingredient presence alone does not determine whether a product suits every visitor.
-7. **Product conversion.** End with a descriptive action to a verified related product page. Marketplace choice and exit remain on the product page.
+7. **Product conversion.** End with a descriptive action to a verified related product page. Any marketplace choice and exit remains downstream through an approved `catalog-card` or `product-hero` placement unless a new placement contract is separately approved.
 
-**Shared components consumed:** `SectionHeading`, generalized canonical breadcrumbs, `TrustEvidence` for sources/limits, `ProductCard`, generalized `ContextualLinks`, and the layout-owned `SiteHeader`, `PageShell`, and `SiteFooter`. `MarketplaceActions` is not required.
+**Shared components consumed:** `SectionHeading`, generalized canonical breadcrumbs, the data-driven generalized `TrustEvidence` API described above for sources and limits, `ProductCard`, generalized `ContextualLinks`, and the layout-owned `SiteHeader`, `PageShell`, and `SiteFooter`. The current hard-coded `TrustEvidence` must not be reused. `MarketplaceActions` is not required.
 
 **Required server-rendered content:** breadcrumb; ingredient name, INCI, and aliases; verified cosmetic role; evidence/interpretation labels and source dates; verified product-presence statement and canonical product links; published care-context links; product action; complete authorship record.
 
@@ -117,7 +117,7 @@ The existing `marketplace_click` event remains a downstream product-page measure
 6. **Related taxonomy links.** Link only to independently published concern, ingredient, brand, or category pages. Omit absent destinations; never use JavaScript-only or placeholder links.
 7. **Product next step.** Provide a useful canonical product action only when the article's answer and evidence support that relationship. Keep the choice non-diagnostic and do not imply that marketplace exit is clinical advice.
 
-**Shared components consumed:** `SectionHeading`, generalized canonical breadcrumbs, `TrustEvidence` for source/interpretation records, `ProductCard` when a product is a justified next step, generalized `ContextualLinks`, and the layout-owned `SiteHeader`, `PageShell`, and `SiteFooter`. `MarketplaceActions` is not required.
+**Shared components consumed:** `SectionHeading`, generalized canonical breadcrumbs, the data-driven generalized `TrustEvidence` API described above for source and interpretation records, `ProductCard` when a product is a justified next step, generalized `ContextualLinks`, and the layout-owned `SiteHeader`, `PageShell`, and `SiteFooter`. The current hard-coded `TrustEvidence` must not be reused. `MarketplaceActions` is not required.
 
 **Required server-rendered content:** breadcrumb; one-intent H1; visible authorship/review/date record; complete answer body; source and interpretation labels; related published taxonomy links; justified product next step; update and review trigger.
 
