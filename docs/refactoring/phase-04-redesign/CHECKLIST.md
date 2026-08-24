@@ -11,31 +11,33 @@
 ## Page templates
 
 - [x] Future brand, concern, ingredient, and expert composition contracts documented without publishing routes.
-- [ ] Homepage.
-- [ ] Catalog and category listing.
-- [ ] Product detail.
-- [ ] Brand hub.
-- [ ] Concern and ingredient hub.
-- [ ] Expert article.
-- [ ] About and trust content.
-- [ ] Contacts and both forms.
-- [ ] Header, footer, breadcrumbs, and mobile navigation.
+- [x] Homepage.
+- [x] Catalog and category listing.
+- [x] Product detail.
+- [ ] Brand hub — evidence-gated; not published.
+- [ ] Concern and ingredient hub — evidence-gated; not published.
+- [ ] Expert article — evidence-gated; not published.
+- [x] About and trust content.
+- [x] Contacts and both forms.
+- [x] Header, footer, breadcrumbs, and mobile navigation.
 
 ## Implementation
 
-- [ ] Build reusable design tokens and components.
-- [ ] Implement templates incrementally.
-- [ ] Preserve semantic headings and rendered content.
-- [ ] Preserve analytics event contracts.
-- [ ] Preserve or intentionally migrate all existing URLs.
+- [x] Build reusable design tokens and components.
+- [x] Implement approved current-route templates incrementally.
+- [x] Preserve semantic headings and rendered content.
+- [x] Preserve analytics event contracts.
+- [x] Preserve all existing URLs; no redirect or content backfill is required.
 
 ## Validation and rollout
 
-- [ ] Run lint and production build.
-- [ ] Test phone, tablet, and desktop breakpoints.
-- [ ] Test keyboard navigation, focus, contrast, labels, and reduced motion.
-- [ ] Check Core Web Vitals or agreed local performance proxies.
-- [ ] Check raw HTML and rendered DOM for SEO-critical content.
-- [ ] Test marketplace links, forms, analytics, sitemap, robots, and canonicals.
-- [ ] Capture approved before/after evidence.
-- [ ] Update root status and log.
+- [x] Run full tests, lint, and production build.
+- [x] Test 390, 768, 1280, and 1440 px breakpoints.
+- [x] Test keyboard navigation, focus, contrast, labels, 44 px targets, and reduced motion.
+- [x] Meet the agreed local Lighthouse budgets.
+- [x] Check raw HTML and rendered DOM for SEO-critical content.
+- [x] Test marketplace links, forms, analytics, sitemap, robots, and canonicals.
+- [x] Record approved design, implementation commits, responsive matrix, provenance, and performance evidence.
+- [x] Update root status and log.
+- [ ] Build the Linux release artifact — requires explicit authorization.
+- [ ] Deploy to production — requires explicit authorization.

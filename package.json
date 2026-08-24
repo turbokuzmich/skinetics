@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "validate:phase04": "node scripts/validatePhase04.mjs"
   },
   "dependencies": {
     "@emotion/cache": "^11.11.0",
