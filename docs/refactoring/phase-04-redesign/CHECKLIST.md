@@ -10,6 +10,7 @@
 
 ## Page templates
 
+- [x] Future brand, concern, ingredient, and expert composition contracts documented without publishing routes.
 - [ ] Homepage.
 - [ ] Catalog and category listing.
 - [ ] Product detail.
