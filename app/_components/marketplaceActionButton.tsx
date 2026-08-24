@@ -73,8 +73,9 @@ export default function MarketplaceActionButton({
       rel="noopener noreferrer"
       sx={{
         color: "white",
-        textTransform: "uppercase",
+        minHeight: 44,
         paddingInline: 3,
+        textTransform: "none",
         ...marketplaceStyles[marketplaceId],
         "&:hover": {
           filter: "brightness(0.92)",

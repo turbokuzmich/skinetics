@@ -17,7 +17,8 @@ export default function CreamPage() {
     <Box paddingTop={8}>
       <Metrika />
       <Catalog
-        header="Кремы для лица с пептидами"
+        eyebrow="Ежедневный уход за лицом"
+        heading="Кремы для лица с пептидами"
         description="Кремы Neon Beard и SkineticsLab для ежедневного ухода за кожей лица. Сравните состав, формат применения и доступные маркетплейсы."
         categoryId="face-cream"
       />

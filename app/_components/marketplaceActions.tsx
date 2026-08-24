@@ -22,7 +22,13 @@ export default function MarketplaceActions({
   }
 
   return (
-    <Stack direction="row" gap={1} useFlexGap flexWrap="wrap">
+    <Stack
+      direction="row"
+      gap={2}
+      useFlexGap
+      flexWrap="wrap"
+      sx={{ alignItems: "stretch" }}
+    >
       {availableMarketplaces.map(({ marketplaceId, url }) => {
         const marketplace = marketplaces[marketplaceId];
 

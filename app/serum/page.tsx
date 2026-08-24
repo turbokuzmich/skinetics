@@ -17,9 +17,10 @@ export default function SerumPage() {
     <Box paddingTop={8}>
       <Metrika />
       <Catalog
-        header="Сыворотки для волос Dr. Health"
+        eyebrow="Уход за волосами и кожей головы"
+        heading="Сыворотки для волос Dr. Health"
+        description="Три несмываемые сыворотки для разных задач косметического ухода. Изучите состав и способ применения перед переходом на Wildberries."
         categoryId="serum"
-        omitDescription
       />
     </Box>
   );

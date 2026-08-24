@@ -17,8 +17,9 @@ export default function CatalogPage() {
     <Box paddingTop={8}>
       <Metrika />
       <Catalog
-        header="Каталог косметики Skinetics"
-        description="В каталоге представлены средства для ухода за лицом, волосами и кожей головы. Сравните назначение и состав продуктов Dr. Health, SkineticsLab и Neon Beard и перейдите на Wildberries или Ozon."
+        eyebrow="Все средства"
+        heading="Каталог косметики Skinetics"
+        description="Сравните средства Dr. Health, SkineticsLab и Neon Beard по назначению, составу и способу применения. Покупка и доставка оформляются на Wildberries или Ozon."
       />
     </Box>
   );

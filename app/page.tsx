@@ -22,7 +22,10 @@ export default function LandingPage() {
     <>
       <Metrika />
       <Carousel />
-      <Catalog />
+      <Catalog
+        heading="Косметика для лица, волос и кожи головы"
+        description="Skinetics объединяет средства Dr. Health, SkineticsLab и Neon Beard. Изучите назначение, состав и способ применения, затем выберите доступный маркетплейс."
+      />
       <Advantages />
       {/* <Divider />
       <Testimonials />
