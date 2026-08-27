@@ -43,3 +43,6 @@ next-env.d.ts
 
 # editor
 .vscode
+
+# project agent skills (restore with: npm run skills:install)
+/.agents/skills/

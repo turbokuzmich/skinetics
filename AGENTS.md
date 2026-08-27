@@ -56,7 +56,12 @@ This is a Next.js 14 App Router site for the Skinetics multi-brand catalog. Rout
 - `npm run lint` runs Next.js linting; use it before submitting changes.
 - `npm run build` creates the production build and catches type, route, and rendering failures.
 - `npm run start` serves a completed production build locally.
+- `npm run skills:install` restores the project-scoped agent skills declared in `skills-lock.json`.
 - `./build.sh` creates `skinetics-release.tar.gz`, the production artifact for the Ubuntu VM. It requires Docker Desktop and uses Buildx to install and build dependencies inside a `linux/amd64`, Node 24 container. Do not deploy a `.next` directory built directly on macOS.
+
+## Agent Skills
+
+Project-scoped agent skills are declared in `skills-lock.json`. Their generated files live in `.agents/skills/` and are intentionally excluded from Git. After a fresh clone, and whenever `skills-lock.json` changes, run `npm run skills:install` to download and restore them from their recorded upstream sources. The command requires network access.
 
 ## Production Build and Deployment
 

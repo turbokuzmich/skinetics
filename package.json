@@ -9,6 +9,7 @@
     "lint": "next lint",
     "test": "vitest run",
     "test:watch": "vitest",
+    "skills:install": "npx --yes skills@1.5.23 experimental_install",
     "validate:phase04": "node scripts/validatePhase04.mjs"
   },
   "dependencies": {
