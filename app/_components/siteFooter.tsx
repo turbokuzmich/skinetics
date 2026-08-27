@@ -71,10 +71,10 @@ export default function SiteFooter() {
         <Grid container spacing={{ xs: 10, md: 8 }}>
           <Grid size={{ xs: 12, md: 6 }}>
             <Typography component="h2" variant="h3" sx={{ mb: 3 }}>
-              Записаться к трихологу
+              Оставить заявку на консультацию трихолога
             </Typography>
             <Typography color="text.secondary" sx={{ mb: 6, maxWidth: 560 }}>
-              Оставьте контакты, чтобы обсудить консультацию по уходу за волосами и кожей головы.
+              Оставьте имя и телефон, чтобы мы могли связаться с вами по поводу записи.
             </Typography>
             <Suspense>
               <DoctorForm />
@@ -99,7 +99,7 @@ export default function SiteFooter() {
                   <Logo />
                 </Link>
                 <Typography color="text.secondary" sx={{ mt: 4, maxWidth: 500 }}>
-                  Skinetics помогает выбрать средство, а покупка и доставка оформляются на Wildberries или Ozon.
+                  Купить средства можно на Wildberries, а кремы — также на Ozon.
                 </Typography>
               </Box>
               <Grid container spacing={6}>

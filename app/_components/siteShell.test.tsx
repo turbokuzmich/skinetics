@@ -90,7 +90,7 @@ describe("site shell", () => {
     render(<SiteFooter />);
     const footer = screen.getByRole("contentinfo");
     expect(within(footer).getAllByRole("heading", { level: 2 }).map((heading) => heading.textContent)).toEqual([
-      "Записаться к трихологу",
+      "Оставить заявку на консультацию трихолога",
       "Каталог",
       "Skinetics",
     ]);

@@ -65,6 +65,9 @@ export default function ProductHero({
         >
           {product.title}
         </Typography>
+        <Typography color="text.secondary" sx={{ lineHeight: 1.7, maxWidth: 620 }}>
+          {product.summary}
+        </Typography>
       </Stack>
       <Box
         sx={{

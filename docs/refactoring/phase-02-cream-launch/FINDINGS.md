@@ -1,6 +1,6 @@
 # Phase 02 findings
 
-Status: Implementation validated; deployment pending
+Status: Deployed; 14-day monitoring in progress
 
 ## Product evidence findings
 
@@ -26,7 +26,7 @@ Only `BreadcrumbList` JSON-LD is emitted. `Product`, `Offer`, `Review`, `Aggrega
 
 The local release candidate passed whitespace, lint, production-build, route, rendered-HTML, sitemap, representative responsive, console, and representative stubbed-analytics checks on 2026-08-23. Direct browser coverage included the homepage at 1280 px, `/cream` at 1280/1440/390 px, and both cream pages at 1280/390 px; no horizontal overflow appeared in those observed cases, and the tested mobile navigation targets were at least 48 px. Detailed evidence is in [VALIDATION.md](./VALIDATION.md).
 
-No production deployment was performed. The actual launch date and 14-day indexability and marketplace-click monitoring window remain pending and require separately authorized deployment.
+The five-product catalog and redesign were deployed on 2026-08-24. Initial production checks confirmed the intended route and sitemap responses, cream metadata and canonicals, optimized product images, empty-form validation, and representative marketplace destinations. Controlled mail delivery and analytics-dashboard receipt remain to be confirmed. The 14-day indexability and marketplace-click monitoring window runs through 2026-09-07.
 
 ## Follow-up work for Phase 03
 

@@ -46,9 +46,9 @@ export default function HomeHero() {
                 mt: 6,
               }}
             >
-              Skinetics помогает сравнить назначение, состав и способ
-              применения средств. Покупка и доставка оформляются на
-              Wildberries или Ozon.
+              Несмываемые сыворотки для ухода за кожей головы и кремы для
+              лица с пептидами. Узнайте, для чего подходит каждое средство
+              и как его применять.
             </Typography>
             <Button
               component={Link}
@@ -63,63 +63,124 @@ export default function HomeHero() {
             <Box
               component="figure"
               aria-label="Средства трёх брендов каталога Skinetics"
-              sx={{
-                border: "1px solid",
-                borderColor: "divider",
-                display: "grid",
-                gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
-                m: 0,
-                minHeight: { xs: 340, sm: 460 },
-                overflow: "hidden",
-              }}
+              sx={{ m: 0, position: "relative" }}
             >
-              {heroProducts.map((product, index) => (
-                <Stack
-                  key={product.id}
+              <Box
+                sx={{
+                  border: "1px solid",
+                  borderColor: "divider",
+                  display: "grid",
+                  gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+                  minHeight: { xs: 340, sm: 460 },
+                  overflow: "hidden",
+                }}
+              >
+                {heroProducts.map((product, index) => (
+                  <Stack
+                    key={product.id}
+                    sx={{
+                      borderLeft: index === 0 ? 0 : "1px solid",
+                      borderColor: "divider",
+                      minWidth: 0,
+                      pt: index === 1 ? { xs: 7, sm: 11 } : { xs: 4, sm: 6 },
+                    }}
+                  >
+                    <Typography
+                      component="span"
+                      sx={{
+                        color: brandAccents[product.brandId],
+                        fontSize: { xs: "0.7rem", sm: "0.8rem" },
+                        fontWeight: 500,
+                        minHeight: 32,
+                        px: { xs: 2, sm: 4 },
+                      }}
+                    >
+                      {brands[product.brandId].name}
+                    </Typography>
+                    <Box
+                      sx={{
+                        flexGrow: 1,
+                        minHeight: 0,
+                        position: "relative",
+                      }}
+                    >
+                      <Image
+                        alt=""
+                        fill
+                        priority={index === 1}
+                        sizes="(max-width: 900px) 30vw, 190px"
+                        src={product.image}
+                        style={{ objectFit: "contain" }}
+                      />
+                    </Box>
+                    <Box
+                      aria-hidden="true"
+                      sx={{
+                        bgcolor: brandAccents[product.brandId],
+                        height: 3,
+                      }}
+                    />
+                  </Stack>
+                ))}
+              </Box>
+              <Stack
+                component="figcaption"
+                direction="row"
+                spacing={{ xs: 2, sm: 3 }}
+                sx={{
+                  alignItems: "baseline",
+                  bgcolor: "background.paper",
+                  border: "1px solid",
+                  borderTop: 0,
+                  borderColor: "divider",
+                  flexWrap: "wrap",
+                  justifyContent: "space-between",
+                  px: { xs: 3, sm: 4 },
+                  py: { xs: 2.5, sm: 3 },
+                }}
+              >
+                <Typography
+                  component="span"
+                  variant="caption"
                   sx={{
-                    borderLeft: index === 0 ? 0 : "1px solid",
-                    borderColor: "divider",
-                    minWidth: 0,
-                    pt: index === 1 ? { xs: 7, sm: 11 } : { xs: 4, sm: 6 },
+                    color: "text.secondary",
+                    fontWeight: 600,
+                    letterSpacing: "0.08em",
+                    lineHeight: 1.2,
+                    textTransform: "uppercase",
                   }}
                 >
+                  Доступно на
+                </Typography>
+                <Stack direction="row" spacing={{ xs: 2.5, sm: 3 }}>
                   <Typography
                     component="span"
                     sx={{
-                      color: brandAccents[product.brandId],
-                      fontSize: { xs: "0.7rem", sm: "0.8rem" },
-                      fontWeight: 500,
-                      minHeight: 32,
-                      px: { xs: 2, sm: 4 },
+                      color: "#CB11AB",
+                      fontFamily: "Arial, sans-serif",
+                      fontSize: { xs: "1.125rem", sm: "1.3rem" },
+                      fontWeight: 800,
+                      letterSpacing: "-0.045em",
+                      lineHeight: 1.1,
                     }}
                   >
-                    {brands[product.brandId].name}
+                    Wildberries
                   </Typography>
-                  <Box
+                  <Typography
+                    component="span"
                     sx={{
-                      flexGrow: 1,
-                      minHeight: 0,
-                      position: "relative",
+                      color: "#005BFF",
+                      fontFamily: "Arial, sans-serif",
+                      fontSize: { xs: "1.125rem", sm: "1.3rem" },
+                      fontWeight: 900,
+                      letterSpacing: "-0.055em",
+                      lineHeight: 1.1,
                     }}
                   >
-                    <Image
-                      alt=""
-                      fill
-                      priority={index === 1}
-                      sizes="(max-width: 900px) 30vw, 190px"
-                      src={product.image}
-                      style={{ objectFit: "contain" }}
-                    />
-                  </Box>
-                  <Box
-                    aria-hidden="true"
-                    sx={{
-                      bgcolor: brandAccents[product.brandId],
-                      height: 3,
-                    }}
-                  />
+                    OZON
+                  </Typography>
                 </Stack>
-              ))}
+              </Stack>
             </Box>
           </Grid>
         </Grid>

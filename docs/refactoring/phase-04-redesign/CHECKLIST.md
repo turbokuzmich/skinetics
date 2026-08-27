@@ -39,5 +39,5 @@
 - [x] Test marketplace links, forms, analytics, sitemap, robots, and canonicals.
 - [x] Record approved design, implementation commits, baseline/final browser captures, responsive matrix, provenance, and performance evidence.
 - [x] Update root status and log.
-- [ ] Build the Linux release artifact — requires explicit authorization.
-- [ ] Deploy to production — requires explicit authorization.
+- [x] Build the Linux release artifact — authorized and completed on 2026-08-24.
+- [x] Deploy to production — completed on 2026-08-24; receipt verification remains recorded in `VALIDATION.md`.

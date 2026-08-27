@@ -28,13 +28,13 @@ describe("trust pages", () => {
     expect(
       screen.getByRole("heading", { level: 1, name: "Skinetics и наши бренды" }),
     ).toBeVisible();
-    expect(screen.getByText(/Skinetics — это каталог/)).toBeVisible();
+    expect(screen.getByText(/На Skinetics собраны сыворотки Dr. Health/)).toBeVisible();
     expect(screen.getByText("Dr. Health")).toBeVisible();
     expect(screen.getByText("SkineticsLab")).toBeVisible();
     expect(screen.getByText("Neon Beard")).toBeVisible();
     expect(
       screen.getByText(
-        /ООО «Демидов Люкс СПА» — компания, которая управляет сайтом/,
+        "Сайтом Skinetics управляет ООО «Демидов Люкс СПА».",
       ),
     ).toBeVisible();
 

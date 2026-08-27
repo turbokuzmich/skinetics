@@ -73,17 +73,16 @@ export default function About() {
         <Container maxWidth="lg" sx={{ py: { xs: 12, md: 18 } }}>
           <SectionHeading
             component="h1"
-            eyebrow="Мультибрендовый каталог"
+            eyebrow="О нас"
             heading="Skinetics и наши бренды"
-            description="Skinetics помогает разобраться в назначении, составе и применении косметики для лица, волос и кожи головы."
+            description="На Skinetics собраны сыворотки Dr. Health для волос и кожи головы и кремы для лица SkineticsLab и Neon Beard."
           />
           <Typography
             color="text.secondary"
             sx={{ lineHeight: 1.75, maxWidth: 760, mt: 6 }}
           >
-            Skinetics — это каталог, а не продуктовый бренд. Средства в каталоге
-            выпускаются под тремя самостоятельными брендами: Dr. Health,
-            SkineticsLab и Neon Beard.
+            Здесь можно познакомиться с каждым средством, узнать его состав
+            и способ применения.
           </Typography>
           <Stack
             direction={{ xs: "column", sm: "row" }}
@@ -106,7 +105,7 @@ export default function About() {
         sx={{ py: { xs: 12, md: 18 } }}
       >
         <Typography component="h2" variant="h2">
-          Три продуктовых бренда
+          Наши бренды
         </Typography>
         <Grid container spacing={4} sx={{ mt: { xs: 7, md: 9 } }}>
           {productBrands.map((brand) => (
@@ -139,9 +138,7 @@ export default function About() {
           color="text.secondary"
           sx={{ lineHeight: 1.75, maxWidth: 800, mt: 8 }}
         >
-          ООО «Демидов Люкс СПА» — компания, которая управляет сайтом и указана
-          в юридических сведениях. Название компании не заменяет названия
-          продуктовых брендов.
+          Сайтом Skinetics управляет ООО «Демидов Люкс СПА».
         </Typography>
       </Container>
 
@@ -155,10 +152,10 @@ export default function About() {
             variant="overline"
             sx={{ color: skinColors.border, fontWeight: 500, mb: 3 }}
           >
-            Подтверждённые сведения
+            О компании
           </Typography>
           <Typography component="h2" variant="h2">
-            Проверенные факты
+            Участие в московских программах
           </Typography>
           <Stack
             component="ul"

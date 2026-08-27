@@ -10,19 +10,21 @@ describe("homepage", () => {
     const videoPath = ["/", "vid", "eo", "/"].join("");
 
     expect(screen.getAllByRole("heading", { level: 1 })).toHaveLength(1);
-    expect(
-      screen.getByText(
-        /покупка и доставка оформляются на Wildberries или Ozon/i,
-      ),
-    ).toBeVisible();
+    const marketplaceCaption = screen
+      .getByText("Доступно на")
+      .closest("figcaption");
+
+    expect(marketplaceCaption).toHaveTextContent("Wildberries");
+    expect(marketplaceCaption).toHaveTextContent("OZON");
+    expect(marketplaceCaption?.querySelector("a")).toBeNull();
     expect(
       screen.getByRole("link", { name: "Смотреть каталог" }),
     ).toHaveAttribute("href", "/catalog");
-    expect(screen.getByRole("link", { name: "Сыворотки" })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: "Сыворотки для кожи головы" })).toHaveAttribute(
       "href",
       "/serum",
     );
-    expect(screen.getByRole("link", { name: "Кремы" })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: "Кремы для лица" })).toHaveAttribute(
       "href",
       "/cream",
     );

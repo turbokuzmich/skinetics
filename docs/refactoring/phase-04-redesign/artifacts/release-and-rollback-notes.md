@@ -1,6 +1,6 @@
 # Phase 04 release and rollback notes
 
-Status: Local release candidate validated; production deployment not executed
+Status: Deployed on 2026-08-24; production receipt verification in progress
 
 ## Coordinated release contents
 
@@ -41,7 +41,7 @@ Production publication requires a separate explicit owner authorization. After a
 8. Test one Wildberries-only serum plus one Wildberries/Ozon cream from a catalog card and product hero. Confirm destination, UTM/campaign behavior, and `marketplace_click` fields.
 9. Confirm optimized `/_next/image` responses succeed in the standalone runtime and watch logs for image, mail, route, or analytics errors.
 
-`./build.sh`, upload, extraction, process restart, and production smoke tests were not executed during local Phase 04 validation.
+`./build.sh`, upload, extraction, and process restart were completed by the owner on 2026-08-24. Public smoke checks confirmed the intended route/indexation matrix, optimized image responses, empty-form validation, and representative marketplace destinations. Controlled successful form submissions, mail receipt, analytics-dashboard receipt, and server-log review remain owner-side follow-up checks.
 
 ## Rollback
 

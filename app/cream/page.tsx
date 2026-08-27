@@ -19,7 +19,7 @@ export default function CreamPage() {
       <Catalog
         eyebrow="Ежедневный уход за лицом"
         heading="Кремы для лица с пептидами"
-        description="Кремы Neon Beard и SkineticsLab для ежедневного ухода за кожей лица. Сравните состав, формат применения и доступные маркетплейсы."
+        description="Два крема с пептидами для ежедневного ухода за лицом: Ultra Lift от Neon Beard, 100 г, и ReneWal от SkineticsLab, 50 г. Оба можно использовать утром и/или вечером."
         categoryId="face-cream"
       />
     </Box>

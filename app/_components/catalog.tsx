@@ -10,7 +10,7 @@ import SectionHeading from "./sectionHeading";
 
 type CatalogProps = Readonly<{
   heading: string;
-  description: string;
+  description?: string;
   categoryId?: ProductCategoryId;
   headingComponent?: "h1" | "h2";
   eyebrow?: string;

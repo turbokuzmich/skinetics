@@ -1,6 +1,6 @@
 # Phase 04 findings
 
-Status: Implementation validated; deployment pending
+Status: Deployed; production receipt verification pending
 
 ## Starting-point audit
 
@@ -33,7 +33,7 @@ The implementation:
 - Initial mobile Lighthouse scored 85 because third-party analytics dominated early loading. Immediate queues plus parser-installed interaction/fallback loaders reduced TBT from 305 ms to 4 ms and produced a final 94 performance / 100 accessibility score.
 - The final browser matrix exposed undersized wordmark and short footer targets; the shared shell now guarantees 44×44 px and all 24 route/viewport checks pass.
 
-No local implementation blocker remains. Production deployment is intentionally not part of Phase 04 validation.
+No local implementation blocker remains. Release head `ea92ab1` was deployed on 2026-08-24; initial route, SEO, image, empty-form-validation, and marketplace-destination smoke checks found no rollback signal. Controlled successful form delivery, analytics-dashboard receipt, and server-log review remain open production checks.
 
 ## Follow-up work for Phase 05
 

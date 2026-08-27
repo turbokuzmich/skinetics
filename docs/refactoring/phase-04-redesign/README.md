@@ -1,9 +1,10 @@
 # Phase 04 — Redesign
 
-- **State:** Implementation validated; deployment pending
+- **State:** Deployed; production receipt verification pending
 - **Owner:** Dmitry, business owner
 - **Started:** 2026-08-23
 - **Validated:** 2026-08-24
+- **Deployed:** 2026-08-24
 
 ## Objective
 
@@ -51,7 +52,7 @@ Official logos, brand guidelines, documentary assets, and photography remain a n
 - [x] No established URL or analytics contract is unintentionally broken.
 - [x] Tests, lint, build, route, form, analytics, marketplace-link, and Lighthouse checks pass.
 
-Production deployment remains a separate, explicitly authorized action.
+Production deployment was completed on 2026-08-24. Public route, SEO, optimized-image, empty-form-validation, and marketplace-destination smoke checks passed; controlled mail delivery and analytics-dashboard receipt remain open.
 
 ## Related records
 

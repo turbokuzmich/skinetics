@@ -66,7 +66,7 @@ export default function DoctorForm() {
 
   return isSubmitted ? (
     <Alert severity="success" role="status">
-      Мы свяжемся с вами в ближайшее время.
+      Заявка отправлена. Мы свяжемся с вами по указанному телефону.
     </Alert>
   ) : (
     <form onSubmit={handleSubmit(onSubmit)} id="appointment-form" noValidate>
@@ -105,7 +105,7 @@ export default function DoctorForm() {
           disabled={formState.isSubmitting}
           sx={{ width: "100%", maxWidth: "450px" }}
         >
-          {formState.isSubmitting ? "Отправляем…" : "Записаться"}
+          {formState.isSubmitting ? "Отправляем…" : "Оставить заявку"}
         </Button>
       </Stack>
     </form>

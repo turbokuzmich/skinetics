@@ -1,12 +1,14 @@
 # Phase 04 validation
 
-Status: Implementation validated; deployment pending
+Status: Deployed; production receipt verification pending
 
 Validation date: 2026-08-24
 
 Environment: macOS, Node.js 24.7.0, Next.js 14.2.35, Lighthouse 13.4.1, Headless Chrome 151
 
 Reviewed by: Codex local implementation validation
+
+Recorded Phase 04 release head: `ea92ab1` (including post-validation commits `034cc8e` and `ea92ab1`).
 
 ## Automated checks
 
@@ -67,5 +69,19 @@ Detailed numbers are recorded in [performance-summary.md](./artifacts/performanc
 ## Exit approval
 
 - **Result:** PASS — local implementation is a validated release candidate.
-- **Deployment:** Not executed. Building the Linux artifact and publishing it require separate explicit authorization.
-- **Open blockers:** None for local Phase 04 validation. Official identity and documentary assets remain a non-blocking future backlog.
+- **Deployment:** Release head `ea92ab1` was deployed on 2026-08-24.
+- **Open follow-up:** Controlled successful form submissions, mail delivery, analytics-dashboard receipt, and server-log review remain to be confirmed. Official identity and documentary assets remain a non-blocking future backlog.
+
+## Production smoke check — 2026-08-24
+
+- [x] `/`, `/catalog`, `/serum`, `/cream`, all five product pages, `/about`, `/contacts`, `/ingredients`, and `/sitemap.xml` returned HTTP 200.
+- [x] `/brands`, `/concerns`, and `/expert` returned HTTP 404.
+- [x] Current pages retained one H1/main, expected titles and canonicals, and product pages retained `BreadcrumbList` JSON-LD.
+- [x] `/ingredients` retained `noindex, follow` and remained absent from the sitemap; the sitemap included the intended static and five product URLs.
+- [x] Representative serum and cream `/_next/image` responses rendered successfully with non-zero intrinsic dimensions.
+- [x] Empty feedback and doctor submissions remained on `/contacts` and exposed field-linked invalid states without a success state.
+- [x] A Wildberries-only serum exposed the expected Wildberries destination; a two-marketplace cream exposed the expected Wildberries and Ozon destinations with safe new-tab attributes.
+- [x] GA, Yandex Metrica, and Mail.ru production script elements appeared after the deferred-load fallback.
+- [ ] Submit both forms with controlled test details and confirm delivery, success state, and one goal each.
+- [ ] Confirm production `marketplace_click` receipt and required dimensions in the analytics dashboards.
+- [ ] Review server logs for image, mail, route, and analytics errors after the initial live period.

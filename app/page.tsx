@@ -21,10 +21,9 @@ export default function LandingPage() {
       <HomeHero />
       <CategoryNavigation />
       <Catalog
-        eyebrow="Все пять средств"
-        heading="Выберите средство"
+        eyebrow="Наши средства"
+        heading="Средства для вашего ухода"
         headingComponent="h2"
-        description="Сравните продукты трёх брендов и откройте страницу средства, чтобы изучить состав и применение."
         showMarketplaceActions={false}
       />
       <TrustEvidence />

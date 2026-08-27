@@ -19,7 +19,7 @@ export default function CatalogPage() {
       <Catalog
         eyebrow="Все средства"
         heading="Каталог косметики Skinetics"
-        description="Сравните средства Dr. Health, SkineticsLab и Neon Beard по назначению, составу и способу применения. Покупка и доставка оформляются на Wildberries или Ozon."
+        description="Сыворотки Dr. Health для волос и кожи головы и кремы для лица SkineticsLab и Neon Beard. Все средства можно купить на Wildberries, а кремы — также на Ozon."
       />
     </Box>
   );

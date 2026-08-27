@@ -1,6 +1,6 @@
 # Phase 02 checklist
 
-Status: Implementation validated; deployment pending
+Status: Deployed; 14-day monitoring in progress
 
 ## Product evidence
 
@@ -37,5 +37,5 @@ The product owner approved the exact application and precaution wording separate
 - [x] Verify both marketplace destinations for each product.
 - [x] Verify representative analytics coverage with local stubs: ReneWal hero Wildberries/Ozon, Ultra Lift catalog-card Wildberries, and Ultra Lift hero Wildberries failure-safe navigation probes.
 - [x] Verify rendered HTML and indexability.
-- [ ] Record launch date and post-launch monitoring window.
+- [x] Record launch date and post-launch monitoring window: deployed 2026-08-24; monitor through 2026-09-07.
 - [x] Update root status and log for local implementation validation.

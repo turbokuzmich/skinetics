@@ -2,12 +2,32 @@
 
 This is an append-only record of meaningful work sessions. Add new entries immediately below this introduction, newest first. Use [templates/log-entry.md](./templates/log-entry.md) for the entry format.
 
+## 2026-08-26 — Customer-facing copy refresh validated locally
+
+- **Phase:** 02 — Cream launch monitoring / 04 — Redesign editorial follow-up
+- **Status:** Implemented and validated locally; not deployed
+- **Summary:** Applied owner-approved customer-facing wording to the homepage, listings, cream content, About, Contacts, and forms; displayed existing product summaries beneath product titles. Removed internal process language and clarified the consultation request without inventing product or service details.
+- **Evidence:** [Scope, deferrals, and validation](./phase-04-redesign/artifacts/copy-refresh-2026-08-26.md); 60 passing tests; lint and isolated production build; 12-route rendered validation; desktop/mobile browser and empty-form checks; unchanged product contract comparison.
+- **Decisions:** Preserve URLs, H1s, metadata, analytics, product facts, compositions, application instructions, and precautions. Leave the red-pepper ingredient discrepancy, serum usage details, unverified product differences, and consultation specifics for confirmation.
+- **Blockers:** No local implementation blocker. Deferred factual questions remain open; no production release was authorized or performed.
+- **Next:** Owner reviews the local copy. If separately authorized for release, record the actual deployment date and distinguish pre-/post-copy monitoring observations; retain the existing September 7 operational review date.
+
+## 2026-08-24 — Phase 04 deployed and Phase 02 monitoring started
+
+- **Phase:** 02 — Cream launch / 04 — Redesign
+- **Status:** Production live; receipt verification and 14-day monitoring in progress
+- **Summary:** The owner built and deployed release head `ea92ab1`; the redesigned five-product catalog is live at `https://skinetics.ru` and the Phase 02 monitoring window runs through 2026-09-07.
+- **Evidence:** HTTP 200 for all 12 intended HTML routes and `/sitemap.xml`; HTTP 404 for `/brands`, `/concerns`, and `/expert`; browser checks of the live homepage, listings, five product pages, About, Contacts, `/ingredients`, optimized images, empty-form validation, and representative serum/cream marketplace destinations.
+- **Decisions:** Treat deployment as complete while keeping controlled form delivery, analytics-dashboard receipt, and server-log review explicitly open; do not open Phase 05 publication gates from deployment alone.
+- **Blockers:** No rollback signal found. Reliable production event receipt and the 14-day baseline remain prerequisites for Phase 05 execution.
+- **Next:** Confirm successful form delivery and analytics receipt, monitor indexation and marketplace clicks through 2026-09-07, then close Phase 02 and prepare Phase 05.
+
 ## 2026-08-24 — Phase 04 implementation validated
 
 - **Phase:** 04 — Redesign
 - **Status:** Implementation validated; deployment pending
 - **Summary:** Completed the approved navigational-editorial redesign for every current route, refreshed the three serum presentation images from verified Wildberries final-gallery sources, hardened forms and analytics, and documented evidence-gated future templates without publishing them.
-- **Evidence:** Phase 04 commits `f8ef714` through `4aa7f10` plus this final evidence-correction commit; 52 passing tests; production build with 21 generated pages; `npm run validate:phase04` across 12 current and 3 gated routes; 24 route/viewport browser checks; [validation](./phase-04-redesign/VALIDATION.md), [browser captures](./phase-04-redesign/artifacts/captures/README.md), [performance summary](./phase-04-redesign/artifacts/performance-summary.md), [responsive matrix](./phase-04-redesign/artifacts/responsive-matrix.md), [serum provenance](./phase-04-redesign/artifacts/serum-image-sources-2026-08-23.md), and [release notes](./phase-04-redesign/artifacts/release-and-rollback-notes.md).
+- **Evidence:** Phase 04 commits `f8ef714` through release head `ea92ab1`, including post-validation updates `034cc8e` and `ea92ab1`; 52 passing tests; production build with 21 generated pages; `npm run validate:phase04` across 12 current and 3 gated routes; 24 route/viewport browser checks; [validation](./phase-04-redesign/VALIDATION.md), [browser captures](./phase-04-redesign/artifacts/captures/README.md), [performance summary](./phase-04-redesign/artifacts/performance-summary.md), [responsive matrix](./phase-04-redesign/artifacts/responsive-matrix.md), [serum provenance](./phase-04-redesign/artifacts/serum-image-sources-2026-08-23.md), and [release notes](./phase-04-redesign/artifacts/release-and-rollback-notes.md).
 - **Decisions:** Queue analytics immediately but load external libraries after initial rendering; preserve all URLs and videos; keep `/ingredients` noindex and all future discovery roots gated; require explicit production authorization.
 - **Blockers:** No local implementation blocker. Official identity/documentary assets and meaningful Ozon history remain non-blocking future inputs. Production deployment remains pending authorization.
 - **Next:** Build and deploy the Linux/amd64 artifact only after explicit authorization, then execute route, form, image, and marketplace analytics smoke tests.

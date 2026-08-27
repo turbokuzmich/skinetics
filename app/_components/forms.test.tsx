@@ -51,7 +51,7 @@ describe("lead forms", () => {
       name: "Электронная почта",
     });
     const feedbackPhone = screen.getByRole("textbox", {
-      name: "Номер телефона",
+      name: "Номер телефона — необязательно",
     });
     const feedbackMessage = screen.getByRole("textbox", {
       name: "Сообщение",
@@ -71,7 +71,7 @@ describe("lead forms", () => {
 
     const name = screen.getByRole("textbox", { name: "Ваше имя" });
     const phone = screen.getByRole("textbox", { name: "Номер телефона" });
-    await user.click(screen.getByRole("button", { name: "Записаться" }));
+    await user.click(screen.getByRole("button", { name: "Оставить заявку" }));
 
     expect(name).toHaveAccessibleDescription("Пожалуйста, укажите имя");
     expect(phone).toHaveAccessibleDescription(
@@ -93,7 +93,7 @@ describe("lead forms", () => {
     const phone = screen.getByRole("textbox", { name: "Номер телефона" });
     await user.type(name, "Анна");
     await user.type(phone, "+7 123 123 23 23");
-    await user.click(screen.getByRole("button", { name: "Записаться" }));
+    await user.click(screen.getByRole("button", { name: "Оставить заявку" }));
 
     expect(await screen.findByRole("alert")).toHaveTextContent(
       "Не удалось отправить форму. Попробуйте ещё раз.",
@@ -102,13 +102,66 @@ describe("lead forms", () => {
     expect(phone).toHaveValue("+7 123 123 23 23");
     expect(reachGoalFormMock).not.toHaveBeenCalled();
 
-    await user.click(screen.getByRole("button", { name: "Записаться" }));
+    await user.click(screen.getByRole("button", { name: "Оставить заявку" }));
 
     expect(await screen.findByRole("status")).toHaveTextContent(
-      "Мы свяжемся с вами в ближайшее время.",
+      "Заявка отправлена. Мы свяжемся с вами по указанному телефону.",
     );
     expect(submitJsonMock).toHaveBeenCalledTimes(2);
     expect(reachGoalFormMock).toHaveBeenCalledTimes(1);
+  });
+
+  it("explains the feedback message minimum and accepts its boundary without a phone", async () => {
+    const user = userEvent.setup();
+    submitJsonMock.mockResolvedValueOnce(undefined);
+    render(<FeedbackForm />);
+
+    await user.type(screen.getByRole("textbox", { name: "Ваше имя" }), "Анна");
+    await user.type(
+      screen.getByRole("textbox", { name: "Электронная почта" }),
+      "anna@example.com",
+    );
+    const message = screen.getByRole("textbox", { name: "Сообщение" });
+    await user.type(message, "Крем есть");
+    await user.click(screen.getByRole("button", { name: "Отправить сообщение" }));
+
+    expect(message).toHaveAccessibleDescription(
+      "Напишите сообщение длиной не менее 10 символов.",
+    );
+    expect(submitJsonMock).not.toHaveBeenCalled();
+
+    await user.type(message, "?");
+    await user.click(screen.getByRole("button", { name: "Отправить сообщение" }));
+
+    expect(await screen.findByRole("status")).toHaveTextContent("Сообщение отправлено.");
+    expect(submitJsonMock).toHaveBeenCalledWith("/api/feedback", {
+      name: "Анна",
+      email: "anna@example.com",
+      phone: "",
+      message: "Крем есть?",
+    });
+    expect(reachGoalFormMock).toHaveBeenCalledTimes(1);
+  });
+
+  it("offers email contact after feedback failure without losing the message", async () => {
+    const user = userEvent.setup();
+    submitJsonMock.mockRejectedValueOnce(new Error("FORM_SUBMISSION_FAILED"));
+    render(<FeedbackForm />);
+
+    await user.type(screen.getByRole("textbox", { name: "Ваше имя" }), "Анна");
+    await user.type(
+      screen.getByRole("textbox", { name: "Электронная почта" }),
+      "anna@example.com",
+    );
+    const message = screen.getByRole("textbox", { name: "Сообщение" });
+    await user.type(message, "Хочу уточнить состав средства");
+    await user.click(screen.getByRole("button", { name: "Отправить сообщение" }));
+
+    expect(await screen.findByRole("alert")).toHaveTextContent(
+      "Не удалось отправить сообщение. Попробуйте ещё раз или напишите на info@skinetics.ru.",
+    );
+    expect(message).toHaveValue("Хочу уточнить состав средства");
+    expect(reachGoalFormMock).not.toHaveBeenCalled();
   });
 
   it("communicates pending feedback submission without hiding field values", async () => {
@@ -132,7 +185,7 @@ describe("lead forms", () => {
       screen.getByRole("textbox", { name: "Сообщение" }),
       "Хочу уточнить состав средства",
     );
-    await user.click(screen.getByRole("button", { name: "Отправить" }));
+    await user.click(screen.getByRole("button", { name: "Отправить сообщение" }));
 
     const pendingButton = await screen.findByRole("button", {
       name: "Отправляем…",
@@ -146,7 +199,7 @@ describe("lead forms", () => {
 
     await waitFor(() => expect(reachGoalFormMock).toHaveBeenCalledTimes(1));
     expect(screen.getByRole("status")).toHaveTextContent(
-      "Мы свяжемся с вами в ближайшее время.",
+      "Сообщение отправлено. Мы ответим по указанным контактам.",
     );
   });
 
@@ -166,14 +219,14 @@ describe("lead forms", () => {
       screen.getByRole("textbox", { name: "Номер телефона" }),
       "+7 123 123 23 23",
     );
-    await user.click(screen.getByRole("button", { name: "Записаться" }));
+    await user.click(screen.getByRole("button", { name: "Оставить заявку" }));
 
     expect(await screen.findByRole("status")).toHaveTextContent(
-      "Мы свяжемся с вами в ближайшее время.",
+      "Заявка отправлена. Мы свяжемся с вами по указанному телефону.",
     );
     expect(submitJsonMock).toHaveBeenCalledTimes(1);
     expect(reachGoalFormMock).toHaveBeenCalledTimes(1);
-    expect(screen.queryByRole("button", { name: "Записаться" })).toBeNull();
+    expect(screen.queryByRole("button", { name: "Оставить заявку" })).toBeNull();
   });
 
   it("shows feedback success when analytics throws after delivery", async () => {
@@ -196,13 +249,13 @@ describe("lead forms", () => {
       screen.getByRole("textbox", { name: "Сообщение" }),
       "Хочу уточнить состав средства",
     );
-    await user.click(screen.getByRole("button", { name: "Отправить" }));
+    await user.click(screen.getByRole("button", { name: "Отправить сообщение" }));
 
     expect(await screen.findByRole("status")).toHaveTextContent(
-      "Мы свяжемся с вами в ближайшее время.",
+      "Сообщение отправлено. Мы ответим по указанным контактам.",
     );
     expect(submitJsonMock).toHaveBeenCalledTimes(1);
     expect(reachGoalFormMock).toHaveBeenCalledTimes(1);
-    expect(screen.queryByRole("button", { name: "Отправить" })).toBeNull();
+    expect(screen.queryByRole("button", { name: "Отправить сообщение" })).toBeNull();
   });
 });

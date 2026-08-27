@@ -38,7 +38,7 @@ export default function Contacts() {
             component="h1"
             eyebrow="Связаться со Skinetics"
             heading="Контакты"
-            description="Задайте вопрос о каталоге и продукции или оставьте сообщение через форму обратной связи."
+            description="Есть вопрос о составе или применении средства? Напишите нам."
           />
         </Container>
       </Box>
@@ -104,7 +104,7 @@ export default function Contacts() {
             </Box>
             <Typography color="text.secondary" sx={{ lineHeight: 1.7, mt: 8 }}>
               Skinetics объединяет косметику Dr. Health, SkineticsLab и Neon
-              Beard. Покупка и доставка оформляются на Wildberries или Ozon.
+              Beard. Купить средства можно на Wildberries, а кремы — также на Ozon.
             </Typography>
             <Stack
               direction={{ xs: "column", sm: "row", md: "column" }}
@@ -129,7 +129,7 @@ export default function Contacts() {
               Обратная связь
             </Typography>
             <Typography color="text.secondary" sx={{ lineHeight: 1.7, mt: 5 }}>
-              Заполните форму, и мы ответим по указанным контактам.
+              Укажите название средства и ваш вопрос — так нам будет проще помочь.
             </Typography>
             <Paper
               elevation={0}

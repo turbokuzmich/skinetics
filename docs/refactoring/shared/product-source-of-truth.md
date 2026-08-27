@@ -1,8 +1,8 @@
 # Product source of truth
 
-Last reviewed: 2026-08-23
+Last reviewed: 2026-08-24
 
-This file tracks accepted identity and source confidence. Product copy and compositions follow the source precedence below. Phase 02 is implemented and validated locally; production deployment remains pending.
+This file tracks accepted identity and source confidence. Product copy and compositions follow the source precedence below. The five-product catalog was deployed on 2026-08-24 and is in post-launch monitoring.
 
 ## Implemented catalog products
 
@@ -11,8 +11,8 @@ This file tracks accepted identity and source confidence. Product copy and compo
 | `red_pepper` | Сыворотка от выпадения и для роста волос | Dr. Health | Scalp/hair serum spray | 100 мл | `397061523` | — | `2043752266957` | Published record; current local copy reviewed |
 | `copper_tripeptide` | Сыворотка от выпадения и для роста волос | Dr. Health | Scalp/hair serum | 100 мл | `397059149` | — | `2043752250338` | Published record; current local copy reviewed |
 | `climbazole` | Средство от перхоти и себореи с климбазолом | Dr. Health | Scalp serum | 100 мл | `236310045` | — | `4630247421137` | Published record; current local copy reviewed |
-| `ultra_lift` | Крем для лица с пептидами Ultra Lift | Neon Beard | Face cream | 100 г | `768970852` | `5223635791` | `4630247421502` | Implemented and locally validated; deployment pending |
-| `renewal` | Крем для лица с пептидами ReneWal | SkineticsLab | Face cream | 50 г | `771142529` | `5223519199` | `4630247421458` | Implemented and locally validated; deployment pending |
+| `ultra_lift` | Крем для лица с пептидами Ultra Lift | Neon Beard | Face cream | 100 г | `768970852` | `5223635791` | `4630247421502` | Published on Skinetics; monitoring in progress |
+| `renewal` | Крем для лица с пептидами ReneWal | SkineticsLab | Face cream | 50 г | `771142529` | `5223519199` | `4630247421458` | Published on Skinetics; monitoring in progress |
 
 ## Marketplace availability
 
@@ -29,7 +29,7 @@ This file tracks accepted identity and source confidence. Product copy and compo
 - ReneWal's selected package photograph includes the small printed phrase `Concentrated anti-wrinkle cream with a Botox effect`. It is documentary package artwork only and is not repeated in authored copy, alternative text, metadata, or structured data.
 - The product owner approved the recorded application and precaution wording separately for both creams on 2026-08-23.
 - The canonical site compositions minimally normalize unambiguous marketplace spelling, capitalization, punctuation, and delimiters. The ambiguous ReneWal fragment `Olea Prunus Amygdalus Dulcis` remains unchanged.
-- The complete local Phase 02 release candidate passed validation on 2026-08-23. This does not claim that the creams are deployed on Skinetics production.
+- The complete local Phase 02 release candidate passed validation on 2026-08-23 and was deployed on 2026-08-24. Initial public route, metadata, sitemap, image, form-validation, and marketplace-destination checks passed; the monitoring window remains open through 2026-09-07.
 
 ## Source precedence
 

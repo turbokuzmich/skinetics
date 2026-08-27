@@ -1,8 +1,9 @@
 # Phase 02 — Cream launch
 
-- **State:** Implementation validated; deployment pending
+- **State:** Deployed; 14-day monitoring in progress
 - **Owner:** Unassigned
 - **Started:** 2026-08-23
+- **Deployed:** 2026-08-24
 - **Completed:** —
 
 ## Objective
@@ -50,10 +51,10 @@ Publish accurate, useful, indexable pages for the two priority face creams with 
 - [x] Pages are linked, indexable, present in the sitemap, and have unique metadata.
 - [x] Representative product and marketplace events plus analytics-failure navigation safety are verified with local stubs.
 - [x] Lint, build, route, rendered-HTML, and representative responsive checks pass locally.
-- [ ] Production deployment is explicitly authorized and completed.
+- [x] Production deployment is explicitly authorized and completed.
 - [ ] The 14-day post-launch monitoring window is completed.
 
-The completion date remains unset until production deployment and the required launch follow-up are recorded.
+The completion date remains unset until the monitoring window ending 2026-09-07 and the required launch follow-up are recorded.
 
 ## Related records
 

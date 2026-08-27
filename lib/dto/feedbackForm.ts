@@ -14,8 +14,8 @@ export const feedbackFormSchema = z
       )
       .or(z.string().length(0)),
     message: z
-      .string({ required_error: "Пожалуйста, составьте сообщение" })
-      .min(10, "Пожалуйста, составьте сообщение"),
+      .string({ required_error: "Напишите сообщение длиной не менее 10 символов." })
+      .min(10, "Напишите сообщение длиной не менее 10 символов."),
   })
   .required();
 

@@ -26,6 +26,22 @@ describe("ProductHero", () => {
     expect(getQuantityLabel("face-cream")).toBe("Масса");
   });
 
+  it.each(products)("shows the distinguishing summary for $id beside its title", (product) => {
+    render(<ProductHero product={product} />);
+
+    const heading = screen.getByRole("heading", { level: 1, name: product.title });
+    const summary = screen.getByText(product.summary);
+    const image = screen.getByRole("img", { name: product.imageAlt });
+
+    expect(summary).toBeVisible();
+    expect(heading.compareDocumentPosition(summary)).toBe(
+      Node.DOCUMENT_POSITION_FOLLOWING,
+    );
+    expect(summary.compareDocumentPosition(image)).toBe(
+      Node.DOCUMENT_POSITION_FOLLOWING,
+    );
+  });
+
   it("renders canonical product identity and marketplace actions", () => {
     render(<ProductHero product={cream} />);
     expect(

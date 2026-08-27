@@ -1,6 +1,6 @@
 # Phase 02 validation
 
-Status: Passed locally on 2026-08-23; deployment pending
+Status: Passed locally on 2026-08-23; deployed 2026-08-24; monitoring in progress
 
 Validated implementation commits:
 
@@ -70,6 +70,17 @@ Local `ym`, `gtag`, and `_tmr` stubs were used; no production analytics data was
 ## Exit approval
 
 - **Reviewed by:** local implementation and validation workflow
-- **Review date:** 2026-08-23
-- **Result:** Implementation validated; deployment pending
-- **Notes:** No production deployment was performed. The deployment date, live-route verification, and 14-day post-launch indexability and marketplace-click monitoring window remain open.
+- **Review date:** 2026-08-24
+- **Result:** Deployed; 14-day monitoring in progress
+- **Notes:** Initial production route, metadata, sitemap, image, empty-form-validation, and marketplace-destination checks passed. Controlled mail/analytics receipt remains open, and the post-launch indexability and marketplace-click monitoring window runs through 2026-09-07.
+
+## Production launch check — 2026-08-24
+
+- [x] `/cream`, `/catalog/ultra-lift`, and `/catalog/renewal` returned HTTP 200 with their expected titles, self-canonicals, single H1/main landmarks, and marketplace pairings.
+- [x] `/sitemap.xml` returned HTTP 200 and included `/cream` plus both cream product URLs.
+- [x] `/ingredients` remained `noindex, follow`; `/brands`, `/concerns`, and `/expert` returned HTTP 404.
+- [x] Representative optimized cream and serum images rendered with non-zero intrinsic dimensions.
+- [x] Empty feedback and doctor submissions exposed field-linked invalid states without a success state.
+- [x] Representative Wildberries and Ozon destination URLs and safe new-tab attributes matched the accepted records.
+- [ ] Confirm controlled successful form delivery and production analytics receipt.
+- [ ] Complete the monitoring window through 2026-09-07 and record indexation plus marketplace-click findings.

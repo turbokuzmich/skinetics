@@ -61,7 +61,7 @@ Primary work:
 
 **Exit:** both product pages are accurate, indexable, linked from the catalog, tracked by product and marketplace, and validated on mobile and desktop.
 
-**Current state:** Implementation validated; deployment pending. The local release candidate meets the pre-deployment validation requirements; production publication and the post-launch monitoring window remain separately authorized work before the phase can exit.
+**Current state:** Deployed on 2026-08-24; the 14-day post-launch indexability and marketplace-click monitoring window runs through 2026-09-07 before the phase can exit.
 
 ## Phase 03 — Site architecture and content
 

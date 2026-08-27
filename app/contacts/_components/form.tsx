@@ -51,7 +51,7 @@ export default function FeedbackForm() {
 
   return isSubmitted ? (
     <Alert severity="success" role="status" sx={{ m: 4 }}>
-      Мы свяжемся с вами в ближайшее время.
+      Сообщение отправлено. Мы ответим по указанным контактам.
     </Alert>
   ) : (
     <form onSubmit={handleSubmit(onSubmit)} noValidate>
@@ -78,7 +78,7 @@ export default function FeedbackForm() {
           {...register("email")}
         />
         <TextField
-          label="Номер телефона"
+          label="Номер телефона — необязательно"
           variant="outlined"
           placeholder="Например, +7 123 123 23 45"
           error={Boolean(formState.errors.phone)}
@@ -98,7 +98,7 @@ export default function FeedbackForm() {
         />
         {submissionError ? (
           <Alert severity="error" role="alert">
-            Не удалось отправить форму. Попробуйте ещё раз.
+            Не удалось отправить сообщение. Попробуйте ещё раз или напишите на info@skinetics.ru.
           </Alert>
         ) : null}
         <Button
@@ -109,7 +109,7 @@ export default function FeedbackForm() {
           disabled={formState.isSubmitting}
           sx={{ width: "100%", maxWidth: "450px" }}
         >
-          {formState.isSubmitting ? "Отправляем…" : "Отправить"}
+          {formState.isSubmitting ? "Отправляем…" : "Отправить сообщение"}
         </Button>
       </Stack>
     </form>

@@ -27,16 +27,16 @@ export default function TrustEvidence() {
               variant="overline"
               sx={{ color: skinColors.border, fontWeight: 500, mb: 3 }}
             >
-              Проверенные сведения
+              О компании
             </Typography>
             <Typography component="h2" variant="h2">
-              Факты о компании
+              Участие в московских программах
             </Typography>
             <Typography
               sx={{ color: skinColors.border, lineHeight: 1.7, mt: 5 }}
             >
-              Skinetics публикует только те основания доверия, которые можно
-              подтвердить в официальном контексте.
+              Сайтом Skinetics управляет ООО «Демидов Люкс СПА». Здесь
+              представлены средства Dr. Health, SkineticsLab и Neon Beard.
             </Typography>
             <Button
               component={Link}
