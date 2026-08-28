@@ -34,7 +34,7 @@ export default function Catalog({
       component="section"
       id="catalog"
       maxWidth="lg"
-      sx={{ py: { xs: 12, md: 20 } }}
+      sx={{ py: { xs: 12, md: 20 }, position: "relative" }}
     >
       <SectionHeading
         component={headingComponent}
@@ -51,7 +51,7 @@ export default function Catalog({
               sm: 6,
               md: categoryId === "face-cream" ? 6 : 4,
             }}
-            sx={{ display: "flex" }}
+            sx={{ display: "flex", position: "relative" }}
           >
             <ProductCard
               headingComponent={headingComponent === "h1" ? "h2" : "h3"}

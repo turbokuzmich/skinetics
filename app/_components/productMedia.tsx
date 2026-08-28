@@ -16,10 +16,16 @@ export default function ProductMedia({
   return (
     <Box
       sx={{
-        aspectRatio: "3 / 4",
-        bgcolor: "background.default",
+        aspectRatio: "1 / 1.08",
+        bgcolor: "#F1ECE3",
         overflow: "hidden",
         position: "relative",
+        "&::before": {
+          background: "radial-gradient(circle, rgba(255,255,255,0.86), rgba(241,236,227,0) 68%)",
+          content: '""',
+          inset: 0,
+          position: "absolute",
+        },
       }}
     >
       <Image

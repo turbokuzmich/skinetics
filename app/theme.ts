@@ -15,17 +15,25 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: "var(--font-manrope), Arial, sans-serif",
+    body1: {
+      lineHeight: 1.65,
+    },
+    body2: {
+      lineHeight: 1.55,
+    },
     h1: {
       fontFamily: "var(--font-literata), Georgia, serif",
-      fontSize: "clamp(2.5rem, 6vw, 4.5rem)",
+      fontSize: "clamp(2.75rem, 6.4vw, 5.25rem)",
       fontWeight: 400,
-      lineHeight: 1.08,
+      letterSpacing: "-0.055em",
+      lineHeight: 1.01,
     },
     h2: {
       fontFamily: "var(--font-literata), Georgia, serif",
-      fontSize: "clamp(2rem, 4vw, 3.25rem)",
+      fontSize: "clamp(2.25rem, 4.5vw, 3.7rem)",
       fontWeight: 400,
-      lineHeight: 1.12,
+      letterSpacing: "-0.045em",
+      lineHeight: 1.06,
     },
     h3: {
       fontFamily: "var(--font-literata), Georgia, serif",
@@ -35,6 +43,7 @@ const theme = createTheme({
     },
     button: {
       fontWeight: 500,
+      letterSpacing: "0.015em",
       textTransform: "none",
     },
   },
@@ -72,8 +81,12 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: skinRadii.small,
+          transition: "background-color 220ms ease, border-color 220ms ease, box-shadow 220ms ease, transform 220ms ease",
           minHeight: 44,
           paddingInline: 20,
+          "&:active": {
+            transform: "translateY(1px) scale(0.985)",
+          },
         },
       },
     },
@@ -84,6 +97,7 @@ const theme = createTheme({
           border: `1px solid ${skinColors.border}`,
           borderRadius: skinRadii.medium,
           boxShadow: "none",
+          transition: "border-color 240ms ease, box-shadow 240ms ease, transform 240ms ease",
         },
       },
     },
@@ -92,7 +106,7 @@ const theme = createTheme({
         root: {
           textUnderlineOffset: "0.18em",
           "&:hover": {
-            color: skinColors.brandBlue,
+            color: skinColors.clay,
           },
           "&:focus-visible": focusVisible,
         },

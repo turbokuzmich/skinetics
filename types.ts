@@ -10,6 +10,7 @@ export type ProductStatus = "draft" | "published";
 
 export type MarketplacePlacement =
   | "catalog-card"
+  | "home-hero"
   | "product-hero"
   | "sticky-mobile";
 

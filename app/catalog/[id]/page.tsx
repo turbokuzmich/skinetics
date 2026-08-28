@@ -13,6 +13,7 @@ import ProductBreadcrumbs from "@/app/_components/productBreadcrumbs";
 import ProductFaq from "@/app/_components/productFaq";
 import ProductHero from "@/app/_components/productHero";
 import ContextualLinks from "@/app/_components/contextualLinks";
+import MarketplaceActions from "@/app/_components/marketplaceActions";
 import { type Metadata } from "next";
 
 type Props = Readonly<{
@@ -72,6 +73,30 @@ export default function CatalogItem({ params: { id } }: Props) {
           </Typography>
         </Box>
         <ProductFaq items={product.content.faq} />
+        <Box
+          component="section"
+          aria-labelledby="purchase-heading"
+          sx={{
+            backgroundColor: "#E8EDE6",
+            border: "1px solid",
+            borderColor: "divider",
+            borderRadius: 2,
+            display: "grid",
+            gap: 3,
+            maxWidth: 800,
+            mx: "auto",
+            my: { xs: 8, md: 12 },
+            p: { xs: 5, md: 7 },
+          }}
+        >
+          <Typography id="purchase-heading" component="h2" variant="h3">
+            Где купить
+          </Typography>
+          <Typography color="text.secondary">
+            Выберите удобный маркетплейс — Skinetics не оформляет заказы напрямую.
+          </Typography>
+          <MarketplaceActions product={product} placement="product-hero" />
+        </Box>
         <ContextualLinks product={product} />
       </Container>
     </>

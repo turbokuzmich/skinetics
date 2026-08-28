@@ -6,6 +6,7 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import NextLink from "next/link";
 import SectionHeading from "./sectionHeading";
+import ArrowUpwardRounded from "@mui/icons-material/ArrowUpwardRounded";
 
 const categories = [
   {
@@ -31,44 +32,76 @@ export default function CategoryNavigation() {
     >
       <SectionHeading
         eyebrow="Два направления ухода"
-        heading="Какой уход вы ищете?"
+        heading="Начните с категории"
       />
       <Grid
         container
         spacing={{ xs: 4, md: 6 }}
         sx={{ mt: { xs: 8, md: 10 } }}
       >
-        {categories.map((category) => (
+        {categories.map((category, index) => (
           <Grid key={category.href} size={{ xs: 12, md: 6 }}>
             <Box
               component="article"
               sx={{
-                bgcolor: "background.paper",
+                bgcolor: index === 0 ? "#E8EDE6" : "#EAE4DE",
                 border: "1px solid",
                 borderColor: "divider",
                 height: "100%",
+                minHeight: { md: 330 },
+                overflow: "hidden",
                 p: { xs: 6, md: 8 },
+                position: "relative",
+                transition: "transform 260ms ease, box-shadow 260ms ease",
+                "&::after": {
+                  border: `1px solid ${index === 0 ? "rgba(100, 117, 102, 0.32)" : "rgba(165, 95, 72, 0.28)"}`,
+                  borderRadius: "50%",
+                  content: '""',
+                  height: 280,
+                  position: "absolute",
+                  right: -100,
+                  top: -120,
+                  width: 280,
+                },
+                "&:hover": {
+                  boxShadow: "0 18px 48px rgba(73, 56, 42, 0.1)",
+                  transform: "translateY(-5px)",
+                },
               }}
             >
-              <Stack spacing={4} sx={{ height: "100%" }}>
+              <Stack spacing={4} sx={{ height: "100%", position: "relative", zIndex: 1 }}>
+                <Stack direction="row" justifyContent="space-between" sx={{ alignItems: "center" }}>
+                  <Typography
+                    color="text.secondary"
+                    sx={{ fontSize: "0.7rem", fontWeight: 600, letterSpacing: "0.16em" }}
+                  >
+                    0{index + 1}
+                  </Typography>
+                  <ArrowUpwardRounded
+                    aria-hidden="true"
+                    sx={{ color: "secondary.main", fontSize: 22, transform: "rotate(45deg)" }}
+                  />
+                </Stack>
                 <Typography component="h3" variant="h3">
                   {category.name}
                 </Typography>
                 <Typography color="text.secondary" sx={{ lineHeight: 1.7 }}>
                   {category.description}
                 </Typography>
-                <Link
+                  <Link
                   component={NextLink}
                   href={category.href}
                   color="text.primary"
                   underline="always"
-                  sx={{
+                    sx={{
                     alignSelf: "flex-start",
                     fontWeight: 500,
                     minHeight: 44,
                     mt: "auto",
-                    py: 2,
-                  }}
+                      py: 2,
+                      transition: "color 180ms ease, letter-spacing 180ms ease",
+                      "&:hover": { letterSpacing: "0.02em" },
+                    }}
                 >
                   {category.name}
                 </Link>

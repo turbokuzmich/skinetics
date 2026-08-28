@@ -21,6 +21,7 @@ export default function SectionHeading({
       sx={{
         maxWidth: align === "center" ? 720 : 760,
         mx: align === "center" ? "auto" : 0,
+        position: "relative",
         textAlign: align,
       }}
     >
@@ -37,6 +38,7 @@ export default function SectionHeading({
       <Typography
         component={component}
         variant={component === "h1" ? "h1" : "h2"}
+        sx={{ textWrap: "balance" }}
       >
         {heading}
       </Typography>

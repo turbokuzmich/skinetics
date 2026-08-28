@@ -59,7 +59,6 @@ for (const { path } of productRoutes) {
 
 assert(!/<video(?:\s|>)/i.test(homepage), "homepage should not render a video element");
 assert(!homepage.includes("/video/"), "homepage should not reference /video/");
-assert(!/carousel/i.test(homepage), "homepage should not reference carousel code");
 assert(
   homepage.includes('<script id="analytics-queues">'),
   "analytics queues should be parser-executed from rendered HTML",

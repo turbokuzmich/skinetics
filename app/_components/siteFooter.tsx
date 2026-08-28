@@ -62,7 +62,7 @@ export default function SiteFooter() {
     <Box
       component="footer"
       sx={{
-        bgcolor: "background.paper",
+        bgcolor: "#ECE5D9",
         borderTop: "1px solid",
         borderColor: "divider",
       }}

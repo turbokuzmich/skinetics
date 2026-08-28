@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import MenuIcon from "@mui/icons-material/Menu";
 import Box from "@mui/material/Box";
@@ -19,6 +19,19 @@ const drawerTitleId = "mobile-navigation-title";
 
 export default function MobileNavigation({ items }: Props) {
   const [open, setOpen] = useState(false);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!open) {
+      return;
+    }
+
+    const focusTimer = window.setTimeout(() => {
+      closeButtonRef.current?.focus();
+    }, 0);
+
+    return () => window.clearTimeout(focusTimer);
+  }, [open]);
 
   return (
     <Box sx={{ display: { xs: "block", md: "none" }, ml: "auto" }}>
@@ -39,6 +52,7 @@ export default function MobileNavigation({ items }: Props) {
         onClose={() => setOpen(false)}
         PaperProps={{
           "aria-labelledby": drawerTitleId,
+          "aria-modal": true,
           id: drawerId,
           role: "dialog",
         }}
@@ -60,6 +74,7 @@ export default function MobileNavigation({ items }: Props) {
               aria-label="Закрыть меню"
               autoFocus
               color="inherit"
+              ref={closeButtonRef}
               onClick={() => setOpen(false)}
               sx={{ height: 44, width: 44 }}
             >

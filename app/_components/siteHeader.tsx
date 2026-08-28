@@ -7,6 +7,7 @@ import NextLink from "next/link";
 import { navigation } from "@/constants";
 import Logo from "./logo";
 import MobileNavigation from "./mobileNavigation";
+import SiteNavLink from "./siteNavLink";
 
 export default function SiteHeader() {
   return (
@@ -16,14 +17,15 @@ export default function SiteHeader() {
       color="transparent"
       elevation={0}
       sx={{
-        bgcolor: "background.paper",
-        borderBottom: "1px solid",
-        borderColor: "divider",
+        bgcolor: "rgba(243, 238, 229, 0.78)",
+        borderBottom: "1px solid rgba(217, 209, 197, 0.72)",
+        backdropFilter: "blur(18px)",
         color: "text.primary",
+        zIndex: 20,
       }}
     >
       <Container maxWidth="lg">
-        <Toolbar disableGutters sx={{ minHeight: { xs: 64, md: 72 } }}>
+        <Toolbar disableGutters sx={{ minHeight: { xs: 68, md: 78 } }}>
           <Link
             component={NextLink}
             href="/"
@@ -46,26 +48,14 @@ export default function SiteHeader() {
             sx={{
               alignItems: "stretch",
               display: { xs: "none", md: "flex" },
-              gap: 1,
+              gap: 0.5,
               ml: "auto",
             }}
           >
             {navigation.map(({ to, title }) => (
-              <Link
-                component={NextLink}
-                href={to}
-                key={to}
-                underline="none"
-                sx={{
-                  alignItems: "center",
-                  color: "text.primary",
-                  display: "inline-flex",
-                  minHeight: 44,
-                  px: 3,
-                }}
-              >
+              <SiteNavLink href={to} key={to}>
                 {title}
-              </Link>
+              </SiteNavLink>
             ))}
           </Box>
           <MobileNavigation items={navigation} />

@@ -17,9 +17,24 @@ export default function TrustEvidence() {
   return (
     <Box
       component="section"
-      sx={{ bgcolor: "primary.main", color: "primary.contrastText" }}
+      sx={{
+        bgcolor: "primary.main",
+        color: "primary.contrastText",
+        overflow: "hidden",
+        position: "relative",
+        "&::before": {
+          border: "1px solid rgba(217, 209, 197, 0.18)",
+          borderRadius: "50%",
+          content: '""',
+          height: 560,
+          position: "absolute",
+          right: -220,
+          top: -260,
+          width: 560,
+        },
+      }}
     >
-      <Container maxWidth="lg" sx={{ py: { xs: 12, md: 18 } }}>
+      <Container maxWidth="lg" sx={{ py: { xs: 12, md: 18 }, position: "relative" }}>
         <Grid container spacing={{ xs: 8, md: 12 }}>
           <Grid size={{ xs: 12, md: 5 }}>
             <Typography
@@ -33,7 +48,7 @@ export default function TrustEvidence() {
               Участие в московских программах
             </Typography>
             <Typography
-              sx={{ color: skinColors.border, lineHeight: 1.7, mt: 5 }}
+              sx={{ color: skinColors.border, lineHeight: 1.7, mt: 5, maxWidth: 480 }}
             >
               Сайтом Skinetics управляет ООО «Демидов Люкс СПА». Здесь
               представлены средства Dr. Health, SkineticsLab и Neon Beard.
@@ -59,11 +74,23 @@ export default function TrustEvidence() {
             <Stack
               component="ul"
               sx={{
+                counterReset: "trust-fact",
                 listStyle: "none",
                 m: 0,
                 p: 0,
                 "& > li + li": {
                   borderTop: `1px solid ${skinColors.mutedInk}`,
+                },
+                "& > li::before": {
+                  color: skinColors.clay,
+                  content: "counter(trust-fact, decimal-leading-zero)",
+                  counterIncrement: "trust-fact",
+                  display: "block",
+                  fontFamily: "var(--font-manrope), Arial, sans-serif",
+                  fontSize: "0.7rem",
+                  fontWeight: 600,
+                  letterSpacing: "0.16em",
+                  marginBottom: 2,
                 },
               }}
             >
@@ -75,6 +102,7 @@ export default function TrustEvidence() {
                     fontFamily: "var(--font-literata), Georgia, serif",
                     fontSize: { xs: "1.25rem", md: "1.5rem" },
                     lineHeight: 1.45,
+                    maxWidth: 620,
                     py: { xs: 5, md: 6 },
                   }}
                 >

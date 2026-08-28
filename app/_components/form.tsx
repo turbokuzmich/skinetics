@@ -83,6 +83,8 @@ export default function DoctorForm() {
         />
         <TextField
           label="Номер телефона"
+          type="tel"
+          inputMode="tel"
           variant="outlined"
           placeholder="Например, +7 123 123 23 45"
           sx={{ width: "100%", maxWidth: "450px" }}

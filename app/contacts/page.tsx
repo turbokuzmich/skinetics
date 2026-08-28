@@ -133,7 +133,13 @@ export default function Contacts() {
             </Typography>
             <Paper
               elevation={0}
-              sx={{ border: "1px solid", borderColor: "divider", mt: 7 }}
+              sx={{
+                backgroundColor: "rgba(252, 250, 245, 0.62)",
+                border: "1px solid",
+                borderColor: "divider",
+                borderRadius: 2,
+                mt: 7,
+              }}
             >
               <FeedbackForm />
             </Paper>

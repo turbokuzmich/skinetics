@@ -4,33 +4,111 @@ import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid2";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import Image from "next/image";
+import ArrowDownwardRounded from "@mui/icons-material/ArrowDownwardRounded";
 import Link from "next/link";
 import { brandAccents } from "@/app/designTokens";
-import { brands, products } from "@/constants";
+import { brands, marketplaces, products } from "@/constants";
+import type { MarketplaceId } from "@/types";
+import HomeHeroCarousel, { type HomeHeroSlide } from "./homeHeroCarousel";
 
 const heroProducts = ["red_pepper", "renewal", "ultra_lift"].map(
   (id) => products.find((product) => product.id === id)!,
 );
 
+const heroImages: Record<string, string> = {
+  red_pepper: "/items/hero/red_pepper.webp",
+  renewal: "/items/hero/renewal.webp",
+  ultra_lift: "/items/hero/ultra_lift.webp",
+};
+
+const marketplaceLogos: Record<MarketplaceId, string> = {
+  wildberries: "/marketplaces/wildberries.svg",
+  ozon: "/marketplaces/ozon-square.svg",
+};
+
+const marketplaceOrder: readonly MarketplaceId[] = ["wildberries", "ozon"];
+
+const heroSlides: readonly HomeHeroSlide[] = heroProducts.map((product) => ({
+  id: product.id,
+  brandId: product.brandId,
+  brandName: brands[product.brandId].name,
+  brandColor: brandAccents[product.brandId],
+  href: `/catalog/${product.slug}`,
+  image: heroImages[product.id],
+  imageAlt: product.imageAlt,
+  marketplaces: marketplaceOrder.flatMap((marketplaceId) => {
+    const link = product.marketplaceLinks[marketplaceId];
+
+    return link
+      ? [
+          {
+            id: marketplaceId,
+            label: marketplaces[marketplaceId].buttonLabel,
+            link,
+            logoSrc: marketplaceLogos[marketplaceId],
+          },
+        ]
+      : [];
+  }),
+  title: product.title,
+}));
+
 export default function HomeHero() {
   return (
     <Box
       component="section"
+      className="hero-surface"
       sx={{
-        bgcolor: "background.paper",
         borderBottom: "1px solid",
         borderColor: "divider",
       }}
     >
-      <Container maxWidth="lg" sx={{ py: { xs: 12, md: 20 } }}>
+      <Container
+        maxWidth="lg"
+        sx={{
+          minHeight: { md: "calc(100svh - 78px)" },
+          py: { xs: 10, md: 14 },
+          position: "relative",
+        }}
+      >
+        <Typography
+          aria-hidden="true"
+          sx={{
+            color: "rgba(165, 95, 72, 0.22)",
+            display: { xs: "none", md: "block" },
+            fontFamily: "var(--font-manrope), Arial, sans-serif",
+            fontSize: "0.72rem",
+            fontWeight: 600,
+            letterSpacing: "0.2em",
+            position: "absolute",
+            right: 16,
+            textTransform: "uppercase",
+            top: 30,
+          }}
+        >
+          Portfolio / 05
+        </Typography>
         <Grid container spacing={{ xs: 10, md: 12 }} alignItems="center">
           <Grid size={{ xs: 12, md: 6 }}>
             <Typography
               color="secondary.main"
               component="p"
               variant="overline"
-              sx={{ display: "block", fontWeight: 500, mb: 3 }}
+              sx={{
+                alignItems: "center",
+                display: "flex",
+                fontSize: "0.7rem",
+                fontWeight: 600,
+                gap: 2,
+                letterSpacing: "0.14em",
+                mb: 4,
+                "&::before": {
+                  backgroundColor: "secondary.main",
+                  content: '""',
+                  height: 1,
+                  width: 34,
+                },
+              }}
             >
               Каталог косметики Dr. Health, SkineticsLab и Neon Beard
             </Typography>
@@ -43,145 +121,69 @@ export default function HomeHero() {
                 fontSize: { xs: "1.0625rem", md: "1.2rem" },
                 lineHeight: 1.7,
                 maxWidth: 620,
-                mt: 6,
+                mt: 5,
               }}
             >
               Несмываемые сыворотки для ухода за кожей головы и кремы для
               лица с пептидами. Узнайте, для чего подходит каждое средство
               и как его применять.
             </Typography>
-            <Button
-              component={Link}
-              href="/catalog"
-              variant="contained"
-              sx={{ mt: 7 }}
+            <Stack
+              direction={{ xs: "column", sm: "row" }}
+              spacing={3}
+              sx={{ alignItems: { xs: "flex-start", sm: "center" }, mt: 6 }}
             >
-              Смотреть каталог
-            </Button>
+              <Button component={Link} href="/catalog" variant="contained">
+                Смотреть каталог
+              </Button>
+              <Button
+                component={Link}
+                href="#catalog"
+                variant="text"
+                startIcon={<ArrowDownwardRounded aria-hidden="true" />}
+                sx={{ color: "text.primary", px: 1.5 }}
+              >
+                Выбрать уход
+              </Button>
+            </Stack>
+            <Stack
+              direction="row"
+              spacing={4}
+              sx={{
+                borderTop: "1px solid",
+                borderColor: "rgba(165, 95, 72, 0.28)",
+                mt: { xs: 8, md: 12 },
+                pt: 3,
+                width: "fit-content",
+              }}
+            >
+              {[
+                ["05", "средств"],
+                ["03", "бренда"],
+                ["02", "направления"],
+              ].map(([value, label]) => (
+                <Box key={label}>
+                  <Typography
+                    sx={{
+                      fontFamily: "var(--font-literata), Georgia, serif",
+                      fontSize: "1.4rem",
+                      lineHeight: 1,
+                    }}
+                  >
+                    {value}
+                  </Typography>
+                  <Typography
+                    color="text.secondary"
+                    sx={{ fontSize: "0.68rem", letterSpacing: "0.04em", mt: 1 }}
+                  >
+                    {label}
+                  </Typography>
+                </Box>
+              ))}
+            </Stack>
           </Grid>
           <Grid size={{ xs: 12, md: 6 }}>
-            <Box
-              component="figure"
-              aria-label="Средства трёх брендов каталога Skinetics"
-              sx={{ m: 0, position: "relative" }}
-            >
-              <Box
-                sx={{
-                  border: "1px solid",
-                  borderColor: "divider",
-                  display: "grid",
-                  gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
-                  minHeight: { xs: 340, sm: 460 },
-                  overflow: "hidden",
-                }}
-              >
-                {heroProducts.map((product, index) => (
-                  <Stack
-                    key={product.id}
-                    sx={{
-                      borderLeft: index === 0 ? 0 : "1px solid",
-                      borderColor: "divider",
-                      minWidth: 0,
-                      pt: index === 1 ? { xs: 7, sm: 11 } : { xs: 4, sm: 6 },
-                    }}
-                  >
-                    <Typography
-                      component="span"
-                      sx={{
-                        color: brandAccents[product.brandId],
-                        fontSize: { xs: "0.7rem", sm: "0.8rem" },
-                        fontWeight: 500,
-                        minHeight: 32,
-                        px: { xs: 2, sm: 4 },
-                      }}
-                    >
-                      {brands[product.brandId].name}
-                    </Typography>
-                    <Box
-                      sx={{
-                        flexGrow: 1,
-                        minHeight: 0,
-                        position: "relative",
-                      }}
-                    >
-                      <Image
-                        alt=""
-                        fill
-                        priority={index === 1}
-                        sizes="(max-width: 900px) 30vw, 190px"
-                        src={product.image}
-                        style={{ objectFit: "contain" }}
-                      />
-                    </Box>
-                    <Box
-                      aria-hidden="true"
-                      sx={{
-                        bgcolor: brandAccents[product.brandId],
-                        height: 3,
-                      }}
-                    />
-                  </Stack>
-                ))}
-              </Box>
-              <Stack
-                component="figcaption"
-                direction="row"
-                spacing={{ xs: 2, sm: 3 }}
-                sx={{
-                  alignItems: "baseline",
-                  bgcolor: "background.paper",
-                  border: "1px solid",
-                  borderTop: 0,
-                  borderColor: "divider",
-                  flexWrap: "wrap",
-                  justifyContent: "space-between",
-                  px: { xs: 3, sm: 4 },
-                  py: { xs: 2.5, sm: 3 },
-                }}
-              >
-                <Typography
-                  component="span"
-                  variant="caption"
-                  sx={{
-                    color: "text.secondary",
-                    fontWeight: 600,
-                    letterSpacing: "0.08em",
-                    lineHeight: 1.2,
-                    textTransform: "uppercase",
-                  }}
-                >
-                  Доступно на
-                </Typography>
-                <Stack direction="row" spacing={{ xs: 2.5, sm: 3 }}>
-                  <Typography
-                    component="span"
-                    sx={{
-                      color: "#CB11AB",
-                      fontFamily: "Arial, sans-serif",
-                      fontSize: { xs: "1.125rem", sm: "1.3rem" },
-                      fontWeight: 800,
-                      letterSpacing: "-0.045em",
-                      lineHeight: 1.1,
-                    }}
-                  >
-                    Wildberries
-                  </Typography>
-                  <Typography
-                    component="span"
-                    sx={{
-                      color: "#005BFF",
-                      fontFamily: "Arial, sans-serif",
-                      fontSize: { xs: "1.125rem", sm: "1.3rem" },
-                      fontWeight: 900,
-                      letterSpacing: "-0.055em",
-                      lineHeight: 1.1,
-                    }}
-                  >
-                    OZON
-                  </Typography>
-                </Stack>
-              </Stack>
-            </Box>
+            <HomeHeroCarousel slides={heroSlides} />
           </Grid>
         </Grid>
       </Container>

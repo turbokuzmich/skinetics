@@ -22,9 +22,9 @@ export default function LandingPage() {
       <CategoryNavigation />
       <Catalog
         eyebrow="Наши средства"
-        heading="Средства для вашего ухода"
-        headingComponent="h2"
-        showMarketplaceActions={false}
+      heading="Средства для вашего ухода"
+      headingComponent="h2"
+      showMarketplaceActions
       />
       <TrustEvidence />
     </>

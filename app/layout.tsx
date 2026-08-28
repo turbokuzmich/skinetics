@@ -43,7 +43,7 @@ export default function RootLayout({
               Перейти к содержанию
             </a>
             <SiteHeader />
-            <main id="main-content">{children}</main>
+            <main id="main-content" tabIndex={-1}>{children}</main>
             <SiteFooter />
           </ThemeProvider>
         </AppRouterCacheProvider>

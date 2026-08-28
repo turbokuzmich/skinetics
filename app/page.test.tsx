@@ -1,22 +1,47 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 import LandingPage from "./page";
 
 vi.mock("./_components/metrika", () => ({ default: () => null }));
 
 describe("homepage", () => {
-  it("presents the multi-brand catalog journey without video", () => {
+  it("presents the multi-brand catalog journey without video", async () => {
+    const user = userEvent.setup();
     const { container } = render(<LandingPage />);
     const videoPath = ["/", "vid", "eo", "/"].join("");
 
     expect(screen.getAllByRole("heading", { level: 1 })).toHaveLength(1);
-    const marketplaceCaption = screen
-      .getByText("Доступно на")
-      .closest("figcaption");
+    const heroCarousel = screen.getByRole("figure", {
+      name: "Средства трёх брендов каталога Skinetics",
+    });
 
-    expect(marketplaceCaption).toHaveTextContent("Wildberries");
-    expect(marketplaceCaption).toHaveTextContent("OZON");
-    expect(marketplaceCaption?.querySelector("a")).toBeNull();
+    const wildberriesLink = within(heroCarousel).getByRole("link", {
+      name: "Купить на Wildberries",
+    });
+
+    expect(wildberriesLink).toHaveAttribute(
+      "href",
+      expect.stringContaining("wildberries.ru"),
+    );
+    expect(wildberriesLink).not.toHaveTextContent("Купить");
+    expect(
+      within(heroCarousel).queryByRole("link", { name: "Купить на Ozon" }),
+    ).not.toBeInTheDocument();
+    expect(
+      heroCarousel.querySelector('img[src*="wildberries.svg"]'),
+    ).toBeTruthy();
+
+    await user.click(
+      within(heroCarousel).getByRole("button", { name: "Следующий товар" }),
+    );
+
+    expect(
+      within(heroCarousel).getByRole("link", { name: "Купить на Ozon" }),
+    ).toHaveAttribute("href", expect.stringContaining("ozon.ru"));
+    expect(
+      heroCarousel.querySelector('img[src*="ozon-square.svg"]'),
+    ).toBeTruthy();
     expect(
       screen.getByRole("link", { name: "Смотреть каталог" }),
     ).toHaveAttribute("href", "/catalog");
@@ -53,9 +78,6 @@ describe("homepage", () => {
     expect(
       screen.getByRole("link", { name: "Подробнее о компании" }),
     ).toHaveAttribute("href", "/about");
-    expect(
-      screen.queryByRole("link", { name: /Купить/ }),
-    ).not.toBeInTheDocument();
     expect(container.querySelector("video")).not.toBeInTheDocument();
     expect(container.innerHTML).not.toContain(videoPath);
   });

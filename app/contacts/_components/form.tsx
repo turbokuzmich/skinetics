@@ -70,6 +70,8 @@ export default function FeedbackForm() {
         />
         <TextField
           label="Электронная почта"
+          type="email"
+          inputMode="email"
           variant="outlined"
           error={Boolean(formState.errors.email)}
           helperText={formState.errors.email?.message}
@@ -79,6 +81,8 @@ export default function FeedbackForm() {
         />
         <TextField
           label="Номер телефона — необязательно"
+          type="tel"
+          inputMode="tel"
           variant="outlined"
           placeholder="Например, +7 123 123 23 45"
           error={Boolean(formState.errors.phone)}

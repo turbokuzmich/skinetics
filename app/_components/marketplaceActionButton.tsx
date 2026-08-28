@@ -1,6 +1,7 @@
 "use client";
 
 import Button from "@mui/material/Button";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import { reachMarketplaceClick } from "@/lib/metrika";
@@ -22,6 +23,8 @@ type Props = Readonly<{
   placement: MarketplacePlacement;
   link: string;
   label: string;
+  logoSrc?: string;
+  logoOnly?: boolean;
 }>;
 
 const marketplaceStyles: Record<MarketplaceId, object> = {
@@ -41,6 +44,8 @@ export default function MarketplaceActionButton({
   placement,
   link,
   label,
+  logoSrc,
+  logoOnly = false,
 }: Props) {
   const pagePath = usePathname();
   const [url, setUrl] = useState(() =>
@@ -71,21 +76,60 @@ export default function MarketplaceActionButton({
       href={url}
       target="_blank"
       rel="noopener noreferrer"
+      aria-label={logoOnly ? label : undefined}
+      title={logoOnly ? label : undefined}
+      variant={logoOnly ? "text" : logoSrc ? "outlined" : "contained"}
       sx={{
-        color: "white",
+        ...(logoSrc
+          ? {
+              backgroundColor: "background.paper",
+              borderColor: "divider",
+              color: "text.primary",
+            }
+          : {
+              color: "white",
+              ...marketplaceStyles[marketplaceId],
+            }),
+        gap: 2,
         minHeight: 44,
         paddingInline: 3,
         textTransform: "none",
-        ...marketplaceStyles[marketplaceId],
+        ...(logoOnly && {
+          backgroundColor: "rgba(251, 248, 240, 0.78)",
+          border: 0,
+          boxShadow: "0 8px 18px rgba(23, 34, 30, 0.1)",
+          minWidth: 48,
+          paddingInline: 0,
+        }),
         "&:hover": {
-          filter: "brightness(0.92)",
+          ...(logoOnly
+            ? {
+                backgroundColor: "background.paper",
+                boxShadow: "0 10px 22px rgba(23, 34, 30, 0.14)",
+              }
+            : logoSrc
+            ? {
+                backgroundColor: "action.hover",
+                borderColor: "text.secondary",
+              }
+            : { filter: "brightness(0.92)" }),
         },
         "&:active": {
-          filter: "brightness(0.85)",
+          ...(logoSrc
+            ? { transform: "translateY(1px)" }
+            : { filter: "brightness(0.85)" }),
         },
       }}
     >
-      {label}
+      {logoSrc ? (
+        <Image
+          alt=""
+          height={28}
+          src={logoSrc}
+          width={28}
+        />
+      ) : null}
+      {logoOnly ? null : label}
     </Button>
   );
 }

@@ -30,6 +30,7 @@ export default function ProductHero({
         },
         gridTemplateColumns: { xs: "minmax(0, 1fr)", md: "5fr 7fr" },
         gridTemplateRows: { md: "auto 1fr" },
+        position: "relative",
         py: { xs: 6, md: 10 },
       }}
     >
@@ -72,9 +73,13 @@ export default function ProductHero({
       <Box
         sx={{
           alignSelf: "start",
+          backgroundColor: "rgba(252, 250, 245, 0.62)",
           border: "1px solid",
           borderColor: "divider",
           borderTop: `4px solid ${accent}`,
+          borderRadius: 2,
+          boxShadow: "0 20px 52px rgba(73, 56, 42, 0.08)",
+          overflow: "hidden",
           gridArea: "media",
           maxWidth: { xs: 520, md: "none" },
           width: "100%",
