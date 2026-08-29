@@ -5,6 +5,7 @@ import Link from "@mui/material/Link";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import NextLink from "next/link";
+import { skinColors } from "@/app/designTokens";
 import SectionHeading from "./sectionHeading";
 import ArrowUpwardRounded from "@mui/icons-material/ArrowUpwardRounded";
 
@@ -44,7 +45,7 @@ export default function CategoryNavigation() {
             <Box
               component="article"
               sx={{
-                bgcolor: index === 0 ? "#E8EDE6" : "#EAE4DE",
+                bgcolor: index === 0 ? "#E8EDE6" : skinColors.blueMist,
                 border: "1px solid",
                 borderColor: "divider",
                 height: "100%",
@@ -54,7 +55,7 @@ export default function CategoryNavigation() {
                 position: "relative",
                 transition: "transform 260ms ease, box-shadow 260ms ease",
                 "&::after": {
-                  border: `1px solid ${index === 0 ? "rgba(100, 117, 102, 0.32)" : "rgba(165, 95, 72, 0.28)"}`,
+                  border: `1px solid ${index === 0 ? "rgba(100, 117, 102, 0.32)" : "rgba(0, 74, 173, 0.2)"}`,
                   borderRadius: "50%",
                   content: '""',
                   height: 280,
@@ -79,7 +80,7 @@ export default function CategoryNavigation() {
                   </Typography>
                   <ArrowUpwardRounded
                     aria-hidden="true"
-                    sx={{ color: "secondary.main", fontSize: 22, transform: "rotate(45deg)" }}
+                    sx={{ color: skinColors.brandBlue, fontSize: 22, transform: "rotate(45deg)" }}
                   />
                 </Stack>
                 <Typography component="h3" variant="h3">

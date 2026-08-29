@@ -37,6 +37,7 @@ describe("Phase 04 design tokens", () => {
       border: "#D8D0C2",
       clay: "#A5563B",
       botanical: "#657A68",
+      blueMist: "#E5EEF0",
       brandBlue: "#004AAD",
       focus: "#004AAD",
     });

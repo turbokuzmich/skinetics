@@ -3,6 +3,7 @@
 import Link from "@mui/material/Link";
 import NextLink from "next/link";
 import { useSyncExternalStore } from "react";
+import { skinColors } from "@/app/designTokens";
 
 type Props = Readonly<{
   href: string;
@@ -29,14 +30,15 @@ export default function SiteNavLink({ href, children }: Props) {
       underline="none"
       sx={{
         alignItems: "center",
-        color: active ? "secondary.main" : "text.primary",
+        color: active ? skinColors.brandBlue : "text.primary",
         display: "inline-flex",
         minHeight: 44,
         px: 3,
         position: "relative",
         transition: "color 180ms ease",
+        "&:hover": { color: skinColors.brandBlue },
         "&::after": {
-          backgroundColor: "secondary.main",
+          backgroundColor: skinColors.brandBlue,
           bottom: 4,
           content: '""',
           height: "1px",

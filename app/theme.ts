@@ -106,7 +106,7 @@ const theme = createTheme({
         root: {
           textUnderlineOffset: "0.18em",
           "&:hover": {
-            color: skinColors.clay,
+            color: skinColors.brandBlue,
           },
           "&:focus-visible": focusVisible,
         },
