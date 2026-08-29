@@ -49,6 +49,10 @@ Indexable pages render a descriptive `h1` and supporting Russian text. Product p
 
 This is a Next.js 14 App Router site for the Skinetics multi-brand catalog. Routes and page layouts live in `app/`: page-specific components may sit beside their route (for example, `app/contacts/_components/`), while reusable UI belongs in `app/_components/`. API handlers are in `app/api/<name>/route.ts`. Put shared validation schemas and form DTOs in `lib/dto/`, analytics helpers in `lib/`, and cross-page constants/types in `constants.ts` and `types.ts`. Static images, SEO files, and web-manifest assets belong in `public/`. See `docs/skinetics-seo-context.md` before making SEO-content changes.
 
+## Immutable Original Images
+
+The files in `public/items/originals/` are preserved original PNG assets. Never modify, replace, rename, delete, regenerate, optimize, or otherwise alter these files under any circumstances. Any derivative or presentation asset must be created elsewhere, leaving the originals byte-for-byte unchanged.
+
 ## Build, Test, and Development Commands
 
 - `npm install` installs the locked dependencies from `package-lock.json`.
