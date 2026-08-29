@@ -66,7 +66,6 @@ export default function HomeHero() {
       <Container
         maxWidth="lg"
         sx={{
-          minHeight: { md: "calc(100svh - 78px)" },
           py: { xs: 10, md: 14 },
           position: "relative",
         }}
@@ -95,19 +94,10 @@ export default function HomeHero() {
               component="p"
               variant="overline"
               sx={{
-                alignItems: "center",
-                display: "flex",
                 fontSize: "0.7rem",
                 fontWeight: 600,
-                gap: 2,
                 letterSpacing: "0.14em",
                 mb: 4,
-                "&::before": {
-                  backgroundColor: "secondary.main",
-                  content: '""',
-                  height: 1,
-                  width: 34,
-                },
               }}
             >
               Каталог косметики Dr. Health, SkineticsLab и Neon Beard
@@ -145,41 +135,6 @@ export default function HomeHero() {
               >
                 Выбрать уход
               </Button>
-            </Stack>
-            <Stack
-              direction="row"
-              spacing={4}
-              sx={{
-                borderTop: "1px solid",
-                borderColor: "rgba(165, 95, 72, 0.28)",
-                mt: { xs: 8, md: 12 },
-                pt: 3,
-                width: "fit-content",
-              }}
-            >
-              {[
-                ["05", "средств"],
-                ["03", "бренда"],
-                ["02", "направления"],
-              ].map(([value, label]) => (
-                <Box key={label}>
-                  <Typography
-                    sx={{
-                      fontFamily: "var(--font-literata), Georgia, serif",
-                      fontSize: "1.4rem",
-                      lineHeight: 1,
-                    }}
-                  >
-                    {value}
-                  </Typography>
-                  <Typography
-                    color="text.secondary"
-                    sx={{ fontSize: "0.68rem", letterSpacing: "0.04em", mt: 1 }}
-                  >
-                    {label}
-                  </Typography>
-                </Box>
-              ))}
             </Stack>
           </Grid>
           <Grid size={{ xs: 12, md: 6 }}>

@@ -77,14 +77,14 @@ were saved.
 
 ## Preservation checks
 
-The existing PNG presentation files remain in place and are not referenced by
-the refreshed product records:
+The existing PNG presentation files remain in the immutable originals archive
+and are not referenced by the refreshed product records:
 
 | File | SHA-256 before and after refresh |
 |---|---|
-| `public/items/red_pepper.png` | `c7ac53000f4ebbc51860c5b3e999a4a2ac321d60453ff5d46daa36502df99963` |
-| `public/items/copper_tripeptide.png` | `35294a2aea58e82b0904d44bf77ed58d6205a1d4fa6d8de856de40c7a986650f` |
-| `public/items/climbazole.png` | `f9c47bee10988dbdcf9a4bb0a743f930759b153a781baff43e528727d38a8e39` |
+| `public/items/originals/red_pepper.png` | `c7ac53000f4ebbc51860c5b3e999a4a2ac321d60453ff5d46daa36502df99963` |
+| `public/items/originals/copper_tripeptide.png` | `35294a2aea58e82b0904d44bf77ed58d6205a1d4fa6d8de856de40c7a986650f` |
+| `public/items/originals/climbazole.png` | `f9c47bee10988dbdcf9a4bb0a743f930759b153a781baff43e528727d38a8e39` |
 
 All files under `public/video/` remain unchanged. Product cards and product
 heroes consume the same `Product.image` field, so each path update applies to

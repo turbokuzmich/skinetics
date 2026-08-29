@@ -102,7 +102,6 @@ export default function HomeHeroCarousel({ slides }: Props) {
         sx={{
           aspectRatio: { xs: "4 / 5", sm: "1 / 1" },
           backgroundColor: "#E9E0D2",
-          border: "1px solid rgba(165, 95, 72, 0.26)",
           borderRadius: { xs: "20px", sm: "28px" },
           boxShadow: "0 28px 70px rgba(73, 56, 42, 0.16)",
           overflow: "hidden",
@@ -160,20 +159,6 @@ export default function HomeHeroCarousel({ slides }: Props) {
             inset: 0,
             pointerEvents: "none",
             position: "absolute",
-            zIndex: 1,
-          }}
-        />
-        <Box
-          aria-hidden="true"
-          sx={{
-            border: "1px solid rgba(165, 95, 72, 0.25)",
-            borderRadius: "50%",
-            height: "72%",
-            left: "14%",
-            pointerEvents: "none",
-            position: "absolute",
-            top: "10%",
-            width: "72%",
             zIndex: 1,
           }}
         />

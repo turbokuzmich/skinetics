@@ -928,9 +928,9 @@ git commit -m "P04: redesign homepage journey"
 - Create: `docs/refactoring/phase-04-redesign/artifacts/serum-image-sources-2026-08-23.md`
 - Create: `app/serumImageAssets.test.ts`
 - Modify: `constants.ts`
-- Preserve unchanged: `public/items/red_pepper.png`
-- Preserve unchanged: `public/items/copper_tripeptide.png`
-- Preserve unchanged: `public/items/climbazole.png`
+- Preserve unchanged: `public/items/originals/red_pepper.png`
+- Preserve unchanged: `public/items/originals/copper_tripeptide.png`
+- Preserve unchanged: `public/items/originals/climbazole.png`
 
 **Interfaces:**
 - Consumes: Exact accepted Wildberries product pages and the product source of truth.
@@ -1012,7 +1012,7 @@ Keep every `imageAlt` unchanged unless the visible package identity conflicts wi
 ```bash
 npm test -- app/serumImageAssets.test.ts app/_components/productCard.test.tsx app/_components/productHero.test.tsx
 npm run build
-git diff -- public/items/red_pepper.png public/items/copper_tripeptide.png public/items/climbazole.png public/video
+git diff -- public/items/originals/red_pepper.png public/items/originals/copper_tripeptide.png public/items/originals/climbazole.png public/video
 ```
 
 Expected: tests and build PASS; the final `git diff` prints nothing. Inspect `/serum` and all three serum product pages at 390 and 1280 px for consistent grounding, contain behavior, alt text, and no layout shift.

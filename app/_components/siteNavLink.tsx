@@ -39,7 +39,7 @@ export default function SiteNavLink({ href, children }: Props) {
           backgroundColor: "secondary.main",
           bottom: 4,
           content: '""',
-          height: 1,
+          height: "1px",
           left: 24,
           opacity: active ? 1 : 0,
           position: "absolute",
