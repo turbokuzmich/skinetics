@@ -11,12 +11,14 @@ const categories = [
   {
     name: "Сыворотки для кожи головы",
     href: "/serum",
+    backgroundImage: "/categories/scalp-serums.webp",
     description:
       "Несмываемые сыворотки для ухода при склонности к выпадению волос, перхоти и жирности кожи головы.",
   },
   {
     name: "Кремы для лица",
     href: "/cream",
+    backgroundImage: "/categories/face-creams.webp",
     description:
       "Ежедневный уход за кожей лица с пептидами, увлажняющими и смягчающими компонентами.",
   },
@@ -45,6 +47,13 @@ export default function CategoryNavigation() {
               href={category.href}
               aria-label={category.name}
               sx={{
+                backgroundImage: {
+                  xs: `linear-gradient(90deg, rgba(245, 241, 232, 0.78) 0%, rgba(245, 241, 232, 0.64) 86%, rgba(245, 241, 232, 0.12) 100%), url("${category.backgroundImage}")`,
+                  md: `linear-gradient(90deg, rgba(245, 241, 232, 0.68) 0%, rgba(245, 241, 232, 0.5) 82%, rgba(245, 241, 232, 0.08) 100%), url("${category.backgroundImage}")`,
+                },
+                backgroundPosition: "right center",
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "cover",
                 bgcolor: index === 0 ? "#E8EDE6" : skinColors.blueMist,
                 border: "none",
                 borderRadius: `${skinRadii.medium}px`,
