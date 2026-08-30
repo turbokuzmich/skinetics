@@ -24,7 +24,6 @@ export default function LandingPage() {
         eyebrow="Наши средства"
       heading="Средства для вашего ухода"
       headingComponent="h2"
-      showMarketplaceActions
       />
       <TrustEvidence />
     </>

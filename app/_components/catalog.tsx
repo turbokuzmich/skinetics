@@ -14,7 +14,6 @@ type CatalogProps = Readonly<{
   categoryId?: ProductCategoryId;
   headingComponent?: "h1" | "h2";
   eyebrow?: string;
-  showMarketplaceActions?: boolean;
 }>;
 
 export default function Catalog({
@@ -23,7 +22,6 @@ export default function Catalog({
   categoryId,
   headingComponent = "h1",
   eyebrow,
-  showMarketplaceActions = true,
 }: CatalogProps) {
   const products = categoryId
     ? getPublishedProductsByCategory(categoryId)
@@ -57,7 +55,6 @@ export default function Catalog({
               headingComponent={headingComponent === "h1" ? "h2" : "h3"}
               priority={index === 0}
               product={product}
-              showMarketplaceActions={showMarketplaceActions}
             />
           </Grid>
         ))}

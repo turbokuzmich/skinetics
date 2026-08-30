@@ -7,19 +7,16 @@ import Link from "next/link";
 import { brandAccents } from "@/app/designTokens";
 import { brands } from "@/constants";
 import type { Product } from "@/types";
-import MarketplaceActions from "./marketplaceActions";
 import ProductMedia from "./productMedia";
 
 type Props = Readonly<{
   product: Product;
-  showMarketplaceActions?: boolean;
   headingComponent?: "h2" | "h3";
   priority?: boolean;
 }>;
 
 export default function ProductCard({
   product,
-  showMarketplaceActions = false,
   headingComponent = "h3",
   priority = false,
 }: Props) {
@@ -40,7 +37,7 @@ export default function ProductCard({
         transition: "border-color 240ms ease, box-shadow 240ms ease",
       }}
     >
-      <ProductMedia product={product} priority={priority} />
+      <ProductMedia product={product} priority={priority} surface="white" />
       <CardContent
         sx={{
           display: "flex",
@@ -79,13 +76,6 @@ export default function ProductCard({
           >
             Подробнее
           </Button>
-          {showMarketplaceActions ? (
-            <MarketplaceActions
-              product={product}
-              placement="catalog-card"
-              compact
-            />
-          ) : null}
         </Stack>
       </CardContent>
     </Card>

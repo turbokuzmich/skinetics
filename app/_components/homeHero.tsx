@@ -85,21 +85,30 @@ export default function HomeHero() {
             >
               Каталог косметики Dr. Health, SkineticsLab и Neon Beard
             </Typography>
-            <Typography component="h1" variant="h1" sx={{ maxWidth: 720 }}>
+            <Typography
+              component="h1"
+              variant="h1"
+              sx={{
+                fontSize: "clamp(2.5rem, 5vw, 4.5rem)",
+                letterSpacing: "-0.045em",
+                lineHeight: 1.06,
+                maxWidth: 720,
+                textWrap: "balance",
+              }}
+            >
               Косметика для лица, волос и кожи головы
             </Typography>
             <Typography
               color="text.secondary"
               sx={{
-                fontSize: { xs: "1.0625rem", md: "1.2rem" },
-                lineHeight: 1.7,
+                fontSize: { xs: "1.0625rem", md: "1.125rem" },
+                lineHeight: 1.65,
                 maxWidth: 620,
                 mt: 5,
               }}
             >
-              Несмываемые сыворотки для ухода за кожей головы и кремы для
-              лица с пептидами. Узнайте, для чего подходит каждое средство
-              и как его применять.
+              Несмываемые сыворотки для кожи головы и кремы для лица. Сравните
+              назначение, состав и способ применения.
             </Typography>
             <Stack
               direction={{ xs: "column", sm: "row" }}
