@@ -36,30 +36,6 @@ body::before {
   position: relative;
 }
 
-.hero-surface::before {
-  border: 1px solid rgba(165, 95, 72, 0.2);
-  border-radius: 50%;
-  content: "";
-  height: min(56vw, 760px);
-  position: absolute;
-  right: -20vw;
-  top: -24vw;
-  width: min(56vw, 760px);
-  z-index: -1;
-}
-
-.hero-surface::after {
-  border: 1px solid rgba(100, 117, 102, 0.2);
-  border-radius: 50%;
-  bottom: -34vw;
-  content: "";
-  height: min(60vw, 840px);
-  left: -22vw;
-  position: absolute;
-  width: min(60vw, 840px);
-  z-index: -1;
-}
-
 .catalog-card:hover {
   border-color: rgba(165, 95, 72, 0.5);
   box-shadow: 0 22px 60px rgba(73, 56, 42, 0.12);

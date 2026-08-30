@@ -7,7 +7,6 @@ import Typography from "@mui/material/Typography";
 import NextLink from "next/link";
 import { skinColors } from "@/app/designTokens";
 import SectionHeading from "./sectionHeading";
-import ArrowUpwardRounded from "@mui/icons-material/ArrowUpwardRounded";
 
 const categories = [
   {
@@ -54,16 +53,6 @@ export default function CategoryNavigation() {
                 p: { xs: 6, md: 8 },
                 position: "relative",
                 transition: "transform 260ms ease, box-shadow 260ms ease",
-                "&::after": {
-                  border: `1px solid ${index === 0 ? "rgba(100, 117, 102, 0.32)" : "rgba(0, 74, 173, 0.2)"}`,
-                  borderRadius: "50%",
-                  content: '""',
-                  height: 280,
-                  position: "absolute",
-                  right: -100,
-                  top: -120,
-                  width: 280,
-                },
                 "&:hover": {
                   boxShadow: "0 18px 48px rgba(73, 56, 42, 0.1)",
                   transform: "translateY(-5px)",
@@ -71,18 +60,6 @@ export default function CategoryNavigation() {
               }}
             >
               <Stack spacing={4} sx={{ height: "100%", position: "relative", zIndex: 1 }}>
-                <Stack direction="row" justifyContent="space-between" sx={{ alignItems: "center" }}>
-                  <Typography
-                    color="text.secondary"
-                    sx={{ fontSize: "0.7rem", fontWeight: 600, letterSpacing: "0.16em" }}
-                  >
-                    0{index + 1}
-                  </Typography>
-                  <ArrowUpwardRounded
-                    aria-hidden="true"
-                    sx={{ color: skinColors.brandBlue, fontSize: 22, transform: "rotate(45deg)" }}
-                  />
-                </Stack>
                 <Typography component="h3" variant="h3">
                   {category.name}
                 </Typography>

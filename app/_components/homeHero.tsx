@@ -6,7 +6,7 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import ArrowDownwardRounded from "@mui/icons-material/ArrowDownwardRounded";
 import Link from "next/link";
-import { brandAccents, skinColors } from "@/app/designTokens";
+import { brandAccents } from "@/app/designTokens";
 import { brands, marketplaces, products } from "@/constants";
 import type { MarketplaceId } from "@/types";
 import HomeHeroCarousel, { type HomeHeroSlide } from "./homeHeroCarousel";
@@ -70,24 +70,6 @@ export default function HomeHero() {
           position: "relative",
         }}
       >
-        <Typography
-          aria-hidden="true"
-          sx={{
-            color: skinColors.brandBlue,
-            display: { xs: "none", md: "block" },
-            fontFamily: "var(--font-manrope), Arial, sans-serif",
-            fontSize: "0.72rem",
-            fontWeight: 600,
-            letterSpacing: "0.2em",
-            opacity: 0.34,
-            position: "absolute",
-            right: 16,
-            textTransform: "uppercase",
-            top: 30,
-          }}
-        >
-          Portfolio / 05
-        </Typography>
         <Grid container spacing={{ xs: 10, md: 12 }} alignItems="center">
           <Grid size={{ xs: 12, md: 6 }}>
             <Typography
