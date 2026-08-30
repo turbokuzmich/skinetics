@@ -106,10 +106,9 @@ export default function HomeHeroCarousel({ slides }: Props) {
           boxShadow: "0 28px 70px rgba(73, 56, 42, 0.16)",
           overflow: "hidden",
           position: "relative",
-          transition: "box-shadow 240ms ease, transform 240ms ease",
+          transition: "box-shadow 240ms ease",
           "&:hover": {
             boxShadow: "0 34px 82px rgba(73, 56, 42, 0.2)",
-            transform: "translateY(-4px)",
           },
           "@media (prefers-reduced-motion: reduce)": {
             transition: "none",
@@ -326,23 +325,6 @@ export default function HomeHeroCarousel({ slides }: Props) {
         >
           <ArrowForwardRounded />
         </IconButton>
-        <Typography
-          aria-live="polite"
-          aria-atomic="true"
-          sx={{
-            color: "rgba(23, 33, 29, 0.64)",
-            fontSize: "0.68rem",
-            fontWeight: 600,
-            left: "50%",
-            letterSpacing: "0.16em",
-            position: "absolute",
-            top: { xs: 26, sm: 30 },
-            transform: "translateX(-50%)",
-            zIndex: 4,
-          }}
-        >
-          {String(activeIndex + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}
-        </Typography>
         <Box
           key={`${activeSlide.id}-caption`}
           component="figcaption"

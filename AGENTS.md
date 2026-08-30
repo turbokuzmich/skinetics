@@ -56,7 +56,8 @@ The files in `public/items/originals/` are preserved original PNG assets. Never 
 ## Build, Test, and Development Commands
 
 - `npm install` installs the locked dependencies from `package-lock.json`.
-- `npm run dev` runs the development server at `http://localhost:3000`.
+- `npm run dev` runs the development server at `http://localhost:3000`; use it to view the current site locally.
+- Playwright is installed and available for inspecting and exercising the locally running site in a browser.
 - `npm run lint` runs Next.js linting; use it before submitting changes.
 - `npm run build` creates the production build and catches type, route, and rendering failures.
 - `npm run start` serves a completed production build locally.

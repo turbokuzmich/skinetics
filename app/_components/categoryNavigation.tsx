@@ -1,11 +1,10 @@
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid2";
-import Link from "@mui/material/Link";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import NextLink from "next/link";
-import { skinColors } from "@/app/designTokens";
+import { skinColors, skinRadii } from "@/app/designTokens";
 import SectionHeading from "./sectionHeading";
 
 const categories = [
@@ -42,20 +41,30 @@ export default function CategoryNavigation() {
         {categories.map((category, index) => (
           <Grid key={category.href} size={{ xs: 12, md: 6 }}>
             <Box
-              component="article"
+              component={NextLink}
+              href={category.href}
+              aria-label={category.name}
               sx={{
                 bgcolor: index === 0 ? "#E8EDE6" : skinColors.blueMist,
                 border: "1px solid",
                 borderColor: "divider",
+                borderRadius: `${skinRadii.medium}px`,
+                color: "text.primary",
+                display: "block",
                 height: "100%",
                 minHeight: { md: 330 },
                 overflow: "hidden",
                 p: { xs: 6, md: 8 },
                 position: "relative",
-                transition: "transform 260ms ease, box-shadow 260ms ease",
+                textDecoration: "none",
+                transition: "box-shadow 260ms ease",
                 "&:hover": {
                   boxShadow: "0 18px 48px rgba(73, 56, 42, 0.1)",
-                  transform: "translateY(-5px)",
+                },
+                "&:focus-visible": {
+                  outline: "3px solid",
+                  outlineColor: "primary.main",
+                  outlineOffset: 3,
                 },
               }}
             >
@@ -66,23 +75,6 @@ export default function CategoryNavigation() {
                 <Typography color="text.secondary" sx={{ lineHeight: 1.7 }}>
                   {category.description}
                 </Typography>
-                  <Link
-                  component={NextLink}
-                  href={category.href}
-                  color="text.primary"
-                  underline="always"
-                    sx={{
-                    alignSelf: "flex-start",
-                    fontWeight: 500,
-                    minHeight: 44,
-                    mt: "auto",
-                      py: 2,
-                      transition: "color 180ms ease, letter-spacing 180ms ease",
-                      "&:hover": { letterSpacing: "0.02em" },
-                    }}
-                >
-                  {category.name}
-                </Link>
               </Stack>
             </Box>
           </Grid>

@@ -37,7 +37,7 @@ export default function ProductCard({
         height: "100%",
         overflow: "hidden",
         width: "100%",
-        transition: "border-color 240ms ease, box-shadow 240ms ease, transform 240ms ease",
+        transition: "border-color 240ms ease, box-shadow 240ms ease",
       }}
     >
       <ProductMedia product={product} priority={priority} />

@@ -39,7 +39,6 @@ body::before {
 .catalog-card:hover {
   border-color: rgba(165, 95, 72, 0.5);
   box-shadow: 0 22px 60px rgba(73, 56, 42, 0.12);
-  transform: translateY(-6px);
 }
 
 .catalog-card:hover img {

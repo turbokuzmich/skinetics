@@ -16,6 +16,13 @@ describe("homepage", () => {
       name: "Средства трёх брендов каталога Skinetics",
     });
 
+    expect(
+      Array.from(
+        heroCarousel.querySelectorAll('[aria-live="polite"]'),
+        (element) => element.textContent?.trim(),
+      ),
+    ).not.toContain("01 / 03");
+
     const wildberriesLink = within(heroCarousel).getByRole("link", {
       name: "Купить на Wildberries",
     });
@@ -94,5 +101,30 @@ describe("homepage", () => {
     expect(
       Array.from(trustList!.children, ({ tagName }) => tagName),
     ).toEqual(["LI", "LI", "LI"]);
+  });
+
+  it("uses each category card as a single link", () => {
+    render(<LandingPage />);
+
+    for (const category of [
+      {
+        name: "Сыворотки для кожи головы",
+        description:
+          "Несмываемые сыворотки для ухода при склонности к выпадению волос, перхоти и жирности кожи головы.",
+      },
+      {
+        name: "Кремы для лица",
+        description:
+          "Ежедневный уход за кожей лица с пептидами, увлажняющими и смягчающими компонентами.",
+      },
+    ]) {
+      const links = screen.getAllByRole("link", { name: category.name });
+
+      expect(links).toHaveLength(1);
+      expect(
+        within(links[0]).getByRole("heading", { name: category.name }),
+      ).toBeVisible();
+      expect(within(links[0]).getByText(category.description)).toBeVisible();
+    }
   });
 });
