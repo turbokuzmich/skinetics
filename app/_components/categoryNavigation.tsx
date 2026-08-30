@@ -46,8 +46,7 @@ export default function CategoryNavigation() {
               aria-label={category.name}
               sx={{
                 bgcolor: index === 0 ? "#E8EDE6" : skinColors.blueMist,
-                border: "1px solid",
-                borderColor: "divider",
+                border: "none",
                 borderRadius: `${skinRadii.medium}px`,
                 color: "text.primary",
                 display: "block",

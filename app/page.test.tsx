@@ -125,6 +125,7 @@ describe("homepage", () => {
         within(links[0]).getByRole("heading", { name: category.name }),
       ).toBeVisible();
       expect(within(links[0]).getByText(category.description)).toBeVisible();
+      expect(links[0]).toHaveStyle({ border: "none" });
     }
   });
 });

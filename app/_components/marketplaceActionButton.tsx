@@ -33,7 +33,8 @@ const marketplaceStyles: Record<MarketplaceId, object> = {
       "linear-gradient(0.819turn,rgba(99,16,127,1) 0%,rgba(176,18,159,1) 100%)",
   },
   ozon: {
-    backgroundColor: "#005bff",
+    backgroundImage:
+      "linear-gradient(0.819turn, #005bff 0%, #f1117e 100%)",
   },
 };
 

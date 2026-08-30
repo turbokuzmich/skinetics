@@ -27,13 +27,18 @@ describe("ProductCard", () => {
       .toHaveStyle({ backgroundColor: "rgb(255, 255, 255)" });
   });
 
+  it("uses a borderless card surface", () => {
+    render(<ProductCard product={serum} />);
+
+    expect(screen.getByRole("article")).toHaveStyle({ border: "none" });
+  });
+
   it("uses the requested card heading level", () => {
     render(<ProductCard headingComponent="h2" product={serum} />);
     expect(
       screen.getByRole("heading", { level: 2, name: serum.title }),
     ).toBeVisible();
   });
-
 });
 
 describe("Catalog", () => {

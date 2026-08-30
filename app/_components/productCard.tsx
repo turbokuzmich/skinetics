@@ -26,15 +26,13 @@ export default function ProductCard({
       className="catalog-card"
       sx={{
         backgroundColor: "background.paper",
-        border: "1px solid",
-        borderColor: "divider",
-        borderTop: `3px solid ${brandAccents[product.brandId]}`,
+        border: "none",
         display: "flex",
         flexDirection: "column",
         height: "100%",
         overflow: "hidden",
         width: "100%",
-        transition: "border-color 240ms ease, box-shadow 240ms ease",
+        transition: "box-shadow 240ms ease",
       }}
     >
       <ProductMedia product={product} priority={priority} surface="white" />

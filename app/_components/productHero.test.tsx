@@ -53,6 +53,27 @@ describe("ProductHero", () => {
     expect(screen.getAllByRole("link", { name: /Купить/ })).toHaveLength(2);
   });
 
+  it("uses Ozon brand colors for its marketplace gradient", () => {
+    render(<ProductHero product={cream} />);
+
+    expect(screen.getByRole("link", { name: "Купить на Ozon" })).toHaveStyle({
+      backgroundImage: "linear-gradient(0.819turn, #005bff 0%, #f1117e 100%)",
+    });
+  });
+
+  it("uses a white, borderless product image surface", () => {
+    render(<ProductHero product={serum} />);
+
+    const imageSurface = screen.getByRole("img", {
+      name: serum.imageAlt,
+    }).parentElement;
+
+    expect(imageSurface).toHaveStyle({
+      backgroundColor: "rgb(255, 255, 255)",
+    });
+    expect(imageSurface?.parentElement).toHaveStyle({ border: "none" });
+  });
+
   it("emits the one-marketplace serum product-hero payload", () => {
     const gtag = vi.fn();
     analyticsWindow.gtag = gtag;
